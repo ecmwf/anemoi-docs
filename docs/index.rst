@@ -6,7 +6,7 @@
 
    This documentation is work in progress. It is not yet ready.
 
-Anemoi is a framework for developing machine learning weather
+*Anemoi* is a framework for developing machine learning weather
 forecasting models. It comprises of components or packages for preparing
 training datasets, conducting ML model training and a registry for
 datasets and trained models. Anemoi provides tools for operational

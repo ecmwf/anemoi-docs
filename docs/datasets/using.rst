@@ -1,7 +1,6 @@
-############
-Using training datasets
-############
-
+#########################
+ Using training datasets
+#########################
 
 **************
  Installation
@@ -9,7 +8,8 @@ Using training datasets
 
 .. warning::
 
-   This text describes the package ``ecml-tools``. This package will soon be renamed to ``anemoi-datasets`` or similar.
+   This text describes the package ``ecml-tools``. This package will
+   soon be renamed to ``anemoi-datasets`` or similar.
 
 This package will be a collection of tools, with their own dependencies.
 In order to not install unnecessary dependencies, the package is split
