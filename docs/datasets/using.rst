@@ -1,11 +1,15 @@
-ecml-tools
-==========
+############
+Using training datasets
+############
 
-A package to hold various functions to support training of ML models on
-ECMWF data.
 
-Installation
-------------
+**************
+ Installation
+**************
+
+.. warning::
+
+   This text describes the package ``ecml-tools``. This package will soon be renamed to ``anemoi-datasets`` or similar.
 
 This package will be a collection of tools, with their own dependencies.
 In order to not install unnecessary dependencies, the package is split
@@ -30,8 +34,9 @@ To install everything:
 
    pip install ecml-tools[all]
 
-Datasets
-========
+##########
+ Datasets
+##########
 
 A ``dataset`` wraps a ``zarr`` file that follows the format used by
 ECMWF to train its machine learning models.
@@ -50,8 +55,9 @@ name. In the later case, the package will use the entry ``zarr_root`` of
 
    zarr_root: /path_or_url/to/the/zarrs
 
-Attributes of a dataset
------------------------
+*************************
+ Attributes of a dataset
+*************************
 
 As the underlying ``zarr``, the ``dataset`` is an iterable:
 
@@ -132,14 +138,15 @@ To get the statistics for ``2t``:
    stats = ds.statistics
    print("Average 2t", stats["mean"][two_t_index])
 
-Subsetting datasets
--------------------
+*********************
+ Subsetting datasets
+*********************
 
 You can create a view on the ``zarr`` file that selects a subset of
 dates.
 
 Changing the frequency
-~~~~~~~~~~~~~~~~~~~~~~
+======================
 
 .. code:: python
 
@@ -152,7 +159,7 @@ The ``frequency`` parameter can be a integer (in hours) or a string
 following with the suffix ``h`` (hours) or ``d`` (days).
 
 Selecting years
-~~~~~~~~~~~~~~~
+===============
 
 You can select ranges of years using the ``start`` and ``end`` keywords:
 
@@ -171,7 +178,7 @@ You can select ranges of years using the ``start`` and ``end`` keywords:
 The selection includes all the dates of the ``end`` years.
 
 Selecting more precise ranges
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=============================
 
 You can select a few months, or even a few days:
 
@@ -197,7 +204,7 @@ You can omit either ``start`` or ``end``. In that case the first and
 last date of the dataset will be used respectively.
 
 Combining both
-~~~~~~~~~~~~~~
+==============
 
 You can combine both subsetting methods:
 
@@ -210,8 +217,9 @@ You can combine both subsetting methods:
        end=2020,
        frequency="6h")
 
-Combining datasets
-------------------
+********************
+ Combining datasets
+********************
 
 You can create a virtual dataset by combining two or more ``zarr``
 files.
@@ -234,8 +242,9 @@ range of dates covered by each files.
 If the dates are different, the files are concatenated. If the dates are
 the same, the files are joined. See below for more information.
 
-Concatenating datasets
-----------------------
+************************
+ Concatenating datasets
+************************
 
 You can concatenate two or more datasets along the dates dimension. The
 package will check that all datasets are compatible (same resolution,
@@ -262,8 +271,9 @@ function.
    **NOTE:** When concatenating file, the statistics are not recomputed;
    it is the statistics of first file that are returned to the user.
 
-Joining datasets
-----------------
+******************
+ Joining datasets
+******************
 
 You can join two datasets that have the same dates, combining their
 variables.
@@ -293,8 +303,9 @@ occurrence of that name.
 
 Please note that you can join more than two ``zarr`` files.
 
-Selection, ordering and renaming of variables
----------------------------------------------
+***********************************************
+ Selection, ordering and renaming of variables
+***********************************************
 
 You can select a subset of variables when opening a ``zarr`` file. If
 you pass a ``list``, the variables are ordered according the that list.
@@ -365,8 +376,9 @@ You can also rename variables:
 This will be useful when your join datasets and do not want variables
 from one dataset to override the ones from the other.
 
-Using all options
------------------
+*******************
+ Using all options
+*******************
 
 You can combine all of the above:
 
@@ -384,8 +396,9 @@ You can combine all of the above:
        ...
    )
 
-Building a dataset from a configuration
----------------------------------------
+*****************************************
+ Building a dataset from a configuration
+*****************************************
 
 In practice, you will be building datasets from a configuration file,
 such as a YAML file:
