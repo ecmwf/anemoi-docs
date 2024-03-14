@@ -2,42 +2,6 @@
  Using training datasets
 #########################
 
-**************
- Installation
-**************
-
-.. warning::
-
-   This text describes the package ``ecml-tools``. This package will
-   soon be renamed to ``anemoi-datasets`` or similar.
-
-This package will be a collection of tools, with their own dependencies.
-In order to not install unnecessary dependencies, the package is split
-in parts.
-
-For handling datasets, you will need to install the ``data`` extra:
-
-.. code:: bash
-
-   pip install ecml-tools[data]
-
-For provenance tracking, you will need to install the ``provenance``
-extra:
-
-.. code:: bash
-
-   pip install ecml-tools[provenance]
-
-To install everything:
-
-.. code:: bash
-
-   pip install ecml-tools[all]
-
-##########
- Datasets
-##########
-
 A ``dataset`` wraps a ``zarr`` file that follows the format used by
 ECMWF to train its machine learning models.
 

@@ -19,6 +19,20 @@ and through Anemoi train models they can name themselves. Anemoi is
 built on many open source and widely used tools, for example PyTorch_
 and Zarr_.
 
+-  :doc:`overview`
+-  :doc:`installing`
+-  :doc:`firststeps`
+-  :doc:`examples`
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   overview
+   installing
+   firststeps
+   examples
+
 **Models**
 
 -  :doc:`models/components`
