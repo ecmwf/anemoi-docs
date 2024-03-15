@@ -5,3 +5,5 @@ nbsphinx
 
 # Also requires `brew install pandoc` on Mac
 pandoc
+
+rstfmt

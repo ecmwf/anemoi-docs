@@ -31,54 +31,78 @@ As the underlying ``zarr``, the ``dataset`` is an iterable:
 
    ds = open_dataset("aifs-ea-an-oper-0001-mars-o96-1979-2022-1h-v2")
 
-   # Print the number of rows (i.e. dates):
+Print the number of rows (i.e. dates):
+
+.. code:: python
 
    print(len(ds))
 
-   # Iterate throw the rows,
+... iterate throw the rows,
+
+.. code:: python
 
    for row in ds:
        print(row)
 
-   # or access a item directly.
+or access a item directly.
+
+.. code:: python
 
    print(row[10])
 
-   # You can retrieve the shape of the dataset,
+You can retrieve the shape of the dataset,
+
+.. code:: python
 
    print(ds.shape)
 
-   # the list of variables,
+the list of variables,
+
+.. code:: python
 
    print(ds.variables)
 
-   # the mapping between variable names and columns index
+the mapping between variable names and columns index
+
+.. code:: python
 
    two_t_index = ds.name_to_index["2t"]
    row = ds[10]
    print("2t", row[two_t_index])
 
-   # Get the list of dates (as NumPy datetime64)
+Get the list of dates (as NumPy datetime64)
+
+.. code:: python
 
    print(ds.dates)
 
-   # The number of hours between consecutive dates
+The number of hours between consecutive dates
+
+.. code:: python
 
    print(ds.frequency)
 
-   # The resolution of the underlying grid
+The resolution of the underlying grid
+
+.. code:: python
 
    print(ds.resolution)
 
-   # The list of latitudes of the data values (NumPy array)
+The list of latitudes of the data values (NumPy array)
+
+.. code:: python
 
    print(ds.latitudes)
 
-   # The same for longitudes
+The same for longitudes
+
+.. code:: python
 
    print(ds.longitudes)
 
-   # And the statitics
+And the statitics
+
+.. code:: python
 
    print(ds.statistics)
 
@@ -381,13 +405,15 @@ such as a YAML file:
 This is possible because ``open_dataset`` can be build from simple lists
 and dictionaries:
 
-.. code:: python
+From a string
 
-   # From a string
+.. code:: python
 
    ds = open_dataset("aifs-ea-an-oper-0001-mars-o96-1979-2022-1h-v2")
 
-   # From a list of strings
+From a list of strings
+
+.. code:: python
 
    ds = open_dataset(
        [
@@ -396,8 +422,9 @@ and dictionaries:
        ]
    )
 
+From a dictionnary
 
-   # From a dictionnary
+.. code:: python
 
    ds = open_dataset(
        {
@@ -406,7 +433,9 @@ and dictionaries:
        }
    )
 
-   # From a list of dictionnary
+From a list of dictionnary
+
+.. code:: python
 
    ds = open_dataset(
        [
@@ -422,7 +451,9 @@ and dictionaries:
        ]
    )
 
-   # And even deeper constructs
+And even deeper constructs
+
+.. code:: python
 
    ds = open_dataset(
        [

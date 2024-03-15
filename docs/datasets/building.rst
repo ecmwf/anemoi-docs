@@ -2,9 +2,48 @@
  Building datasets
 ###################
 
-*****************
- Getting started
-*****************
+************
+ Principles
+************
+
+.. figure:: build.png
+   :alt: Building datasets
+   :scale: 50%
+
+   Building datasets
+
+Concepts
+========
+
+Source
+------
+
+The source is the data that will be used to build the dataset. The
+source
+
+Sources are:
+
+-  mars
+-  constants
+
+Join
+----
+
+The join is the process of combining the source data to form the input
+
+Pipe
+----
+
+The pipe is the process of transforming the input data to form the
+output
+
+Filter
+------
+
+The filter is the process of selecting the output data from the input
+
+Getting started
+===============
 
 .. code:: yaml
 
@@ -18,7 +57,7 @@
    dates:
      start: 2020-02-05 00:00:00
      end: 2023-12-31 18:00:00
-     frequency: 6
+     frequency: 6h
 
    build:
      group_by: monthly
@@ -62,9 +101,8 @@
      remapping:
        param_level: "{param}_{levelist}"
 
-****************
- Top-level keys
-****************
+Top-level keys
+==============
 
 dadkas;k;level
 
@@ -74,16 +112,14 @@ dadkas;k;level
 -  name
 -  config_format_version
 
-*******
- Dates
-*******
+Dates
+=====
 
 The ``dates`` block specifies the start and end dates of the dataset, as
 well as the frequency of the data. The frequency is specified in hours.
 
-*******
- Input
-*******
+Input
+=====
 
 The ``input`` block specifies the input data that will be used to build
 the dataset. The ``join`` block specifies the datasets that will be
@@ -91,9 +127,8 @@ joined together to form the input data. The ``mars`` block specifies the
 MARS datasets that will be used. The ``constants`` block specifies the
 constants that will be used.
 
-********
- Output
-********
+Output
+======
 
 The ``output`` block specifies the output data that will be built. The
 ``chunking`` block specifies the chunking of the output data. The
