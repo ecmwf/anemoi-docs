@@ -1,0 +1,57 @@
+# (C) Copyright 2024 ECMWF.
+#
+# This software is licensed under the terms of the Apache Licence Version 2.0
+# which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
+# In applying this licence, ECMWF does not waive the privileges and immunities
+# granted to it by virtue of its status as an intergovernmental organisation
+# nor does it submit to any jurisdiction.
+#
+
+name: QA
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  quality:
+    name: QA
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: pip install pre-commit
+    - run: pre-commit install
+    - run: pre-commit run --all-files
+
+  notify-failure:
+    if: failure()
+    runs-on: ubuntu-latest
+    needs: quality
+    name: Notify failure
+    steps:
+      - uses: jdcargile/ms-teams-notification@v1.4
+        with:
+          github-token: ${{ github.token }}
+          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI_F }}
+          # notification-summary: ${{ steps.qa.outputs.status }}
+          notification-summary: ❌ Build failed on anemoi-docs!
+          notification-color: dc3545
+          timezone: Europe/Paris
+          verbose-logging: true
+
+  notify-success:
+    if: success()
+    runs-on: ubuntu-latest
+    needs: quality
+    name: Notify success
+    steps:
+      - uses: jdcargile/ms-teams-notification@v1.4
+        with:
+          github-token: ${{ github.token }}
+          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI_F }}
+          # notification-summary: ${{ steps.qa.outputs.status }}
+          notification-summary: ✅ New commit on anemoi-docs.
+          notification-color: 17a2b8
+          timezone: Europe/Paris
+          verbose-logging: true
