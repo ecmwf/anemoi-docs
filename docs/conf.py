@@ -42,7 +42,7 @@ else:
 copyright = "%s, ECMWF" % (years,)
 
 
-release = '0.1.0'
+release = "0.1.0"
 
 
 # -- General configuration ---------------------------------------------------
