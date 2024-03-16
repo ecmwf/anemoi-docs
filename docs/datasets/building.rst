@@ -1,3 +1,5 @@
+.. _datasets-building:
+
 ###################
  Building datasets
 ###################

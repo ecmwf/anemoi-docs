@@ -422,7 +422,7 @@ From a list of strings
        ]
    )
 
-From a dictionnary
+From a dictionary
 
 .. code:: python
 
