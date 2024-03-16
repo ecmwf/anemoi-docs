@@ -6,44 +6,45 @@
  Principles
 ************
 
-.. figure:: build.png
+..
+   .. figure:: build.png
+
+..
    :alt: Building datasets
+
+..
    :scale: 50%
 
+..
    Building datasets
 
 Concepts
 ========
 
+date
+   jhkhljlk
+
+variable
+   hkjhkjk
+
+field
+   jhkjhkjhk
+
 Source
-------
 
-The source is the data that will be used to build the dataset. The
-source
-
-Sources are:
-
--  mars
--  opendap
--  constants
--  grib
--  netcdf
+   The source is the data that will be used to build the dataset. The
+   source. see :ref:`dataset sources` for more information.
 
 Join
-----
-
-The join is the process of combining the source data to form the input
+   The join is the process of combining the source data to form the
+   input
 
 Pipe
-----
-
-The pipe is the process of transforming the input data to form the
-output
+   The pipe is the process of transforming the input data to form the
+   output
 
 Filter
-------
-
-The filter is the process of selecting the output data from the input
+   The filter is the process of selecting the output data from the input
 
 Getting started
 ===============
