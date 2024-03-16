@@ -66,6 +66,7 @@ and Zarr_.
 -  :doc:`datasets/using`
 -  :doc:`datasets/sources`
 -  :doc:`datasets/filters`
+-  :doc:`/datasets/options`
 
 .. toctree::
    :maxdepth: 1
@@ -77,6 +78,7 @@ and Zarr_.
    datasets/using
    datasets/sources
    datasets/filters
+   datasets/options
 
 *********
  License
