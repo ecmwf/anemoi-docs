@@ -33,7 +33,7 @@ field
 Source
 
    The source is the data that will be used to build the dataset. The
-   source. see :ref:`dataset sources` for more information.
+   source. see :ref:`dataset-sources` for more information.
 
 Join
    The join is the process of combining the source data to form the
