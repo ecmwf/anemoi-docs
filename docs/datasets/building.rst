@@ -88,61 +88,8 @@ concat
  Getting started
 *****************
 
-.. code:: yaml
-
-   description: Boundary condition for MetNO's LAM model rotated
-   # dataset_status: experimental
-   # purpose: aifs
-   name: aifs-ea-an-oper-0001-mars-n320-2020-2023-6h-v2-metno-bc-rotated
-   # config_format_version: 2
-
-
-   dates:
-     start: 2020-02-05 00:00:00
-     end: 2023-12-31 18:00:00
-     frequency: 6h
-
-   build:
-     group_by: monthly
-
-   input:
-     join:
-       - mars:
-           class: ea
-           param: [10u, 10v, 2d, 2t, msl, skt, sp, tcw, lsm, sdor, slor, z]
-           levtype: sfc
-
-       - mars:
-           class: ea
-           param: [r, t, u, v, w, z]
-           levtype: pl
-           level: [50, 100, 150, 200, 250, 300, 400, 500, 700, 850, 925, 1000]
-
-       - constants:
-           template: ${input.join.0.mars}
-           param:
-           - cos_latitude
-           - cos_longitude
-           - sin_latitude
-           - sin_longitude
-           - cos_julian_day
-           - cos_local_time
-           - sin_julian_day
-           - sin_local_time
-           - insolation
-
-   output:
-     # chunking: {dates: 1, ensembles: 1}
-     # dtype: float32
-     # flatten_grid: True
-     order_by:
-       - valid_datetime
-       - param_level
-       - number
-     statistics: param_level
-     # statistics_end: 2022
-     remapping:
-       param_level: "{param}_{levelist}"
+.. literalinclude:: building.yaml
+   :language: yaml
 
 ****************
  Top-level keys
