@@ -1,8 +1,8 @@
 description: Boundary condition for MetNO's LAM model rotated
-  # dataset_status: experimental
-  # purpose: aifs
-  name: aifs-ea-an-oper-0001-mars-n320-2020-2023-6h-v2-metno-bc-rotated
-  # config_format_version: 2
+# dataset_status: experimental
+# purpose: aifs
+name: aifs-ea-an-oper-0001-mars-n320-2020-2023-6h-v2-metno-bc-rotated
+# config_format_version: 2
 
 
 dates:
