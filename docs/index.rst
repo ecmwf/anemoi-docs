@@ -5,6 +5,8 @@
 .. warning::
 
    This documentation is work in progress. It is not yet ready.
+   Currently, the documentation is based on the one from the ecml-tools_
+   project, which will be merged into Anemoi.
 
 *Anemoi* is a framework for developing machine learning weather
 forecasting models. It comprises of components or packages for preparing
@@ -13,11 +15,7 @@ datasets and trained models. Anemoi provides tools for operational
 inference, including interfacing to verification software. As a
 framework it seeks to handle many of the complexities that
 meteorological organisations will share, allowing them to easily train
-models from existing recipes but with their own data. Using Anemoi and
-ECMWF data, ECMWF can train AIFS. Users can use their own their own data
-and through Anemoi train models they can name themselves. Anemoi is
-built on many open source and widely used tools, for example PyTorch_
-and Zarr_.
+models from existing recipes but with their own data.
 
 -  :doc:`overview`
 -  :doc:`installing`
@@ -85,6 +83,8 @@ and Zarr_.
 *Anemoi* is available under the open source `Apache License`__.
 
 .. __: http://www.apache.org/licenses/LICENSE-2.0.html
+
+.. _ecml-tools: https://github.com/ecmwf-lab/ecml-tools
 
 .. _pytorch: https://pytorch.org
 
