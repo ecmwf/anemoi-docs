@@ -63,7 +63,6 @@ and Zarr_.
 
 -  :doc:`datasets/about`
 -  :doc:`datasets/building`
--  :doc:`datasets/using`
 -  :doc:`datasets/sources`
 -  :doc:`datasets/filters`
 -  :doc:`/datasets/options`
@@ -75,7 +74,6 @@ and Zarr_.
 
    datasets/about
    datasets/building
-   datasets/using
    datasets/sources
    datasets/filters
    datasets/options

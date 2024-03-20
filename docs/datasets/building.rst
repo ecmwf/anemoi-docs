@@ -5,15 +5,6 @@
 ###################
 
 ..
-   ************
-
-..
-   Principles
-
-..
-   ************
-
-..
    .. figure:: build.png
 
 ..
@@ -21,9 +12,6 @@
 
 ..
    :scale: 50%
-
-..
-   Building datasets
 
 **********
  Concepts
@@ -90,46 +78,3 @@ concat
 
 .. literalinclude:: building.yaml
    :language: yaml
-
-****************
- Top-level keys
-****************
-
-dadkas;k;level
-
--  description
--  dataset_status
--  purpose
--  name
--  config_format_version
-
-*******
- Dates
-*******
-
-The ``dates`` block specifies the start and end dates of the dataset, as
-well as the frequency of the data. The frequency is specified in hours.
-
-*******
- Input
-*******
-
-The ``input`` block specifies the input data that will be used to build
-the dataset. The ``join`` block specifies the datasets that will be
-joined together to form the input data. The ``mars`` block specifies the
-MARS datasets that will be used. The ``constants`` block specifies the
-constants that will be used.
-
-********
- Output
-********
-
-The ``output`` block specifies the output data that will be built. The
-``chunking`` block specifies the chunking of the output data. The
-``dtype`` block specifies the data type of the output data. The
-``flatten_grid`` block specifies whether the output data will be
-flattened. The ``order_by`` block specifies the order of the output
-data. The ``statistics`` block specifies the statistics that will be
-calculated. The ``statistics_end`` block specifies the end date of the
-statistics. The ``remapping`` block specifies the remapping of the
-output data.

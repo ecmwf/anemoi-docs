@@ -3,7 +3,3 @@
 #########
  Filters
 #########
-
-kjdlkjklld
-
-dsklajdlksa
