@@ -63,17 +63,19 @@ models from existing recipes but with their own data.
 -  :doc:`datasets/building`
 -  :doc:`datasets/sources`
 -  :doc:`datasets/filters`
--  :doc:`/datasets/options`
+-  :doc:`datasets/using`
+-  :doc:`datasets/options`
 
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: Datasets
+   :caption: Training datasets
 
    datasets/about
    datasets/building
    datasets/sources
    datasets/filters
+   datasets/using
    datasets/options
 
 *********
