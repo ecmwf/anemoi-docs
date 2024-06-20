@@ -19,8 +19,7 @@ models from existing recipes but with their own data.
 
 -  :doc:`overview`
 -  :doc:`installing`
--  :doc:`firststeps`
--  :doc:`examples`
+-  :doc:`contributing`
 
 .. toctree::
    :maxdepth: 1
@@ -28,55 +27,19 @@ models from existing recipes but with their own data.
 
    overview
    installing
-   firststeps
-   examples
+   contributing
 
-**Models**
+*****************
+ Anemoi packages
+*****************
 
--  :doc:`models/components`
--  :doc:`models/examples`
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Models
-
-   models/components
-   models/examples
-
-**Training**
-
--  :doc:`training/components`
--  :doc:`training/examples`
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Training
-
-   training/components
-   training/examples
-
-**Datasets**
-
--  :doc:`datasets/about`
--  :doc:`datasets/building`
--  :doc:`datasets/sources`
--  :doc:`datasets/filters`
--  :doc:`datasets/using`
--  :doc:`datasets/options`
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Training datasets
-
-   datasets/about
-   datasets/building
-   datasets/sources
-   datasets/filters
-   datasets/using
-   datasets/options
+-  :ref:`anemoi-utils <anemoi-utils:index-page>`
+-  :ref:`anemoi-datasets <anemoi-datasets:index-page>`
+-  :ref:`anemoi-models <anemoi-models:index-page>`
+-  :ref:`anemoi-graphs <anemoi-graphs:index-page>`
+-  :ref:`anemoi-training <anemoi-training:index-page>`
+-  :ref:`anemoi-inference <anemoi-inference:index-page>`
+-  :ref:`anemoi-registry <anemoi-registry:index-page>`
 
 *********
  License
@@ -85,9 +48,3 @@ models from existing recipes but with their own data.
 *Anemoi* is available under the open source `Apache License`__.
 
 .. __: http://www.apache.org/licenses/LICENSE-2.0.html
-
-.. _ecml-tools: https://github.com/ecmwf-lab/ecml-tools
-
-.. _pytorch: https://pytorch.org
-
-.. _zarr: https://zarr.readthedocs.io/

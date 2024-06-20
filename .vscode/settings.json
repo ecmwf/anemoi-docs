@@ -8,5 +8,6 @@
         "latex",
         "plaintext",
         "restructuredtext"
-    ]
+    ],
+    "restructuredtext.pythonRecommendation.disabled": true
 }

@@ -1,5 +1,0 @@
-.. _dataset-filters:
-
-#########
- Filters
-#########
