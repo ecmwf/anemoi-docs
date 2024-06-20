@@ -20,6 +20,7 @@ models from existing recipes but with their own data.
 -  :doc:`overview`
 -  :doc:`installing`
 -  :doc:`contributing`
+-  :doc:`code-of-conduct`
 
 .. toctree::
    :maxdepth: 1
@@ -28,6 +29,7 @@ models from existing recipes but with their own data.
    overview
    installing
    contributing
+   code-of-conduct
 
 *****************
  Anemoi packages
