@@ -1,0 +1,22 @@
+digraph {
+
+    node [shape=record, fontname=Arial, fontsize=10,
+        style=filled, color=lightblue];
+    edge [fontname=Arial, fontsize=10];
+
+
+    "anemoi-datasets" -> "anemoi-utils";
+    "anemoi-registry" -> "anemoi-utils";
+    "anemoi-training" -> "anemoi-graphs";
+    "anemoi-graphs" -> "anemoi-utils";
+    "anemoi-training" -> "anemoi-models";
+    "anemoi-models" -> "anemoi-utils";
+    "anemoi-training" -> "anemoi-datasets";
+    "anemoi-training" -> "anemoi-utils";
+    "anemoi-inference" -> "anemoi-models";
+    "anemoi-inference" -> "anemoi-utils";
+    "anemoi-web" -> "anemoi-inference";
+    "anemoi-web" -> "anemoi-datasets";
+    "anemoi-registry" -> "anemoi-datasets" [style=dashed];
+    "anemoi-graphs" -> "anemoi-datasets" [style=dashed];
+}
