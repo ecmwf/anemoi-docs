@@ -34,7 +34,7 @@ repos:
     - --force-single-line-imports
     - --profile black
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.6.4
+  rev: v0.6.5
   hooks:
   - id: ruff
     # Next line if for documenation cod snippets
@@ -45,7 +45,7 @@ repos:
     - --exit-non-zero-on-fix
     - --preview
 - repo: https://github.com/sphinx-contrib/sphinx-lint
-  rev: v0.9.1
+  rev: v1.0.0
   hooks:
   - id: sphinx-lint
 # For now, we use it. But it does not support a lot of sphinx features
