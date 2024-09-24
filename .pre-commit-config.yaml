@@ -34,7 +34,7 @@ repos:
     - --force-single-line-imports
     - --profile black
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.6.5
+  rev: v0.6.7
   hooks:
   - id: ruff
     # Next line if for documenation cod snippets
@@ -65,6 +65,6 @@ repos:
   - id: optional-dependencies-all
     args: ["--inplace", "--exclude-keys=dev,docs,tests", "--group=dev=all,docs,tests"]
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: "2.2.3"
+  rev: "2.2.4"
   hooks:
   - id: pyproject-fmt
