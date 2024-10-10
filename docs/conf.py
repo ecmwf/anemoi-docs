@@ -10,15 +10,13 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
-
 import datetime
+import os
+import sys
 
-# top = os.path.realpath(os.path.dirname(os.path.dirname(__file__)))
-# sys.path.insert(0, top)
+read_the_docs_build = os.environ.get("READTHEDOCS", None) == "True"
 
+sys.path.insert(0, os.path.join(os.path.abspath(".."), "src"))
 
 source_suffix = ".rst"
 master_doc = "index"
@@ -42,7 +40,7 @@ else:
 copyright = "%s, ECMWF" % (years,)
 
 
-release = "0.1.0"
+release = "0.0.0"
 
 
 # -- General configuration ---------------------------------------------------
@@ -51,8 +49,14 @@ release = "0.1.0"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinx.ext.todo",
     "sphinx_rtd_theme",
     "nbsphinx",
+    "sphinx.ext.graphviz",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+    "sphinxarg.ext",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -63,8 +67,37 @@ extensions = [
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "'**.ipynb_checkpoints'"]
 
-
-# https://www.notion.so/Deepnote-Launch-Buttons-63c642a5e875463495ed2341e83a4b2a
+intersphinx_mapping = {
+    "python": ("https://python.readthedocs.io/en/latest", None),
+    "anemoi-utils": (
+        "https://anemoi-utils.readthedocs.io/en/latest/",
+        ("../../anemoi-utils/docs/_build/html/objects.inv", None),
+    ),
+    "anemoi-datasets": (
+        "https://anemoi-datasets.readthedocs.io/en/latest/",
+        ("../../anemoi-datasets/docs/_build/html/objects.inv", None),
+    ),
+    "anemoi-models": (
+        "https://anemoi-models.readthedocs.io/en/latest/",
+        ("../../anemoi-models/docs/_build/html/objects.inv", None),
+    ),
+    "anemoi-training": (
+        "https://anemoi-training.readthedocs.io/en/latest/",
+        ("../../anemoi-training/docs/_build/html/objects.inv", None),
+    ),
+    "anemoi-inference": (
+        "https://anemoi-inference.readthedocs.io/en/latest/",
+        ("../../anemoi-inference/docs/_build/html/objects.inv", None),
+    ),
+    "anemoi-graphs": (
+        "https://anemoi-graphs.readthedocs.io/en/latest/",
+        ("../../anemoi-graphs/docs/_build/html/objects.inv", None),
+    ),
+    "anemoi-registry": (
+        "https://anemoi-registry.readthedocs.io/en/latest/",
+        ("../../anemoi-registry/docs/_build/html/objects.inv", None),
+    ),
+}
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -79,3 +112,8 @@ html_theme = "sphinx_rtd_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 html_css_files = ["style.css"]
+
+
+todo_include_todos = not read_the_docs_build
+
+autodoc_member_order = "bysource"  # Keep file order

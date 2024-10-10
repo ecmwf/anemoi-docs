@@ -5,6 +5,8 @@
 .. warning::
 
    This documentation is work in progress. It is not yet ready.
+   Currently, the documentation is based on the one from the ecml-tools_
+   project, which will be merged into Anemoi.
 
 *Anemoi* is a framework for developing machine learning weather
 forecasting models. It comprises of components or packages for preparing
@@ -13,16 +15,12 @@ datasets and trained models. Anemoi provides tools for operational
 inference, including interfacing to verification software. As a
 framework it seeks to handle many of the complexities that
 meteorological organisations will share, allowing them to easily train
-models from existing recipes but with their own data. Using Anemoi and
-ECMWF data, ECMWF can train AIFS. Users can use their own their own data
-and through Anemoi train models they can name themselves. Anemoi is
-built on many open source and widely used tools, for example PyTorch_
-and Zarr_.
+models from existing recipes but with their own data.
 
 -  :doc:`overview`
 -  :doc:`installing`
--  :doc:`firststeps`
--  :doc:`examples`
+-  :doc:`contributing`
+-  :doc:`code-of-conduct`
 
 .. toctree::
    :maxdepth: 1
@@ -30,53 +28,20 @@ and Zarr_.
 
    overview
    installing
-   firststeps
-   examples
+   contributing
+   code-of-conduct
 
-**Models**
+*****************
+ Anemoi packages
+*****************
 
--  :doc:`models/components`
--  :doc:`models/examples`
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Models
-
-   models/components
-   models/examples
-
-**Training**
-
--  :doc:`training/components`
--  :doc:`training/examples`
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Training
-
-   training/components
-   training/examples
-
-**Datasets**
-
--  :doc:`datasets/about`
--  :doc:`datasets/building`
--  :doc:`datasets/sources`
--  :doc:`datasets/filters`
--  :doc:`/datasets/options`
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Datasets
-
-   datasets/about
-   datasets/building
-   datasets/sources
-   datasets/filters
-   datasets/options
+-  :ref:`anemoi-utils <anemoi-utils:index-page>`
+-  :ref:`anemoi-datasets <anemoi-datasets:index-page>`
+-  :ref:`anemoi-models <anemoi-models:index-page>`
+-  :ref:`anemoi-graphs <anemoi-graphs:index-page>`
+-  :ref:`anemoi-training <anemoi-training:index-page>`
+-  :ref:`anemoi-inference <anemoi-inference:index-page>`
+-  :ref:`anemoi-registry <anemoi-registry:index-page>`
 
 *********
  License
@@ -85,7 +50,3 @@ and Zarr_.
 *Anemoi* is available under the open source `Apache License`__.
 
 .. __: http://www.apache.org/licenses/LICENSE-2.0.html
-
-.. _pytorch: https://pytorch.org
-
-.. _zarr: https://zarr.readthedocs.io/
