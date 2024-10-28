@@ -1,0 +1,25 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [ "setuptools>=61" ]
+
+[project]
+name = "anemoi-doc"
+version = "0.0.1"
+description = "The documentation for anemoi"
+requires-python = ">=3.9"
+
+classifiers = [
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+optional-dependencies.docs = [
+  "nbsphinx",
+  "pandoc",
+  "requests",
+  "sphinx",
+  "sphinx-argparse<0.5",
+  "sphinx-rtd-theme",
+]
