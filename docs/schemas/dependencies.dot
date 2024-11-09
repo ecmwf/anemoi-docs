@@ -6,17 +6,22 @@ digraph {
 
 
     "anemoi-datasets" -> "anemoi-utils";
-    "anemoi-registry" -> "anemoi-utils";
-    "anemoi-training" -> "anemoi-graphs";
-    "anemoi-graphs" -> "anemoi-utils";
-    "anemoi-training" -> "anemoi-models";
-    "anemoi-models" -> "anemoi-utils";
-    "anemoi-training" -> "anemoi-datasets";
-    "anemoi-training" -> "anemoi-utils";
-    "anemoi-inference" -> "anemoi-models";
-    "anemoi-inference" -> "anemoi-utils";
-    "anemoi-web" -> "anemoi-inference";
-    "anemoi-web" -> "anemoi-datasets";
-    "anemoi-registry" -> "anemoi-datasets" [style=dashed];
     "anemoi-graphs" -> "anemoi-datasets" [style=dashed];
+    "anemoi-inference" -> "anemoi-datasets" [style=dashed];
+    "anemoi-inference" -> "anemoi-models";
+    "anemoi-inference" -> "anemoi-transform";
+    "anemoi-models" -> "anemoi-utils";
+    "anemoi-registry" -> "anemoi-datasets" [style=dashed];
+    // "anemoi-registry" -> "anemoi-transform" [style=dashed];
+    "anemoi-registry" -> "anemoi-utils";
+    "anemoi-training" -> "anemoi-datasets";
+    "anemoi-training" -> "anemoi-graphs";
+    "anemoi-transform" -> "anemoi-utils";
+    // "anemoi-graphs" -> "anemoi-utils";
+    // "anemoi-inference" -> "anemoi-utils";
+    "anemoi-training" -> "anemoi-models";
+    // "anemoi-training" -> "anemoi-utils";
+    // "anemoi-web" -> "anemoi-datasets";
+    // "anemoi-web" -> "anemoi-inference";
+
 }
