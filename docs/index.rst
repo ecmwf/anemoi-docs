@@ -32,9 +32,11 @@ models from existing recipes but with their own data.
 
 .. raw:: html
 
-   <object type="image/svg+xml" data="_static/dependencies.svg" width="80%" height="auto">
+   <center>
+   <object type="image/svg+xml" data="_static/dependencies.svg" width="75%" height="auto">
      <img src="_static/dependencies.png" alt="Fallback image description">
    </object>
+   </center>
 
 Arrows indicate dependencies between packages. Dashed lines indicate optional dependencies.
 
