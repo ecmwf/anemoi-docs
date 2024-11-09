@@ -27,11 +27,20 @@ models from existing recipes but with their own data.
    code-of-conduct
 
 *****************
- Anemoi packages
+ Dependencies
 *****************
 
-.. image:: schemas/dependencies.svg
-   :align: center
+.. raw:: html
+
+   <object type="image/svg+xml" data="_static/dependencies.svg" width="80%" height="auto">
+     <img src="_static/dependencies.png" alt="Fallback image description">
+   </object>
+
+Arrows indicate dependencies between packages. Dashed lines indicate optional dependencies.
+
+*****************
+ Anemoi packages
+*****************
 
 -  :ref:`anemoi-datasets <anemoi-datasets:index-page>`
 -  :ref:`anemoi-graphs <anemoi-graphs:index-page>`

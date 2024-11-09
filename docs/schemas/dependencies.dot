@@ -7,14 +7,14 @@ digraph {
         style=filled, color=lightblue];
     edge [fontname=Arial, fontsize=10];
 
-    datasets [URL="https://anemoi-datasets.readthedocs.io/en/latest/"];
-    graphs [URL="https://anemoi-graphs.readthedocs.io/en/latest/"];
-    inference [URL="https://anemoi-inference.readthedocs.io/en/latest/"];
-    models [URL="https://anemoi-models.readthedocs.io/en/latest/"];
-    registry [URL="https://anemoi-registry.readthedocs.io/en/latest/"];
-    training [URL="https://anemoi-training.readthedocs.io/en/latest/"];
-    transform [URL="https://anemoi-transform.readthedocs.io/en/latest/"];
-    utils [URL="https://anemoi-utils.readthedocs.io/en/latest/"];
+    datasets [URL="https://anemoi-datasets.readthedocs.io/en/latest/", target="_blank"];
+    graphs [URL="https://anemoi-graphs.readthedocs.io/en/latest/", target="_blank"];
+    inference [URL="https://anemoi-inference.readthedocs.io/en/latest/", target="_blank"];
+    models [URL="https://anemoi-models.readthedocs.io/en/latest/", target="_blank"];
+    registry [URL="https://anemoi-registry.readthedocs.io/en/latest/", target="_blank"];
+    training [URL="https://anemoi-training.readthedocs.io/en/latest/", target="_blank"];
+    transform [URL="https://anemoi-transform.readthedocs.io/en/latest/", target="_blank"];
+    utils [URL="https://anemoi-utils.readthedocs.io/en/latest/", target="_blank"];
 
 
     datasets -> utils;

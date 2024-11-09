@@ -11,7 +11,7 @@
 <!-- datasets -->
 <g id="node1" class="node">
 <title>datasets</title>
-<g id="a_node1"><a xlink:href="https://anemoi-datasets.readthedocs.io/en/latest/" xlink:title="\N">
+<g id="a_node1"><a xlink:href="https://anemoi-datasets.readthedocs.io/en/latest/" xlink:title="\N" target="_blank">
 <polygon fill="lightblue" stroke="lightblue" points="148,-146.5 148,-182.5 202,-182.5 202,-146.5 148,-146.5"/>
 <text text-anchor="middle" x="174.75" y="-161" font-family="Arial" font-size="10.00">datasets</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- utils -->
 <g id="node8" class="node">
 <title>utils</title>
-<g id="a_node8"><a xlink:href="https://anemoi-utils.readthedocs.io/en/latest/" xlink:title="\N">
+<g id="a_node8"><a xlink:href="https://anemoi-utils.readthedocs.io/en/latest/" xlink:title="\N" target="_blank">
 <polygon fill="lightblue" stroke="lightblue" points="111,-219.5 111,-255.5 165,-255.5 165,-219.5 111,-219.5"/>
 <text text-anchor="middle" x="138" y="-234" font-family="Arial" font-size="10.00">utils</text>
 </a>
@@ -35,7 +35,7 @@
 <!-- graphs -->
 <g id="node2" class="node">
 <title>graphs</title>
-<g id="a_node2"><a xlink:href="https://anemoi-graphs.readthedocs.io/en/latest/" xlink:title="\N">
+<g id="a_node2"><a xlink:href="https://anemoi-graphs.readthedocs.io/en/latest/" xlink:title="\N" target="_blank">
 <polygon fill="lightblue" stroke="lightblue" points="158,-73.5 158,-109.5 212,-109.5 212,-73.5 158,-73.5"/>
 <text text-anchor="middle" x="184.62" y="-88" font-family="Arial" font-size="10.00">graphs</text>
 </a>
@@ -50,7 +50,7 @@
 <!-- inference -->
 <g id="node3" class="node">
 <title>inference</title>
-<g id="a_node3"><a xlink:href="https://anemoi-inference.readthedocs.io/en/latest/" xlink:title="\N">
+<g id="a_node3"><a xlink:href="https://anemoi-inference.readthedocs.io/en/latest/" xlink:title="\N" target="_blank">
 <polygon fill="lightblue" stroke="lightblue" points="46.12,-73.5 46.12,-109.5 101.88,-109.5 101.88,-73.5 46.12,-73.5"/>
 <text text-anchor="middle" x="74" y="-88" font-family="Arial" font-size="10.00">inference</text>
 </a>
@@ -65,7 +65,7 @@
 <!-- models -->
 <g id="node4" class="node">
 <title>models</title>
-<g id="a_node4"><a xlink:href="https://anemoi-models.readthedocs.io/en/latest/" xlink:title="\N">
+<g id="a_node4"><a xlink:href="https://anemoi-models.readthedocs.io/en/latest/" xlink:title="\N" target="_blank">
 <polygon fill="lightblue" stroke="lightblue" points="0,-146.5 0,-182.5 54,-182.5 54,-146.5 0,-146.5"/>
 <text text-anchor="middle" x="26.75" y="-161" font-family="Arial" font-size="10.00">models</text>
 </a>
@@ -80,7 +80,7 @@
 <!-- transform -->
 <g id="node7" class="node">
 <title>transform</title>
-<g id="a_node7"><a xlink:href="https://anemoi-transform.readthedocs.io/en/latest/" xlink:title="\N">
+<g id="a_node7"><a xlink:href="https://anemoi-transform.readthedocs.io/en/latest/" xlink:title="\N" target="_blank">
 <polygon fill="lightblue" stroke="lightblue" points="72.38,-146.5 72.38,-182.5 129.62,-182.5 129.62,-146.5 72.38,-146.5"/>
 <text text-anchor="middle" x="101" y="-161" font-family="Arial" font-size="10.00">transform</text>
 </a>
@@ -101,7 +101,7 @@
 <!-- registry -->
 <g id="node5" class="node">
 <title>registry</title>
-<g id="a_node5"><a xlink:href="https://anemoi-registry.readthedocs.io/en/latest/" xlink:title="\N">
+<g id="a_node5"><a xlink:href="https://anemoi-registry.readthedocs.io/en/latest/" xlink:title="\N" target="_blank">
 <polygon fill="lightblue" stroke="lightblue" points="230,-73.5 230,-109.5 284,-109.5 284,-73.5 230,-73.5"/>
 <text text-anchor="middle" x="256.62" y="-88" font-family="Arial" font-size="10.00">registry</text>
 </a>
@@ -122,7 +122,7 @@
 <!-- training -->
 <g id="node6" class="node">
 <title>training</title>
-<g id="a_node6"><a xlink:href="https://anemoi-training.readthedocs.io/en/latest/" xlink:title="\N">
+<g id="a_node6"><a xlink:href="https://anemoi-training.readthedocs.io/en/latest/" xlink:title="\N" target="_blank">
 <polygon fill="lightblue" stroke="lightblue" points="103,-0.5 103,-36.5 157,-36.5 157,-0.5 103,-0.5"/>
 <text text-anchor="middle" x="129.75" y="-15" font-family="Arial" font-size="10.00">training</text>
 </a>

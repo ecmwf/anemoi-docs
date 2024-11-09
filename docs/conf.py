@@ -13,6 +13,8 @@
 import datetime
 import os
 import sys
+import sphinx.builders.html
+
 
 read_the_docs_build = os.environ.get("READTHEDOCS", None) == "True"
 
@@ -105,6 +107,17 @@ intersphinx_mapping = {
 
 
 # -- Options for HTML output -------------------------------------------------
+# Add 'svg' to the list of image extensions
+sphinx.builders.html.StandaloneHTMLBuilder.supported_image_types = [
+    'image/svg+xml',
+    'image/gif',
+    'image/png',
+    'image/jpeg'
+]
+
+# Ensure SVG files are copied to the build directory
+html_static_path = ['_static']
+html_extra_path = ['_static']
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
