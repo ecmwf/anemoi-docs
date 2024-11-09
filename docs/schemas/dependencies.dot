@@ -1,27 +1,39 @@
 digraph {
 
+    rankdir=BT;
+    splines="polyline";
+
     node [shape=record, fontname=Arial, fontsize=10,
         style=filled, color=lightblue];
     edge [fontname=Arial, fontsize=10];
 
+    datasets [URL="https://anemoi-datasets.readthedocs.io/en/latest/"];
+    graphs [URL="https://anemoi-graphs.readthedocs.io/en/latest/"];
+    inference [URL="https://anemoi-inference.readthedocs.io/en/latest/"];
+    models [URL="https://anemoi-models.readthedocs.io/en/latest/"];
+    registry [URL="https://anemoi-registry.readthedocs.io/en/latest/"];
+    training [URL="https://anemoi-training.readthedocs.io/en/latest/"];
+    transform [URL="https://anemoi-transform.readthedocs.io/en/latest/"];
+    utils [URL="https://anemoi-utils.readthedocs.io/en/latest/"];
 
-    "anemoi-datasets" -> "anemoi-utils";
-    "anemoi-graphs" -> "anemoi-datasets" [style=dashed];
-    "anemoi-inference" -> "anemoi-datasets" [style=dashed];
-    "anemoi-inference" -> "anemoi-models";
-    "anemoi-inference" -> "anemoi-transform";
-    "anemoi-models" -> "anemoi-utils";
-    "anemoi-registry" -> "anemoi-datasets" [style=dashed];
-    // "anemoi-registry" -> "anemoi-transform" [style=dashed];
-    "anemoi-registry" -> "anemoi-utils";
-    "anemoi-training" -> "anemoi-datasets";
-    "anemoi-training" -> "anemoi-graphs";
-    "anemoi-transform" -> "anemoi-utils";
-    // "anemoi-graphs" -> "anemoi-utils";
-    // "anemoi-inference" -> "anemoi-utils";
-    "anemoi-training" -> "anemoi-models";
-    // "anemoi-training" -> "anemoi-utils";
-    // "anemoi-web" -> "anemoi-datasets";
-    // "anemoi-web" -> "anemoi-inference";
+
+    datasets -> utils;
+    graphs -> datasets [style=dashed];
+    inference -> datasets [style=dashed];
+    inference -> models;
+    inference -> transform;
+    models -> utils;
+    registry -> datasets [style=dashed];
+    // registry -> transform [style=dashed];
+    registry -> utils;
+    training -> datasets;
+    training -> graphs;
+    transform -> utils;
+    // graphs -> utils;
+    // inference -> utils;
+    training -> models;
+    // training -> utils;
+    // "web" -> datasets;
+    // "web" -> inference;
 
 }

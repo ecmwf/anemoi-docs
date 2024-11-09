@@ -2,11 +2,6 @@
  Welcome to Anemoi's documentation!
 ####################################
 
-.. warning::
-
-   This documentation is work in progress. It is not yet ready.
-   Currently, the documentation is based on the one from the ecml-tools_
-   project, which will be merged into Anemoi.
 
 *Anemoi* is a framework for developing machine learning weather
 forecasting models. It comprises of components or packages for preparing
@@ -35,13 +30,17 @@ models from existing recipes but with their own data.
  Anemoi packages
 *****************
 
--  :ref:`anemoi-utils <anemoi-utils:index-page>`
+.. image:: schemas/dependencies.svg
+   :align: center
+
 -  :ref:`anemoi-datasets <anemoi-datasets:index-page>`
--  :ref:`anemoi-models <anemoi-models:index-page>`
 -  :ref:`anemoi-graphs <anemoi-graphs:index-page>`
--  :ref:`anemoi-training <anemoi-training:index-page>`
 -  :ref:`anemoi-inference <anemoi-inference:index-page>`
+-  :ref:`anemoi-models <anemoi-models:index-page>`
 -  :ref:`anemoi-registry <anemoi-registry:index-page>`
+-  :ref:`anemoi-training <anemoi-training:index-page>`
+-  :ref:`anemoi-transform <anemoi-transform:index-page>`
+-  :ref:`anemoi-utils <anemoi-utils:index-page>`
 
 *********
  License
