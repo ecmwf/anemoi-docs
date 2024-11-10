@@ -23,6 +23,7 @@ digraph {
     inference -> models;
     inference -> transform;
     models -> utils;
+    datasets -> transform;
     registry -> datasets [style=dashed];
     // registry -> transform [style=dashed];
     registry -> utils;
