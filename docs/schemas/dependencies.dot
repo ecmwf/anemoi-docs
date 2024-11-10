@@ -16,8 +16,6 @@ digraph {
     transform [URL="https://anemoi-transform.readthedocs.io/en/latest/", target="_blank"];
     utils [URL="https://anemoi-utils.readthedocs.io/en/latest/", target="_blank"];
 
-
-    datasets -> utils;
     graphs -> datasets [style=dashed];
     inference -> datasets [style=dashed];
     inference -> models;
@@ -25,16 +23,11 @@ digraph {
     models -> utils;
     datasets -> transform;
     registry -> datasets [style=dashed];
-    // registry -> transform [style=dashed];
     registry -> utils;
     training -> datasets;
     training -> graphs;
     transform -> utils;
-    // graphs -> utils;
-    // inference -> utils;
     training -> models;
-    // training -> utils;
-    // "web" -> datasets;
-    // "web" -> inference;
+
 
 }
