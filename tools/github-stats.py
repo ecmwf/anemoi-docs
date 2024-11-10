@@ -34,7 +34,7 @@ REPOS = (
 
 parser = argparse.ArgumentParser()
 group = parser.add_mutually_exclusive_group(required=True)
-group.add_argument("--pull-requests", action="store_true")
+group.add_argument("--opened-pull-requests", action="store_true")
 
 # Add more options
 # group.add_argument('--other-stat', action='store_true')
@@ -50,7 +50,7 @@ logging.basicConfig(
 )
 
 
-def pull_requests(owner, repo):
+def opened_pull_requests(owner, repo):
 
     # Authentication
     token = os.environ["GITHUB_TOKEN"]
@@ -101,10 +101,10 @@ def pull_requests(owner, repo):
         k += datetime.timedelta(days=1)
 
 
-if args.pull_requests:
+if args.opened_pull_requests:
     stats = dict()
-    print("repo", "date", "opened")
+    print(",".join(["repo", "date", "opened"]))
     for repo in REPOS:
-        for date, opened in pull_requests("ecmwf", f"anemoi-{repo}"):
-            print(repo, date, opened)
+        for date, opened in opened_pull_requests("ecmwf", f"anemoi-{repo}"):
+            print(",".join(str(_) for _ in [repo, date, opened]))
     exit(0)
