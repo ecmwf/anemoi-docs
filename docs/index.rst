@@ -2,7 +2,6 @@
  Welcome to Anemoi's documentation!
 ####################################
 
-
 *Anemoi* is a framework for developing machine learning weather
 forecasting models. It comprises of components or packages for preparing
 training datasets, conducting ML model training and a registry for
@@ -26,9 +25,9 @@ models from existing recipes but with their own data.
    contributing
    code-of-conduct
 
-*****************
+**************
  Dependencies
-*****************
+**************
 
 .. raw:: html
 
@@ -38,7 +37,8 @@ models from existing recipes but with their own data.
    </object>
    </center>
 
-Arrows indicate dependencies between packages. Dashed lines indicate optional dependencies.
+Arrows indicate dependencies between packages. Dashed lines indicate
+optional dependencies.
 
 *****************
  Anemoi packages
