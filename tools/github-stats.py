@@ -150,7 +150,6 @@ def pull_requests_activity():
     for repo in args.repos:
 
         for pull in iterate_pages(args.owner, repo, "pulls"):
-            # print(json.dumps(pull, indent=4))
             writer.writerow(
                 [
                     repo,
@@ -171,8 +170,6 @@ def pull_requests_activity():
 
 if args.opened_pull_requests:
     opened_pull_requests()
-    exit(0)
 
 if args.pull_requests_activity:
     pull_requests_activity()
-    exit(0)
