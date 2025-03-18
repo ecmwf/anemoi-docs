@@ -19,9 +19,9 @@ classifiers = [
 optional-dependencies.docs = [
   "nbsphinx",
   "pandoc",
+  "pydata-sphinx-theme",
   "requests",
   "sphinx",
   "sphinx-argparse<0.5",
   "sphinx-rtd-theme",
-  "pydata-sphinx-theme"
 ]
