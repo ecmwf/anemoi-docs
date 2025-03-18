@@ -72,5 +72,5 @@ optional dependencies.
    :hidden:
    :caption: What do you want to do?
 
-   user_guide/overview
-   user_guide/developer_install
+   user-guide/overview
+   user-guide/developer-guide
