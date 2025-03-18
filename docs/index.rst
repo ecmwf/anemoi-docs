@@ -63,6 +63,7 @@ optional dependencies.
 
 ..
    ..................................................................................
+
 ..
    From here defines the TOC in the sidebar, but is not rendered directly on the page.
 
