@@ -23,4 +23,5 @@ optional-dependencies.docs = [
   "sphinx",
   "sphinx-argparse<0.5",
   "sphinx-rtd-theme",
+  "pydata-sphinx-theme"
 ]
