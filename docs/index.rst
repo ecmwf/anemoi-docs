@@ -70,7 +70,7 @@ optional dependencies.
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: What do youß want to do?
+   :caption: What do you want to do?
 
    user_guide/overview
    user_guide/developer_install
