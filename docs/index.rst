@@ -60,3 +60,16 @@ optional dependencies.
 *Anemoi* is available under the open source `Apache License`__.
 
 .. __: http://www.apache.org/licenses/LICENSE-2.0.html
+
+..
+   ..................................................................................
+..
+   From here defines the TOC in the sidebar, but is not rendered directly on the page.
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: What do youß want to do?
+
+   user_guide/overview
+   user_guide/developer_install
