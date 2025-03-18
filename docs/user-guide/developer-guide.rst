@@ -21,7 +21,7 @@ explore worktrees or other methods of managing multiple branches.
    git clone https://github.com/ecmwf/anemoi-transforms.git transforms
 
     # Navigate to the project directories and install
-    for dir in [utils, inference, datasets, transforms core/graphs core/training core/models]; do
+    for dir in utils inference datasets transforms core/graphs core/training core/models; do
         pushd $dir
         pip install -e .
         popd
