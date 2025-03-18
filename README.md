@@ -1,12 +1,14 @@
 # anemoi-docs
 
-This repo builds the main documentation for the Anemoi project.
+This repo builds the main [documentation](https://anemoi.readthedocs.io/) for the Anemoi project.
 
-To get started, clone this repo and pip install:
+To build it yourself clone this repo and pip install:
 
 ```bash
 git@github.com:ecmwf/anemoi-docs.git
 cd anemoi-docs
+python -m venv .venv
+source .venv/bin/activate
 pip install -e .
 ```
 
