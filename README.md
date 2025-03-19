@@ -5,7 +5,7 @@ This repo builds the main [documentation](https://anemoi.readthedocs.io/) for th
 To build it yourself clone this repo and pip install:
 
 ```bash
-git@github.com:ecmwf/anemoi-docs.git
+git clone git@github.com:ecmwf/anemoi-docs.git
 cd anemoi-docs
 python -m venv .venv
 source .venv/bin/activate
