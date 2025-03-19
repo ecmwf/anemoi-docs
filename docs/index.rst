@@ -18,12 +18,24 @@ models from existing recipes but with their own data.
 
 .. toctree::
    :maxdepth: 1
-   :hidden:
+   :caption: Overview
 
    overview
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Installing
+
    installing
-   contributing
-   code-of-conduct
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contributing
+
+   contributing/contributing.rst
+   contributing/guidelines.rst
+   contributing/testing.rst
+   contributing/documentation.rst
 
 **************
  Dependencies
