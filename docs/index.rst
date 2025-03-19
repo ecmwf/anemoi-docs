@@ -13,23 +13,18 @@ models from existing recipes but with their own data.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Overview
+   :caption: The Anemoi Framework
 
    overview
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Installing
-
-   installing/users
-   installing/developers
 
 .. toctree::
    :maxdepth: 1
    :caption: Contributing
 
    contributing/contributing.rst
+   contributing/environment.rst
    contributing/guidelines.rst
+   contributing/code_style.rst
    contributing/testing.rst
    contributing/documentation.rst
 
@@ -68,17 +63,3 @@ optional dependencies.
 *Anemoi* is available under the open source `Apache License`__.
 
 .. __: http://www.apache.org/licenses/LICENSE-2.0.html
-
-..
-   ..................................................................................
-
-..
-   From here defines the TOC in the sidebar, but is not rendered directly on the page.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: What do you want to do?
-
-   user-guide/overview
-   user-guide/developer-guide

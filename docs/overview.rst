@@ -1,6 +1,6 @@
-######################
- The Anemoi framework
-######################
+##########
+ Overview
+##########
 
 The *Anemoi* framework provides a complete toolkit to develop
 data-driven weather models through data preparation to inference. The
@@ -25,6 +25,17 @@ Possible uses:
 -  Coupled atmospheric and ocean models
 -  Downscaling models
 -  Ensemble/probablistic models
+
+############
+ Installing
+############
+
+All the Anemoi packages are distributed on `PyPI <https://pypi.org>`_.
+To install an Anemoi package, you can use the following command:
+
+.. code:: bash
+
+   pip install anemoi-{package}
 
 *****************
  anemoi-datasets
