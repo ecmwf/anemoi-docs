@@ -1,3 +1,5 @@
+.. _testing-guidelines:
+
 #########
  Testing
 #########
@@ -192,20 +194,20 @@ appropriate handling of configuration files. Configuration management is
 essential to ensure that the tests remain reliable and maintainable. Our
 approach includes:
 
-1. Using Configuration Templates: Always start with a configuration
+#. Using Configuration Templates: Always start with a configuration
 template from the repository to minimize redundancy and ensure
 consistency. We expect the templates to be consistent with the code base
 and have integration tests that check for this consistency.
 
-1. Test-specific Modifications: Apply only the necessary
+#. Test-specific Modifications: Apply only the necessary
 use-case-specific (e.g. related to the dataset) and testing-specific
 (e.g. batch_size or restricted date range) modifications to the
 template.
 
-1. Reducing Compute Load: Where possible, reduce the number of batches,
+#. Reducing Compute Load: Where possible, reduce the number of batches,
 epochs, batch sizes, number of dates etc.
 
-1. Debugging and Failures: When integration tests fail, check the config
+#. Debugging and Failures: When integration tests fail, check the config
 files (e.g. in `training/src/anemoi/training/config`) for
 inconsistencies with the code and update the config files if necessary.
 Also check if test-time modifications have introduced unintended
