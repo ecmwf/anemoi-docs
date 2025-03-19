@@ -1,6 +1,6 @@
-##########
- Overview
-##########
+######################
+ The Anemoi framework
+######################
 
 The *Anemoi* framework provides a complete toolkit to develop
 data-driven weather models through data preparation to inference. The

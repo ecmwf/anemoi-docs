@@ -1,5 +1,0 @@
-##############
- Contributing
-##############
-
-Guidelines go here.

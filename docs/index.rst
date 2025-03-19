@@ -11,11 +11,6 @@ framework it seeks to handle many of the complexities that
 meteorological organisations will share, allowing them to easily train
 models from existing recipes but with their own data.
 
--  :doc:`overview`
--  :doc:`installing`
--  :doc:`contributing`
--  :doc:`code-of-conduct`
-
 .. toctree::
    :maxdepth: 1
    :caption: Overview
@@ -26,7 +21,8 @@ models from existing recipes but with their own data.
    :maxdepth: 1
    :caption: Installing
 
-   installing
+   installing/users
+   installing/developers
 
 .. toctree::
    :maxdepth: 1
