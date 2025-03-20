@@ -127,15 +127,15 @@ When submitting Pull Requests (PRs), please follow these guidelines:
 ***************
 
 Ensure that changes are appropriately documented, both with respect to
-docstrings and more extensive documentation, following the
+docstrings and more extensive documentation, following the guidelines on
 :ref:`documentation-guidelines`.
 
 *********
  Testing
 *********
 
-All code changes must include appropriate tests. For detailed testing
-guidelines and examples, see :ref:`testing-guidelines`.
+All code changes must include appropriate tests. For more details and
+examples, see the guidelines on :ref:`testing-guidelines`.
 
 Key points:
 

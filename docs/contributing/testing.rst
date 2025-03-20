@@ -1,8 +1,8 @@
 .. _testing-guidelines:
 
-####################
- Testing Guidelines
-####################
+#########
+ Testing
+#########
 
 Comprehensive testing is crucial for maintaining the reliability and
 stability of the Anemoi packages. This guide outlines our testing
