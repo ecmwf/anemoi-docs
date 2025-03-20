@@ -195,23 +195,23 @@ essential to ensure that the tests remain reliable and maintainable. Our
 approach includes:
 
 #. Using Configuration Templates: Always start with a configuration
-template from the repository to minimize redundancy and ensure
-consistency. We expect the templates to be consistent with the code base
-and have integration tests that check for this consistency.
+   template from the repository to minimize redundancy and ensure
+   consistency. We expect the templates to be consistent with the code
+   base and have integration tests that check for this consistency.
 
 #. Test-specific Modifications: Apply only the necessary
-use-case-specific (e.g. related to the dataset) and testing-specific
-(e.g. batch_size or restricted date range) modifications to the
-template.
+   use-case-specific (e.g. related to the dataset) and testing-specific
+   (e.g. batch_size or restricted date range) modifications to the
+   template.
 
 #. Reducing Compute Load: Where possible, reduce the number of batches,
-epochs, batch sizes, number of dates etc.
+   epochs, batch sizes, number of dates etc.
 
 #. Debugging and Failures: When integration tests fail, check the config
-files (e.g. in `training/src/anemoi/training/config`) for
-inconsistencies with the code and update the config files if necessary.
-Also check if test-time modifications have introduced unintended
-changes.
+   files (e.g. in `training/src/anemoi/training/config`) for
+   inconsistencies with the code and update the config files if
+   necessary. Also check if test-time modifications have introduced
+   unintended changes.
 
 For more details and package-specific examples, please refer to the
 package-level documentation.
