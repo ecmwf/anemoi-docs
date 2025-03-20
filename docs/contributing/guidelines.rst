@@ -19,7 +19,7 @@ Please follow these development guidelines:
  Branching Guidelines
 **********************
 
--  Use feature branches for new features (e.g., `feature/your-feature`)
+-  Use feature branches for new features (e.g., `feat/your-feature`)
 -  Use fix branches for bug fixes (e.g., `fix/your-bug`)
 -  Use a descriptive name that indicates the purpose of the branch
 -  Keep branches up to date with `main` before opening a Pull Request

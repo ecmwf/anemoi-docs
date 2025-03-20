@@ -76,3 +76,11 @@ before enabling automated checks.
    contribution.
 #. Once approved, a maintainer will merge your Pull Request into the
    appropriate branch.
+
+*****************
+ Code of conduct
+*****************
+
+Please follow the `GitHub Code of
+Conduct<https://docs.github.com/en/site-policy/github-terms/github-community-code-of-conduct>_`
+for respectful collaboration.
