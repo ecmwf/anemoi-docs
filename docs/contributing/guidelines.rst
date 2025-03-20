@@ -140,14 +140,8 @@ guidelines and examples, see :ref:`testing-guidelines`.
 Key points:
 
 #. Use pytest for all test cases.
-#. Follow the :ref:`naming-conventions` for test files and functions.
 #. Run tests locally before submitting PRs (``pytest``).
 #. Add tests for both success and failure cases.
-
-.. note::
-
-   Pre-commit hooks will run a subset of tests. The full test suite runs
-   automatically on Pull Requests.
 
 ****************************
  Performance Considerations

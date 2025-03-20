@@ -1,8 +1,8 @@
 .. _setting-up-the-development-environment:
 
-##################
- Developers guide
-##################
+####################
+ Development Set-up
+####################
 
 To create a development environment follow the steps below,
 

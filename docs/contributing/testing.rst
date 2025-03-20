@@ -1,8 +1,8 @@
 .. _testing-guidelines:
 
-#########
- Testing
-#########
+####################
+ Testing Guidelines
+####################
 
 Comprehensive testing is crucial for maintaining the reliability and
 stability of the Anemoi packages. This guide outlines our testing
@@ -87,6 +87,7 @@ General Guidelines
 #. Keep tests simple, focused, and independent of each other.
 #. Use descriptive names for test functions, following the pattern
    `test_<functionality>_<scenario>`.
+#. Follow the :ref:`naming-conventions` for test files.
 #. Keep tests fast: Optimize slow tests or mark them for separate
    execution.
 #. Use appropriate assertions: pytest provides a rich set of assertions.
