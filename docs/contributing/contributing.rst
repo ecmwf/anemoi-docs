@@ -45,12 +45,11 @@ follow these steps:
 #. Make your changes and ensure that your changes adhere to the
    :ref:`development-guidelines`.
 
-#. Commit the changes using the :ref:`commit-guidelines`.
-
-#. Push your branch to your fork on GitHub.
+#. Commit your changes and push your branch to your fork on GitHub.
 
 #. Open a Pull Request against the `main` branch of the original
-   repository and fill in the Pull Request template.
+   repository, set a PR title according to the
+   :ref:`pr-title-guidelines` and fill in the Pull Request template.
 
 #. Request a review from maintainers or other contributors, which will
    follow the :ref:`code-review-process`.

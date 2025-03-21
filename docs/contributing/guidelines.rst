@@ -16,7 +16,7 @@ Please follow these development guidelines:
 
 #. Follow the :ref:`branching-guidelines`.
 
-#. Follow the :ref:`commit-guidelines`.
+#. Follow the :ref:`pr-title-guidelines`.
 
 .. _branching-guidelines:
 
@@ -29,15 +29,14 @@ Please follow these development guidelines:
 -  Use a descriptive name that indicates the purpose of the branch
 -  Keep branches up to date with `main` before opening a Pull Request
 
-.. _commit-guidelines:
+.. _pr-title-guidelines:
 
-*******************
- Commit Guidelines
-*******************
+*********************
+ PR Title Guidelines
+*********************
 
-When making commits to the repository, please follow these guidelines:
-
-#. Make small, focused commits with clear and concise messages.
+The PR title will become the squash commit message when merged to
+``main``, so please ensure that it follows these guidelines:
 
 #. Follow the `Conventional Commits guidelines
    <https://www.conventionalcommits.org/>`_. The format is:
@@ -61,19 +60,21 @@ When making commits to the repository, please follow these guidelines:
 
    Add ``!`` after the type/scope to indicate a breaking change.
 
-#. Use present tense and imperative mood in commit messages (e.g., "Add
-   feature" not "Added feature").
-
 #. Reference relevant issue numbers in commit messages when applicable
    (e.g., "fix: resolve data loading issue #123").
 
-While these commit message conventions are recommended for all branches
-in Anemoi, they are strictly enforced only for commits to the ``main``
-branch. This enforcement is particularly important as our automated
+These guidelines are enforced for PR titles because our automated
 release process (`release-please
 <https://github.com/googleapis/release-please>`_) relies on conventional
 commits to generate changelogs and determine version bumps
 automatically.
+
+For commits more generally, we recommend to follow these conventions but
+do not enforce them. We furthermore encourage you to
+
+#. Make small, focused commits with clear and concise messages.
+#. Use present tense and imperative mood in commit messages (e.g., "Add
+   feature" not "Added feature").
 
 .. _pullrequest-guidelines:
 
@@ -99,7 +100,7 @@ When submitting Pull Requests (PRs), please follow these guidelines:
    -  Any breaking changes or deprecations.
    -  Testing instructions if applicable.
 
-#. Ensure the PR title follows the :ref:`commit-guidelines`, as this
+#. Ensure the PR title follows the :ref:`pr-title-guidelines`, as this
    will become the squash commit message when merged to ``main``.
 
 #. Keep your PR focused and of reasonable size:
