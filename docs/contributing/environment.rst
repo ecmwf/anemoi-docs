@@ -10,8 +10,21 @@ To create a development environment follow the steps below,
 
    .. code:: bash
 
+      git clone https://github.com/ecmwf/anemoi-{package}/
+
+where `{package}` is one of the package names, e.g. `datasets` or
+`inference`.
+
+For packages in `anemoi-core`, i.e. `anemoi-training`, `anemoi-models`,
+or `anemoi-graphs`, clone the repository and navigate to the relevant
+package directory
+
+   .. code:: bash
+
       git clone https://github.com/ecmwf/anemoi-core/
-      cd anemoi-${package}
+      cd anemoi-{package}
+
+where `{package}` is the package name, e.g. `training`.
 
 #. Install dependencies:
 
