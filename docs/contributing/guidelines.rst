@@ -8,9 +8,14 @@ Please follow these development guidelines:
 
 #. Open an issue before starting a feature or bug fix to discuss the
    approach with maintainers and other users.
-#. Ensure high-quality code with appropriate tests, documentation,
-   linting, and style checks. TODO: Add reference to tests
+
+#. Ensure high-quality code with appropriate tests (see
+   :ref:`testing-guidelines`), documentation (see
+   :ref:`documentation-guidelines`), linting, and style checks (see
+   :ref:`code-style`).
+
 #. Follow the :ref:`branching-guidelines`.
+
 #. Follow the :ref:`commit-guidelines`.
 
 .. _branching-guidelines:
