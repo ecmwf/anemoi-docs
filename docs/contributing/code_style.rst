@@ -58,8 +58,7 @@ All code is automatically checked using pre-commit hooks that verify:
    trailing whitespace.
 #. Code quality: No debugger statements. No merge conflicts. Type
    annotations. No blanket ``noqa`` statements.
-#. Documentation: Docstring validation. RST formatting. Sphinx
-   linting.
+#. Documentation: Docstring validation. RST formatting. Sphinx linting.
 
 *******************
  File Organization
