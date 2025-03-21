@@ -37,6 +37,8 @@ To install an Anemoi package, you can use the following command:
 
    pip install anemoi-{package}
 
+where `{package}` is one of the below, e.g. `datasets` or `training`.
+
 *****************
  anemoi-datasets
 *****************
