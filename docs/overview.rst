@@ -26,6 +26,19 @@ Possible uses:
 -  Downscaling models
 -  Ensemble/probablistic models
 
+############
+ Installing
+############
+
+All the Anemoi packages are distributed on `PyPI <https://pypi.org>`_.
+To install an Anemoi package, you can use the following command:
+
+.. code:: bash
+
+   pip install anemoi-{package}
+
+where `{package}` is one of the below, e.g. `datasets` or `training`.
+
 *****************
  anemoi-datasets
 *****************
