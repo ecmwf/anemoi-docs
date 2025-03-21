@@ -84,7 +84,8 @@ Place new files in the appropriate package directory:
 
    When adding new files, ensure they are properly included in
    ``__init__.py`` files if they should be part of the public API. Keep
-   it minimal. Use ``__init__.py`` to define package-level exports using ``__all__``.
+   it minimal. Use ``__init__.py`` to define package-level exports using
+   ``__all__``.
 
 .. note::
 
