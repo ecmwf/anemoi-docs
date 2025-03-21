@@ -32,24 +32,6 @@ Integration Tests
 -  Important for data processing pipelines and model training workflows.
 -  Integration tests reside in `tests/integration`.
 
-Functional Tests
-================
-
-This is a work in progress and the design of these tests have not been
-finalised yet.
-
--  Test entire features or workflows from start to finish.
--  Ensure that the system works as expected from a user's perspective.
-
-Performance Tests
-=================
-
-This is a work in progress and the design of these tests have not been
-finalised yet.
-
--  These tests are base on performance benchmarks.
--  Performance should be checked before and after changes.
-
 ***************
  Running Tests
 ***************
