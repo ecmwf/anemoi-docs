@@ -56,7 +56,7 @@ All code is automatically checked using pre-commit hooks that verify:
 
 #. Code formatting: Black formatting. Import sorting. Line endings and
    trailing whitespace.
-#. Code quality: - No debugger statements. - No merge conflicts. - Type
+#. Code quality: No debugger statements. No merge conflicts. Type
    annotations. - No blanket ``noqa`` statements.
 #. Documentation: - Docstring validation. - RST formatting. - Sphinx
    linting.
