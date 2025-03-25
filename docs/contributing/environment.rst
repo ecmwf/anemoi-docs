@@ -60,8 +60,7 @@ development environment:
 ***********************************
 
 #. Create and activate a virtual environment with a python version
-   between 3.9 and 3.12. We require at least Python 3.9, and currently
-   do not support >3.12.
+   >=3.9, and <3.13.
 
 #. Navigate to the repository you cloned and for which you want to
    install the dependencies. For instance, for anemoi-datasets:
