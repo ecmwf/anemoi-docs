@@ -63,21 +63,24 @@ development environment:
    >=3.9, and <3.13.
 
 #. Navigate to the repository you cloned and for which you want to
-   install the dependencies. For instance, for anemoi-datasets:
-
-   .. code:: bash
-
-      cd anemoi-datasets
+   install the dependencies.
 
    For packages in anemoi-core, i.e. `anemoi-training`, `anemoi-models`,
    or `anemoi-graphs`, navigate to the relevant package directory
 
    .. code:: bash
 
-      cd anemoi-core
-      cd anemoi-{package}
+      cd anemoi-core/{package}
 
    where `{package}` is the package name, e.g. `training`.
+
+   For all other packages:
+
+   .. code:: bash
+
+      cd anemoi-{package}
+
+   where `{package}` is the package name, e.g. `datasets`.
 
 #. Install dependencies:
 
