@@ -13,20 +13,20 @@ To create a development environment follow the steps outlined below.
 When working with a fork, follow these steps to set up your local
 development environment:
 
-#. Fork the Repository: Create your own copy of the repository on
+#. **Fork the repository:** Create your own copy of the repository on
    GitHub, following `this GitHub tutorial
    <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#forking-a-repository>`_.
 
-#. Clone Your Fork: Download your forked repository to your local
+#. **Clone your fork:** Download your forked repository to your local
    machine as outlined in `this section of the tutorial
    <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#cloning-your-forked-repository>`_.
 
-#. Add the Upstream Remote: Connect your local repository to the
+#. **Add the upstream remote:** Connect your local repository to the
    original repository to fetch updates as described in `this section
    <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#configuring-git-to-sync-your-fork-with-the-upstream-repository>`_.
 
-#. Prevent Accidental Pushes to Upstream: After setting up your fork and
-   configuring the original repository as an upstream remote, it's a
+#. **Prevent accidental pushes to upstream:** After setting up your fork
+   and configuring the original repository as an upstream remote, it's a
    good practice to prevent accidental pushes to the upstream
    repository. You can do this by explicitly setting the push URL of the
    upstream remote to no_push. To do this, navigate to your local
@@ -55,25 +55,23 @@ development environment:
    upstream repository but won’t be able to accidentally push changes to
    it.
 
-*************************************
- Setting up your virtual environment
-*************************************
+***********************************
+ Creating Your Virtual Environment
+***********************************
 
 #. Create and activate a virtual environment with a python version
    between 3.9 and 3.12. We require at least Python 3.9, and currently
-   do not support >3.12. This is due to an issue with one of the
-   required dependencies.
+   do not support >3.12.
 
 #. Navigate to the repository you cloned and for which you want to
-   install the dependencies, e.g. for anemoi-datasets
+   install the dependencies. For instance, for anemoi-datasets:
 
    .. code:: bash
 
       cd anemoi-datasets
 
-   For packages in `anemoi-core`, i.e. `anemoi-training`,
-   `anemoi-models`, or `anemoi-graphs`, navigate to the relevant package
-   directory
+   For packages in anemoi-core, i.e. `anemoi-training`, `anemoi-models`,
+   or `anemoi-graphs`, navigate to the relevant package directory
 
    .. code:: bash
 
