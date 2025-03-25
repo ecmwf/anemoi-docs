@@ -80,6 +80,6 @@ before enabling automated checks.
  Code of conduct
 *****************
 
-Please follow the `GitHub Code of
-Conduct<https://docs.github.com/en/site-policy/github-terms/github-community-code-of-conduct>_`
+Please follow the `GitHub Code of Conduct
+<https://docs.github.com/en/site-policy/github-terms/github-community-code-of-conduct>`_
 for respectful collaboration.
