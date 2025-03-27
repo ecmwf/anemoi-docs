@@ -20,8 +20,8 @@ dependencies = [
   "nbsphinx",
   "pandoc",
   "pre-commit",
+  "pydata-sphinx-theme",
   "requests",
   "sphinx",
   "sphinx-argparse<0.5",
-  "sphinx-rtd-theme",
 ]

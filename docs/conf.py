@@ -52,7 +52,6 @@ release = "0.0.0"
 # ones.
 extensions = [
     "sphinx.ext.todo",
-    "sphinx_rtd_theme",
     "nbsphinx",
     "sphinx.ext.graphviz",
     "sphinx.ext.intersphinx",
@@ -121,14 +120,21 @@ html_extra_path = ["_static"]
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#
-html_theme = "sphinx_rtd_theme"
+
+html_theme = "pydata_sphinx_theme"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 html_css_files = ["style.css"]
+
+# Here we control which pages have what sidebars
+html_sidebars = {
+    "index": [],
+    "overview": [],
+    "contributing/**": ["search-field.html", "sidebar-nav-bs.html"],
+}
 
 
 todo_include_todos = not read_the_docs_build
