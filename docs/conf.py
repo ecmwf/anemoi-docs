@@ -129,6 +129,13 @@ html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
 html_css_files = ["style.css"]
 
+# Here we control which pages have what sidebars
+html_sidebars = {
+    "index": [],
+    "overview": [],
+    "contributing/**": ["search-field.html", "sidebar-nav-bs.html"],
+}
+
 
 todo_include_todos = not read_the_docs_build
 

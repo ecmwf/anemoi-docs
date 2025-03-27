@@ -15,20 +15,10 @@ models from existing recipes but with their own data.
 
 .. toctree::
    :maxdepth: 1
-   :caption: The Anemoi Framework
+   :hidden:
 
    overview
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Contributing
-
    contributing/contributing.rst
-   contributing/environment.rst
-   contributing/guidelines.rst
-   contributing/code_style.rst
-   contributing/testing.rst
-   contributing/documentation.rst
 
 **************
  Dependencies

@@ -83,3 +83,12 @@ before enabling automated checks.
 Please follow the `GitHub Code of Conduct
 <https://docs.github.com/en/site-policy/github-terms/github-community-code-of-conduct>`_
 for respectful collaboration.
+
+.. toctree::
+   :maxdepth: 2
+
+   environment
+   guidelines
+   code_style
+   testing
+   documentation
