@@ -1,3 +1,5 @@
+.. _index:
+
 ####################################
  Welcome to Anemoi's documentation!
 ####################################
@@ -11,19 +13,22 @@ framework it seeks to handle many of the complexities that
 meteorological organisations will share, allowing them to easily train
 models from existing recipes but with their own data.
 
--  :doc:`overview`
--  :doc:`installing`
--  :doc:`contributing`
--  :doc:`code-of-conduct`
+.. toctree::
+   :maxdepth: 1
+   :caption: The Anemoi Framework
+
+   overview
 
 .. toctree::
    :maxdepth: 1
-   :hidden:
+   :caption: Contributing
 
-   overview
-   installing
-   contributing
-   code-of-conduct
+   contributing/contributing.rst
+   contributing/environment.rst
+   contributing/guidelines.rst
+   contributing/code_style.rst
+   contributing/testing.rst
+   contributing/documentation.rst
 
 **************
  Dependencies
