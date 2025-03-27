@@ -86,6 +86,7 @@ for respectful collaboration.
 
 .. toctree::
    :maxdepth: 2
+   :hidden:
 
    environment
    guidelines

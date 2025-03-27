@@ -13,13 +13,6 @@ framework it seeks to handle many of the complexities that
 meteorological organisations will share, allowing them to easily train
 models from existing recipes but with their own data.
 
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   overview
-   contributing/contributing.rst
-
 **************
  Dependencies
 **************
@@ -27,7 +20,7 @@ models from existing recipes but with their own data.
 .. raw:: html
 
    <center>
-   <object type="image/svg+xml" data="_static/dependencies.svg" width="75%" height="auto">
+   <object type="image/svg+xml" data="_static/dependencies.svg" height="35%">
      <img src="_static/dependencies.png" alt="Fallback image description">
    </object>
    </center>
@@ -53,5 +46,12 @@ optional dependencies.
 *********
 
 *Anemoi* is available under the open source `Apache License`__.
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   overview
+   contributing/contributing.rst
 
 .. __: http://www.apache.org/licenses/LICENSE-2.0.html
