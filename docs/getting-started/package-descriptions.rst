@@ -93,8 +93,10 @@ The relationship between the various Anemoi packages is illustrated in
 the figure below. Solid lines indicate mandatory dependencies between
 packages and dashed lines indicate optional dependencies.
 
-.. figure:: ../_static/dependencies.svg
-   :align: center
-   :scale: 10 %
-   :target: ../_static/dependencies.svg
-   :alt: Figure showing the dependencies between the Anemoi packages
+.. raw:: html
+
+   <center>
+   <object type="image/svg+xml" data="../_static/dependencies.svg" width="75%" height="auto">
+     <img src="../_static/dependencies.png" alt="Figure showing the dependencies across anemoi packages">
+   </object>
+   </center>
