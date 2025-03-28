@@ -19,9 +19,9 @@ established Python tools including `PyTorch <https://pytorch.org>`_,
 .. raw:: html
 
    <center>
-   <object type="image/svg+xml" data="_static/anemoi-ecosystem.svg" width="75%" height="auto">
-     <img src="_static/anemoi-ecosystem.png" alt="Figure showing the structure of the Anemoi packages">
-   </object>
+     <object type="image/svg+xml" data="_static/anemoi-ecosystem.svg" width="100%" height="auto">
+       <img src="_static/anemoi-ecosystem.png" alt="Figure showing the structure of the Anemoi packages">
+     </object>
    </center>
 
 Possible uses of *Anemoi* are for developing:
