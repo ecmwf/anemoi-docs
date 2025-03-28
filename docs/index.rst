@@ -16,13 +16,11 @@ established Python tools including `PyTorch <https://pytorch.org>`_,
 <https://xarray.dev>`_ and `earthkit
 <https://earthkit.readthedocs.io/>`_.
 
-.. raw:: html
-
-   <center>
-     <object type="image/svg+xml" data="_static/anemoi-ecosystem.svg" width="100%" height="auto">
-       <img src="_static/anemoi-ecosystem.png" alt="Figure showing the structure of the Anemoi packages">
-     </object>
-   </center>
+.. figure:: _static/anemoi-ecosystem.svg
+   :align: center
+   :scale: 80 %
+   :target: _static/anemoi-ecosystem.svg
+   :alt: Figure showing the structure of the Anemoi packages
 
 Possible uses of *Anemoi* are for developing:
 
