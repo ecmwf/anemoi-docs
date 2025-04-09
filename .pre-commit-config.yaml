@@ -47,7 +47,6 @@ repos:
     - --line-length=120
     - --fix
     - --exit-non-zero-on-fix
-    - --preview
     - --exclude=docs/**/*_.py
 - repo: https://github.com/sphinx-contrib/sphinx-lint
   rev: v1.0.0
