@@ -51,6 +51,10 @@ follow these steps:
    repository, set a PR title according to the
    :ref:`pr-title-guidelines` and fill in the Pull Request template.
 
+#. Sign the Contributor License Agreement (CLA) on GitHub. If you
+   haven't yet signed the CLA for the repository, you will be prompted
+   to do so in a comment on your pull request.
+
 #. Request a review from maintainers or other contributors, which will
    follow the :ref:`code-review-process`.
 
