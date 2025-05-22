@@ -53,6 +53,7 @@ Possible uses of *Anemoi* are for developing:
    :caption: Contributing
 
    contributing/contributing.rst
+   contributing/roadmap.rst
    contributing/environment.rst
    contributing/guidelines.rst
    contributing/code_style.rst
