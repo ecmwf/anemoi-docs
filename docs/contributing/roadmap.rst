@@ -37,6 +37,7 @@ for improvement and expansion.
 
    - **Current Focus**:
 
+     - Focus on graph neural networks.
      - Enhance model architectures to be more modular.
      - Focus on implementing probabilistic and ensemble forecasting techniques (e.g.,
        CRPS Loss, diffusion).
@@ -91,6 +92,10 @@ for improvement and expansion.
        common interfaces for datasets and models.
      - Encourage community-driven extensions and contributions to keep the ecosystem
        open and extensible.
+
+For progress and updates on these topics, we refer to the relative Github issues and PRs across
+all Anemoi packages. An overview is available in the `Anemoi Project Board
+   <https://github.com/orgs/ecmwf/projects/13/views/8>`_.
 
 *******************
 Engaging More Users
