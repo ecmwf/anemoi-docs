@@ -24,6 +24,8 @@ let us know by raising an issue on GitHub using the following steps:
    behaviour.
 #. If you are interested in solving the issue yourself, assign the issue
    to yourself and follow the steps below.
+#. Tag your issue with the appropriate labels to help the community identify and triage it effectively.  
+   Be sure to follow the :ref:`labelling-guidelines`.
 
 **********************
  Developing in Anemoi
@@ -66,15 +68,15 @@ Request. For security reasons, maintainers must review code changes
 before enabling automated checks.
 
 #. Ensure that all the :ref:`development-guidelines` criteria are met
-   before submitting a Pull Request.
+   before submitting a Pull Request, and pay special attention to the :ref:`labelling-guidelines`.
 #. Request a review from maintainers or other contributors, noting that
    support is on a best-efforts basis.
 #. After an initial review, a maintainer will enable automated checks to
    run on the Pull Request.
 #. Reviewers may provide feedback or request changes to your
    contribution.
-#. Once approved, a maintainer will merge your Pull Request into the
-   appropriate branch.
+#. Once approved, the Pull Request will be merged into the appropiate branch
+   according to the :ref:`merging-guidelines`
 
 *****************
  Code of conduct
