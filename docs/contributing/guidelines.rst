@@ -205,10 +205,32 @@ When submitting Pull Requests (PRs), please follow these guidelines:
 #. Fill the PR template completely, including:
 
    -  Clear description of the changes.
+
    -  Link to related issues using GitHub keywords (e.g., "Fixes #123").
+
    -  List of notable changes.
+
    -  Any breaking changes or deprecations.
+
    -  Testing instructions if applicable.
+
+   -  For ``refactors``, contributors are encouraged to include proof of
+      regression tests or evidence demonstrating that existing
+      functionality remains unaffected when completing the PR template.
+
+   -  For ``new features``, such as loss functions or model blocks,
+      contributors should provide benchmarking results that showcase the
+      added performance or benefits in training ML models, building
+      datasets, or other package-specific tasks.
+
+   -  New features must also include relevant documentation and
+      appropriate test coverage. This may range from unit tests to
+      integration tests when new use cases are introduced. For detailed
+      testing guidelines, refer to the :ref:`testing` section.
+
+   -  It is the **reviewer's responsibility** to ensure that these
+      criteria are met and to request additional information or tests if
+      any of the above elements are missing.
 
 #. Ensure the PR title follows the :ref:`pr-title-guidelines`, as this
    will become the squash commit message when merged to ``main``.
@@ -238,10 +260,6 @@ When submitting Pull Requests (PRs), please follow these guidelines:
    -  PRs are merged using squash merge to maintain a clean history.
    -  The squash commit message will use the PR title and the
       description.
-
-
-# ! TODO - add section about regression test for refactor + benchmarking for scientific features
-
 
 .. _merging-guidelines:
 
@@ -273,6 +291,8 @@ following merging rules apply:
 Ensure that changes are appropriately documented, both with respect to
 docstrings and more extensive documentation, following the guidelines on
 :ref:`documentation-guidelines`.
+
+.. _testing:
 
 *********
  Testing

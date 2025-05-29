@@ -16,9 +16,10 @@ decision-making processes within the project:
    the various institutions contributing to Anemoi, this group meets
    regularly to discuss the technical direction of the project. ATS
    reviews and approves major changes, proposals, and contributions that
-   could impact the broader user and developer community. See the
-   :ref:`labelling-guidelines` and :ref:`ats-approval` for how technical
-   decisions are flagged and processed through this group.
+   could impact the broader user and developer community. See the `ATS
+   approval` process described in :ref:`labelling-guidelines` for
+   details on how technical decisions are flagged and processed by this
+   group.
 
 -  **@anemoisecurity group:** This group is responsible for managing
    access to sensitive components of the project infrastructure,
@@ -65,55 +66,69 @@ alignment across institutions.
  Anemoi Security Group
 ***********************
 
-The ``@anemoisecurity`` group is a core part of Anemoi’s governance and review process. It is based on GitHub’s `CODEOWNERS <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners>`_ mechanism, and is defined at the organization level: https://github.com/orgs/ecmwf/teams/anemoisecurity.
+The ``@anemoisecurity`` group is a core part of Anemoi’s governance and
+review process. It is based on GitHub’s `CODEOWNERS
+<https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners>`_
+mechanism, and is defined at the organization level:
+https://github.com/orgs/ecmwf/teams/anemoisecurity.
 
-Members of this group are automatically tagged in pull requests that touch sensitive or protected areas of the codebase, as defined in each repository’s ``CODEOWNERS`` file.
-Their role is to ensure consistent application of best practices, integrity, and to offer early guidance where there may be ambiguity or technical disagreement—before discussion at the Anemoi Technical Subgroup (ATS).
+Members of this group are automatically tagged in pull requests that
+touch sensitive or protected areas of the codebase, as defined in each
+repository’s ``CODEOWNERS`` file. Their role is to ensure consistent
+application of best practices, integrity, and to offer early guidance
+where there may be ambiguity or technical disagreement—before discussion
+at the Anemoi Technical Subgroup (ATS).
 
 Responsibilities include:
 
-- Reviewing PRs that affect critical infrastructure, security-sensitive components, or protected files.
-- Providing guidance on best practices, code standards, and project conventions.
-- Offering support to contributors with doubts about PR scope, reviewability, or technical alignment.
-- Helping mediate technical disagreements when they arise, prior to ATS discussion.
-- Acting as the merging authority for PRs labeled as ``ATS Approved``, according to the :ref:`labelling-guidelines`.
+-  Reviewing PRs that affect critical infrastructure, security-sensitive
+   components, or protected files.
+-  Providing guidance on best practices, code standards, and project
+   conventions.
+-  Offering support to contributors with doubts about PR scope,
+   reviewability, or technical alignment.
+-  Helping mediate technical disagreements when they arise, prior to ATS
+   discussion.
+-  Acting as the merging authority for PRs labeled as ``ATS Approved``,
+   according to the :ref:`labelling-guidelines`.
 
-Contributors are encouraged to tag ``@anemoisecurity`` directly in issues or PRs when seeking early feedback on sensitive changes or when unsure how to proceed.
+Contributors are encouraged to tag ``@anemoisecurity`` directly in
+issues or PRs when seeking early feedback on sensitive changes or when
+unsure how to proceed.
 
 *****************
  Decision Making
 *****************
 
-# ! TODO - finish add section about ROADMAP from Daniele
+The primary workflow for Anemoi’s development happens through GitHub
+issues and pull requests. Contributors are encouraged to use these
+channels for proposing features, reporting bugs, and discussing
+implementation details. Keeping technical discussions on GitHub promotes
+transparency and allows the broader community to participate and stay
+informed.
 
-Uncontroversial Changes
-=======================
+For decisions that are controversial, cross-cutting, or involve
+substantial changes to the framework, the Anemoi Technical Subgroup
+(ATS) will aim to record their decision within GitHub using the ``ATS``
+tag—either in the relevant issue, pull request, or as part of a summary
+comment after the ATS meeting.
 
-Primary work happens through issues and pull requests on GitHub.
-Maintainers should avoid pushing their changes directly to the PyTorch
-repository, instead relying on pull requests. Approving a pull request
-by a core or module maintainer allows it to be merged without further
-process. Core and module maintainers, as listed on the Maintainers page
-and within CODEOWNERS ultimately approve these changes.
+We are also exploring more structured ways of documenting architectural
+decisions. In particular, *Architecture Decision Records (ADRs)* are
+being trialed as a way to capture the motivation and rationale behind
+major changes. Early examples of ADRs can be found in:
 
-Notifying relevant experts about an issue or a pull request is
-important. Reviews from experts in the given interest area are strongly
-preferred, especially on pull request approvals. Failure to do so might
-end up with the change being reverted by the relevant expert.
+-  https://github.com/ecmwf/anemoi-core/tree/main/training/docs/adrs
+-  https://github.com/ecmwf/anemoi-datasets/blob/main/docs/adr/adr-1.md
 
-Controversial Decision Process
-==============================
+As the project evolves, ADRs may become a recommended format for
+proposing and tracking significant architectural decisions across Anemoi
+components.
 
-Substantial changes in a given interest area require a GitHub issue to
-be opened for discussion. This includes:
+.. note::
 
-Any semantic or syntactic change to the PyTorch framework or library.
-
-Backwards-incompatible changes to the Python or C++ API.
-
-Additions to the core framework or library, including substantial new
-functionality within an existing library.
-
-Removal of core features or platform support
-
-Core and module maintainers ultimately approve these changes.
+   For information regarding the high-level direction and planned future
+   developments of the Anemoi framework, please refer to the
+   :ref:`roadmap` page. The roadmap provides insights into upcoming
+   features, priorities, and long-term goals guiding the project’s
+   evolution.
