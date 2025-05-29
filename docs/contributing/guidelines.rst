@@ -20,7 +20,6 @@ Please follow these development guidelines:
 
 #. Follow the :ref:`pr-title-guidelines`.
 
-
 .. _labelling-guidelines:
 
 **********************
@@ -97,6 +96,8 @@ Examples of PRs that should be labeled ``ATS Approval Needed``:
    -  Bumping major versions (e.g., upgrading `torch` from 2.4 to 2.5,
       or `zarr` from 2.x to 3.x)
 
+-  Feature deprecation
+
 -  Refactors or features that significantly expand project scope (these
    should be discussed via an issue first to avoid unmergeable PRs)
 
@@ -117,10 +118,10 @@ Examples of PRs that can be labeled ``ATS Approval Not Needed``:
 
 -  PRs addressing technical debt [*]_
 
-.. [*] Assuming those do not imply any breaking changes or dependency changes
+.. [*]
+
+   Assuming those do not imply any breaking changes or dependency changes
    as explained above
-
-
 
 .. _branching-guidelines:
 
@@ -235,24 +236,35 @@ When submitting Pull Requests (PRs), please follow these guidelines:
 #. After approval:
 
    -  PRs are merged using squash merge to maintain a clean history.
-   -  The squash commit message will use the PR title and the description.
+   -  The squash commit message will use the PR title and the
+      description.
+
+
+# ! TODO - add section about regression test for refactor + benchmarking for scientific features
+
 
 .. _merging-guidelines:
+
 *********************************
  Pull Request Merging Guidelines
 *********************************
 
-Once a PR has been reviewed and the appropriate label is in place, the following merging rules apply:
+Once a PR has been reviewed and the appropriate label is in place, the
+following merging rules apply:
 
-- For PRs labeled ``ATS Approval Not Needed``:  
-  The PR can be merged by the reviewer once it has been approved, provided the reviewer is not the original contributor.
+-  For PRs labeled ``ATS Approval Not Needed``: The PR can be merged by
+   the reviewer once it has been approved, provided the reviewer is not
+   the original contributor.
 
-- For PRs labeled ``ATS Approved``:  
-  These PRs will be merged by the ``@anemoisecurity`` group after they have been reviewed in the ATS meeting and marked with the ``ATS Approved`` label.
+-  For PRs labeled ``ATS Approved``: These PRs will be merged by the
+   ``@anemoisecurity`` group after they have been reviewed in the ATS
+   meeting and marked with the ``ATS Approved`` label.
 
 .. note::
-   PRs that do not have either label **must not be merged**. When in doubt, apply the ``ATS Approval Needed`` label or consult ``@anemoisecurity`` for guidance.
 
+   PRs that do not have either label **must not be merged**. When in
+   doubt, apply the ``ATS Approval Needed`` label or consult
+   ``@anemoisecurity`` for guidance.
 
 ***************
  Documentation
