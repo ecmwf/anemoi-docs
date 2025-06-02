@@ -38,6 +38,8 @@ Steps for contributing documentation:
       sentences.
    -  Add references to related sections or external documentation where
       applicable.
+   -  Include plots or diagrams where appropriate, and place them in the
+      `docs/_static` folder.
 
 -  Incorporate feedback from your reviewer regarding documentation
    clarity and completeness.
@@ -50,9 +52,19 @@ Building Documentation
 
 For each Pull Request that modifies the files in the `docs` folder,
 documentation is automatically built and hosted on ReadTheDocs for
-review. It is automatically linked in the PR description.
+review. It is automatically linked in the PR description. Please check
+that the generated links point to the correct documentation and that
+your changes render as expected.
 
-You can build the documentation locally to preview changes before
+If the links do not work or the documentation fails to render, review
+the CI workflow “Read the Docs PR Preview” that builds the preview.
+Check the logs for errors. You can see an example of a successful build
+`here
+<https://app.readthedocs.org/projects/anemoi-training/builds/27886217/>`_.
+If you can’t identify the problem or are unsure, please ask for help in
+the issue you opened.
+
+You can also build the documentation locally to preview changes before
 submitting a Pull Request. We use Sphinx for documentation.
 
 You can install the dependencies for building the documentation with:
