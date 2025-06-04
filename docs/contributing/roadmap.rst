@@ -94,8 +94,7 @@ for improvement and expansion.
        open and extensible.
 
 For progress and updates on these topics, we refer to the relative Github issues and PRs across
-all Anemoi packages. An overview is available in the `Anemoi Project Board
-   <https://github.com/orgs/ecmwf/projects/13/views/8>`_.
+all Anemoi packages. An overview is available in the `Anemoi Project Board <https://github.com/orgs/ecmwf/projects/13/views/8>`_.
 
 *******************
 Engaging More Users
