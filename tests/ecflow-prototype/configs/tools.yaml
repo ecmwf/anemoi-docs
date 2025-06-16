@@ -1,0 +1,62 @@
+
+tools:
+
+  # ---------- System modules ---------------------------------------------------
+  modules:
+    python:
+      name: python3
+      version: 3.10.10-01
+    conda:
+      name: conda
+      version: 23.11.0-0
+    # uv:
+    #   name: uv
+    #   version: 0.6.14
+
+
+  packages:
+    anemoi_datasets:
+      type: git
+      source: https://github.com/ecmwf/anemoi-datasets.git
+      branch: main
+      post_script: "pip install --upgrade pip && pip install -e ."
+      # depends: [uv]
+      # post_script: "uv pip install --upgrade pip && uv pip install -e ."
+    anemoi_training:
+      type: git
+      source: https://github.com/ecmwf/anemoi-core.git
+      branch: main
+      post_script: "git fetch --unshallow && pip install --upgrade pip && pip install -e ./training[all,tests] -e ./graphs[all,tests] -e ./models[all,tests]"
+      # depends: [uv]
+      # post_script: "git fetch --unshallow && uv pip install --upgrade pip && uv pip install -e ./training[all,tests] -e ./graphs[all,tests] -e ./models[all,tests]"
+
+
+  # --------Virtual envs --------------------------------------------------
+
+
+  environments:
+      datasets_env:
+        type: conda
+        packages: [anemoi_datasets]
+        extra_packages: ["python==3.10"]
+        depends: [conda]
+        conda_cmd: mamba
+      training_env:
+        type: conda
+        packages: [anemoi_training]
+        extra_packages: ["python==3.10"]
+        depends: [conda]
+        conda_cmd: mamba
+
+  # TODO use virtual environments instead, and uv pip install (see comments above)
+  # environments:
+  #     datasets_env:
+  #       type: venv
+  #       modules: [python]
+  #       packages: [anemoi_datasets]
+  #     training_env:
+  #       type: venv
+  #       modules: [python]
+  #       packages: [anemoi_training]
+
+  # --------Environment variables -----------------------------------------

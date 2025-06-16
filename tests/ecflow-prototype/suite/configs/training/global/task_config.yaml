@@ -1,0 +1,3 @@
+training_template: "config"
+datasets:
+  - aifs-ea-an-oper-0001-mars-o96-2017-2017-6h-v8-testing
