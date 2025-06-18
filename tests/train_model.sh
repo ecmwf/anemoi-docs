@@ -4,6 +4,7 @@
 #SBATCH --error=train-model-%j.err
 #SBATCH --time=00:40:00
 #SBATCH --mem=4G
+#SBATCH --gpus=1
 
 set -euo pipefail
 
