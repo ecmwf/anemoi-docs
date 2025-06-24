@@ -43,12 +43,12 @@ ECMWF. Details about individual contributors can be found in the
 <https://github.com/ecmwf/anemoi-docs/blob/main/CONTRIBUTORS.md>`_ file
 in each package. Inspired by the governance structures of other
 open-source projects such as PyTorch and TensorFlow, **Anemoi is guided
-by the Anemoi Technical Subgroup (ATS)**, a comitte composed of
+by the Anemoi Technical Subgroup (ATS)**, a committee composed of
 representatives from each contributing institution. The ATS meets weekly
 in what is known as the ATS meeting, which serves as a forum to
 coordinate the project's technical direction. During these meetings, we
 discuss ongoing development to ensure that the codebase evolves in a way
-that meets the needs of all participating organizations. This includes
+that meets the needs of all participating organisations. This includes
 reviewing major pull requests (PRs), proposals for new features, and any
 changes that could introduce breaking behavior or support new use cases.
 
@@ -69,7 +69,7 @@ alignment across institutions.
 The ``@anemoisecurity`` group is a core part of Anemoi’s governance and
 review process. It is based on GitHub’s `CODEOWNERS
 <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners>`_
-mechanism, and is defined at the organization level:
+mechanism, and is defined at the organisation level:
 https://github.com/orgs/ecmwf/teams/anemoisecurity.
 
 Members of this group are automatically tagged in pull requests that
@@ -89,7 +89,7 @@ Responsibilities include:
    reviewability, or technical alignment.
 -  Helping mediate technical disagreements when they arise, prior to ATS
    discussion.
--  Acting as the merging authority for PRs labeled as ``ATS Approved``,
+-  Acting as the merging authority for PRs labelled as ``ATS Approved``,
    according to the :ref:`labelling-guidelines`.
 
 Contributors are encouraged to tag ``@anemoisecurity`` directly in
