@@ -260,7 +260,8 @@ When submitting Pull Requests (PRs), please follow these guidelines:
    -  PRs are merged using squash merge to maintain a clean history.
    -  The squash commit message will use the PR title and the
       description.
-   -  It is the merger's responsibility to ensure that the commit message is clear and readable, following the PR template.
+   -  It is the merger's responsibility to ensure that the commit
+      message is clear and readable, following the PR template.
 
 .. _merging-guidelines:
 
