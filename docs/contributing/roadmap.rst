@@ -6,24 +6,15 @@ Development Roadmap
 
 **Authors**: Anemoi Technical Subgroup (ATS)
 
-**Date**: May 2025
+**Date**: July 2025
 
-This roadmap serves as a guideline for the future development of the Anemoi project. 
-We aim to maintain flexibility and adaptability, ensuring that the system can evolve
-to meet emerging needs while maintaining a high level of performance and usability.
-The collaboration of diverse institutions will continue to be a core strength, ensuring
-the project meets the evolving demands of weather and climate modeling.
-
-**************
-Our Philosophy
-**************
-
-We aim to build a flexible, extensible, and modular ecosystem that addresses the needs
-of weather and climate modeling through machine learning. By focusing on
-generalization, interoperability, and ease of integration, our project aims to
-support diverse use cases, from regional forecasting to global climate modeling.
-This ecosystem thrives on contributions from diverse institutions and aims to 
-remain domain-agnostic while meeting the specific needs of different stakeholders.
+This roadmap outlines the future development of the Anemoi project, emphasizing
+flexibility, adaptability, and high performance to meet the evolving needs of weather
+and climate modeling. We aim to build a modular, extensible ecosystem that supports
+diverse use cases, from regional to gloabl forecasting, while ensuring
+generalization, interoperability, and ease of integration. The collaboration of diverse
+institutions remains a core strength, allowing the project to stay domain-agnostic and
+address the specific needs of various stakeholders.
 
 **********************
 Key Development Themes
