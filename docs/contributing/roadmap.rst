@@ -37,8 +37,8 @@ for improvement and expansion.
 
      - Develop a robust framework for model sharing across various ecosystems, 
        supporting different types of models.
-     - Ensure that models can easily scale from local to global forecasting tasks while
-       maintaining computational efficiency.
+     - Ensure that the infrastructure for model development and training can easily scale
+       from local to global forecasting tasks, while maintaining computational efficiency.
 
 2. **Data Handling**
 
