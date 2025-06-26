@@ -10,11 +10,14 @@ Development Roadmap
 
 This roadmap outlines the future development of the Anemoi project, emphasizing
 flexibility, adaptability, and high performance to meet the evolving needs of weather
-and climate modeling. We aim to build a modular, extensible ecosystem that supports
-diverse use cases, from regional to gloabl forecasting, while ensuring
-generalization, interoperability, and ease of integration. The collaboration of diverse
-institutions remains a core strength, allowing the project to stay domain-agnostic and
-address the specific needs of various stakeholders.
+and climate modeling. We aim to build a modular, extensible ecosystem — much like a set
+of well-defined Lego blocks — where components such as model layers, training
+approaches, and data pipelines can be easily assembled, reused, and adapted to support
+diverse use cases, from regional to global forecasting. By promoting generalization,
+interoperability, and ease of integration, Anemoi enables users to experiment with new
+combinations or build on existing ones. The collaboration of diverse institutions remains
+a core strength, allowing the project to stay domain-agnostic and responsive to the
+specific needs of a wide range of stakeholders.
 
 **********************
 Key Development Themes
