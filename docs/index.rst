@@ -39,6 +39,26 @@ Possible uses of *Anemoi* are for developing:
 
 .. __: http://www.apache.org/licenses/LICENSE-2.0.html
 
+####################
+ How to Cite Anemoi
+####################
+
+If you use Anemoi in your work, we recommend you cite the following
+paper as the recommended reference: ``` Lang, S., Amato, F., Hupe, P.,
+Gascón, E., & Frei, M. (2024). *Anemoi: A machine learning benchmark
+dataset for radar-based precipitation nowcasting in Europe*. arXiv
+preprint `arXiv:2406.01465 <https://arxiv.org/pdf/2406.01465>`_. ```
+BibTeX:
+
+.. code::
+
+   @article{lang2024anemoi,
+     title={Anemoi: A machine learning benchmark dataset for radar-based precipitation nowcasting in Europe},
+     author={Lang, Simon and Amato, Federica and Hupe, Patrick and Gasc{\'o}n, Esteban and Frei, Martin},
+     journal={arXiv preprint arXiv:2406.01465},
+     year={2024}
+   }
+
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started

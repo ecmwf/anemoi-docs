@@ -88,8 +88,9 @@ before enabling automated checks.
 #. After an initial review, a maintainer will enable automated checks to
    run on the Pull Request.
 
-#. Reviewers may provide feedback or request changes to your
-   contribution.
+#. Reviewers may leave feedback or request changes. To confirm that
+   feedback has been addressed, ask reviewers to mark their comments as
+   resolved.
 
 #. Once approved, the Pull Request will be merged into the appropiate
    branch according to the :ref:`merging-guidelines`

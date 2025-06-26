@@ -21,7 +21,7 @@ decision-making processes within the project:
    details on how technical decisions are flagged and processed by this
    group.
 
--  **@anemoisecurity group:** This group is responsible for managing
+-  **anemoisecurity group:** This group is responsible for managing
    access to sensitive components of the project infrastructure,
    including GitHub permissions and package publishing. The group also
    acts as the final gatekeeper for pull request merges that require
@@ -36,8 +36,8 @@ collaboration.
  Anemoi Technical Subgroup (ATS)
 *********************************
 
-Anemoi is an open-source machine learning framework co-developed by
-several national meteorological institutions in collaboration with
+Anemoi is an open-source machine learning framework co-developed by a
+number of national meteorological institutions in collaboration with
 ECMWF. Details about individual contributors can be found in the
 `CONTRIBUTORS.md
 <https://github.com/ecmwf/anemoi-docs/blob/main/CONTRIBUTORS.md>`_ file
@@ -48,36 +48,31 @@ representatives from each contributing institution. The ATS meets weekly
 in what is known as the ATS meeting, which serves as a forum to
 coordinate the project's technical direction. During these meetings, we
 discuss ongoing development to ensure that the codebase evolves in a way
-that meets the needs of all participating organisations. This includes
-reviewing major pull requests (PRs), proposals for new features, and any
-changes that could introduce breaking behavior or support new use cases.
+that meets the needs of the users. This includes reviewing major pull
+requests (PRs), proposals for new features, and any changes that could
+introduce breaking behavior or support new use cases.
 
 PRs and issues intended for ATS discussion are identified using the
 ``ATS Approval Needed`` label. Refer to the :ref:`labelling-guidelines`
 for more information on when and how to apply this label.
 
-Additionally, contributors can tag ``@ATS`` in issues or PRs to
-explicitly highlight topics requiring subgroup attention. This can be
-especially helpful to summarize a disagreement, flag a potentially
-controversial feature, or raise visibility for decisions that require
-alignment across institutions.
+Additionally, contributors can tag ``@ecmwf/anemoitechnicalsubgroup`` in
+issues or PRs to explicitly highlight topics requiring subgroup
+attention. This can be especially helpful to summarize a disagreement,
+flag a potentially controversial feature, or raise visibility for
+decisions that require alignment across institutions.
 
 ***********************
  Anemoi Security Group
 ***********************
 
-The ``@anemoisecurity`` group is a core part of Anemoi’s governance and
-review process. It is based on GitHub’s `CODEOWNERS
-<https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners>`_
-mechanism, and is defined at the organisation level:
-https://github.com/orgs/ecmwf/teams/anemoisecurity.
-
-Members of this group are automatically tagged in pull requests that
-touch sensitive or protected areas of the codebase, as defined in each
-repository’s ``CODEOWNERS`` file. Their role is to ensure consistent
-application of best practices, integrity, and to offer early guidance
-where there may be ambiguity or technical disagreement—before discussion
-at the Anemoi Technical Subgroup (ATS).
+The ``@ecmwf/anemoisecurity`` group is a core part of Anemoi’s
+governance and review process. Members of this group are automatically
+tagged in pull requests that touch sensitive or protected areas of the
+codebase, as defined in each repository’s ``CODEOWNERS`` file. Their
+role is to ensure consistent application of best practices, integrity,
+and to offer early guidance where there may be ambiguity or technical
+disagreement—before discussion at the Anemoi Technical Subgroup (ATS).
 
 Responsibilities include:
 
@@ -92,7 +87,7 @@ Responsibilities include:
 -  Acting as the merging authority for PRs labelled as ``ATS Approved``,
    according to the :ref:`labelling-guidelines`.
 
-Contributors are encouraged to tag ``@anemoisecurity`` directly in
+Contributors are encouraged to tag ``@ecmwf/anemoisecurity`` directly in
 issues or PRs when seeking early feedback on sensitive changes or when
 unsure how to proceed.
 
@@ -109,9 +104,10 @@ informed.
 
 For decisions that are controversial, cross-cutting, or involve
 substantial changes to the framework, the Anemoi Technical Subgroup
-(ATS) will aim to record their decision within GitHub using the ``ATS``
-tag—either in the relevant issue, pull request, or as part of a summary
-comment after the ATS meeting.
+(ATS) will aim to record their decisions within GitHub. For now, this
+process will consist of directly replying in a GitHub Issue or Pull
+Request (PR). When capturing a decision, the response should be clearly
+signed by ``@ecmwf/anemoitechnicalsubgroup``.
 
 We are also exploring more structured ways of documenting architectural
 decisions. In particular, *Architecture Decision Records (ADRs)* are
