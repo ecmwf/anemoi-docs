@@ -52,11 +52,15 @@ BibTeX:
 
 .. code::
 
-   @article{lang2024anemoi,
-     title={Anemoi: A machine learning benchmark dataset for radar-based precipitation nowcasting in Europe},
-     author={Lang, Simon and Amato, Federica and Hupe, Patrick and Gasc{\'o}n, Esteban and Frei, Martin},
-     journal={arXiv preprint arXiv:2406.01465},
-     year={2024}
+   @article{lang2024aifs,
+   title={AIFS -- ECMWF's data-driven forecasting system},
+   author={Lang, Simon and Alexe, Mihai and Chantry, Matthew and Dramsch, Jesper and Pinault, Florian and Raoult, Baudouin and Clare, Mariana C. A. and Lessig, Christian and Maier-Gerber, Michael and Magnusson, Linus and Ben Bouall{\`e}gue, Zied and Nemesio, Ana Prieto and Dueben, Peter D. and Brown, Andrew and Pappenberger, Florian and Rabier, Florence},
+   journal={arXiv preprint arXiv:2406.01465},
+   year={2024},
+   eprint={2406.01465},
+   archivePrefix={arXiv},
+   primaryClass={physics.ao-ph},
+   url={https://arxiv.org/abs/2406.01465}
    }
 
 .. toctree::
