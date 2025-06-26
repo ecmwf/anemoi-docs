@@ -74,8 +74,8 @@ for improvement and expansion.
 
    - **Current Focus**:
 
-     - Develop shared standards for model architectures, datasets, and code
-       contributions to ensure smooth collaboration across contributors.
+     - Develop shared standards for graph representations, model architectures, datasets,
+       and code contributions to ensure smooth collaboration across contributors.
      - Work towards better documentation and more educational resources to onboard new
        contributors.
 
