@@ -100,3 +100,22 @@ and onboarding, which includes:
   training, dataset preparation, and operational inference.
 - Hosting community-driven workshops and outreach efforts to encourage broader
   participation and contributions.
+
+Anemoi Community Meeting
+=========================
+
+The **Anemoi Community Meeting** is a biweekly online gathering for Anemoi developers
+and users.
+
+**When:** Every other Tuesday from 11:00 to 12:00 CET.
+
+**Who:** Anyone involved in or interested in the Anemoi ecosystem is welcome to join —
+including contributors, developers, researchers, and representatives from weather and
+climate modeling projects (e.g., NMS). Please feel free to share the invitation with
+colleagues who may benefit from attending.
+
+**Why:** As the Anemoi framework grows in functionality and usage, the community meeting
+is a key touchpoint to maintain alignment, foster collaboration, and surface new ideas.
+It's also a great opportunity to network and discuss shared challenges or feature needs.
+
+**Join:** `Click here to join the Anemoi Community Meeting on Microsoft Teams <https://teams.microsoft.com/l/meetup-ajoin/19%3ameeting_OTNjNDNmYWQtYTU0Ny00NDViLThmZjctZmQ1MTg1YjEyZGM0%40thread.v2/0?context=%7b%22Tid%22%3a%2221b711c6-aab7-4d36-9ffb-ac0357bc20ba%22%2c%22Oid%22%3a%225033de80-99cd-43c4-b9e4-f90840044fd6%22%7d>`_
