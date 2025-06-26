@@ -60,6 +60,8 @@ for improvement and expansion.
      - Develop CI/CD pipelines to automate testing, deployment, and operational inference.
      - Focus on optimizing performance through improved memory management and
        computational efficiency (e.g., Torch compilation, HPC optimizations).
+     - Make inference as lightweight and efficient as possible to support real-time and
+       large-scale operational deployment.
 
    - **Long-Term Vision**:
 
