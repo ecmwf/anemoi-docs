@@ -48,14 +48,40 @@ To run tests in a specific file:
 
    pytest tests/unit/test_specific_feature.py
 
-To run all integration tests, including slow-running tests, use the
-`--longtests` flag. Follow the package-specific instructions. For
-integration tests in anemoi-training, for instance, ensure that you have
-GPU available and run:
+To run all tests, including slow-running integration tests, set the
+`SLOW_TESTS` environment variable to `1`. Follow the package-specific
+instructions. For integration tests in anemoi-training, for instance,
+ensure that you have GPU available and run:
 
 .. code:: bash
 
-   pytest training/tests/integration/ --longtests
+   SLOW_TESTS=1 pytest training/tests/integration/
+
+By convention, we recommend setting `SLOW_TESTS=1` inline with the
+pytest command rather than exporting it into your shell environment.
+This keeps the scope of the setting limited to that command and avoids
+accidentally running slow tests in unrelated runs:
+
+.. code:: bash
+
+   SLOW_TESTS=1 pytest
+
+This syntax works in most common shells (e.g. bash, zsh, sh). In other
+environments -- such as SLURM job scripts or alternative shells -- you
+may prefer to use export the variable instead:
+
+.. code:: bash
+
+export LONGTESTS=1 pytest training/tests/integration/
+
+Remember to unset the variable afterwards if you use export:
+
+.. code:: bash
+
+unset LONGTESTS
+
+By default (when LONGTESTS is unset or not 1), slow-running tests will
+be skipped.
 
 ***************
  Writing Tests
@@ -159,14 +185,16 @@ or `pytest-mock <https://pytest-mock.readthedocs.io/en/latest/>`_.
 Marking Long-Running Tests
 ==========================
 
-For long-running integration tests, we use the `--longtests` flag to
-ensure that they are run only when necessary. This means that you should
-add the correspondong marker to these tests:
+For long-running integration tests, we use the `SLOW_TESTS` environment
+variable to ensure that they are run only when necessary. This means
+that you should add the correspondong decorator to these tests:
 
 .. code:: python
 
-   @pytest.mark.longtests
-   def test_long():
+   from anemoi.utils.testing import skip_slow_tests
+
+   @skip_slow_tests
+   def test_slow():
          pass
 
 Configuration Handling
