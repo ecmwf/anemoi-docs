@@ -44,7 +44,8 @@ Possible uses of *Anemoi* are for developing:
 ####################
 
 If you use Anemoi in your work, we recommend you cite the following
-paper as the recommended reference: `Lang, Simon, et al. "AIFS -- ECMWF's Data-Driven Forecasting System." arXiv, 2024`__. 
+paper as the recommended reference: `Lang, Simon, et al. "AIFS --
+ECMWF's Data-Driven Forecasting System." arXiv, 2024`__.
 
 .. __: https://arxiv.org/pdf/2406.01465
 
