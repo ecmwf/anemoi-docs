@@ -19,4 +19,3 @@ data_dir: "{SCRATCH}/anemoi_test/data"
 
 # TODO add options for the params to be changed by the github action, like versions/branches etc., plus paths to artifact dirs (of logs)
 # look at build_options in Julien's workflow
-# TODO use github action at end of monitor action to download logs as artifacts -- to visualize the results of the test

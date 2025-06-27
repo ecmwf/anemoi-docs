@@ -66,23 +66,26 @@ class CreateDatasetFamily(pf.AnchorFamily):
         dataset_config_dir = path.join(SUITE_DIR, "configs/datasets")
         completions = {}
 
-        for file in os.listdir(dataset_config_dir):
-            if not file.endswith(".yaml"):
+        for folder in os.listdir(dataset_config_dir):
+            config_folder = path.join(dataset_config_dir, folder)
+            if not path.isdir(config_folder):
                 continue
-            config_file_path = path.join(dataset_config_dir, file)
-            output_path = path.join(config.data_dir, file.replace(".yaml", ".zarr"))
-            task_name = file.replace(".yaml", "")
+            config_file_path = path.join(config_folder, "dataset_config.yaml")
+            if not path.exists(config_file_path):
+                raise FileNotFoundError(f"Config file not found: {config_file_path}")
+
+            output_path = path.join(config.data_dir, folder + ".zarr")
 
             create_command = f"anemoi-datasets create {config_file_path} {output_path} --overwrite"
             with self:
                 create = pf.Task(
-                    name=task_name.replace("-", "_"),
+                    name=folder.replace("-", "_"),
                     script=[
                         config.tools.load("datasets_env"),
                         create_command,
                     ],
                 )
-                completions[task_name] = create.complete
+                completions[folder] = create.complete
         self.completions = completions
 
 
