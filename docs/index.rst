@@ -44,18 +44,17 @@ Possible uses of *Anemoi* are for developing:
 ####################
 
 If you use Anemoi in your work, we recommend you cite the following
-paper as the recommended reference: ``` Lang, S., Amato, F., Hupe, P.,
-Gascón, E., & Frei, M. (2024). *Anemoi: A machine learning benchmark
-dataset for radar-based precipitation nowcasting in Europe*. arXiv
-preprint `arXiv:2406.01465 <https://arxiv.org/pdf/2406.01465>`_. ```
+paper as the recommended reference: `Lang, Simon, et al. "AIFS -- ECMWF's Data-Driven Forecasting System." arXiv, 2024`__. 
+
+.. __: https://arxiv.org/pdf/2406.01465
+
 BibTeX:
 
 .. code::
 
-   @article{lang2024aifs,
+   @article{lang2024aifsecmwfsdatadriven,
    title={AIFS -- ECMWF's data-driven forecasting system},
-   author={Lang, Simon and Alexe, Mihai and Chantry, Matthew and Dramsch, Jesper and Pinault, Florian and Raoult, Baudouin and Clare, Mariana C. A. and Lessig, Christian and Maier-Gerber, Michael and Magnusson, Linus and Ben Bouall{\`e}gue, Zied and Nemesio, Ana Prieto and Dueben, Peter D. and Brown, Andrew and Pappenberger, Florian and Rabier, Florence},
-   journal={arXiv preprint arXiv:2406.01465},
+   author={Simon Lang and Mihai Alexe and Matthew Chantry and Jesper Dramsch and Florian Pinault and Baudouin Raoult and Mariana C. A. Clare and Christian Lessig and Michael Maier-Gerber and Linus Magnusson and Zied Ben Bouallègue and Ana Prieto Nemesio and Peter D. Dueben and Andrew Brown and Florian Pappenberger and Florence Rabier},
    year={2024},
    eprint={2406.01465},
    archivePrefix={arXiv},
