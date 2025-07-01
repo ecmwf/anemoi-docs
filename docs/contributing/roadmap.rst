@@ -130,7 +130,8 @@ Anemoi Community Meeting
 The **Anemoi Community Meeting** is a biweekly online gathering for
 Anemoi developers and users.
 
-**When:** Every other Tuesday from 11:00 to 12:00 CET.
+**When:** Every other Tuesday from 11:00 to 12:00 CET, starting from
+*July 1st, 2025*.
 
 **Who:** Anyone involved in or interested in the Anemoi ecosystem is
 welcome to join — including contributors, developers, researchers, and
