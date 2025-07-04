@@ -86,6 +86,8 @@ Responsibilities include:
    discussion.
 -  Acting as the merging authority for PRs labelled as ``ATS Approved``,
    according to the :ref:`labelling-guidelines`.
+-  Defining and keeping the Anemoi Roadmap updated  (:ref:`roadmap`) . 
+   Ensuring that PRs introduced are aligned with the roadmap direction.
 
 Contributors are encouraged to tag ``@ecmwf/anemoisecurity`` directly in
 issues or PRs when seeking early feedback on sensitive changes or when
