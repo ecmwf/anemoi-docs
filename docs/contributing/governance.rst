@@ -78,16 +78,12 @@ Responsibilities include:
 
 -  Reviewing PRs that affect critical infrastructure, security-sensitive
    components, or protected files.
-
 -  Providing guidance on best practices, code standards, and project
    conventions.
-
 -  Offering support to contributors with doubts about PR scope,
    reviewability, or technical alignment.
-
 -  Helping mediate technical disagreements when they arise, prior to ATS
    discussion.
-
 -  Acting as the merging authority for PRs labelled as ``ATS Approved``,
    according to the :ref:`labelling-guidelines`.
 -  Defining and keeping the Anemoi Roadmap updated (:ref:`roadmap`) .
