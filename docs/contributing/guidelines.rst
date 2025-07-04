@@ -14,9 +14,114 @@ Please follow these development guidelines:
    :ref:`documentation-guidelines`), linting, and style checks (see
    :ref:`code-style`).
 
+#. Follow the :ref:`labelling-guidelines`.
+
 #. Follow the :ref:`branching-guidelines`.
 
 #. Follow the :ref:`pr-title-guidelines`.
+
+.. _labelling-guidelines:
+
+**********************
+ Labelling Guidelines
+**********************
+
+As explained in the contributing guidelines, contributors are encouraged
+to open issues to discuss new feature proposals or record bugs.
+Similarly once those are addressed, PR should be open with the changes
+proposed. To identify which issues or Pull Request need to discussed at
+ATS, contributors can flag them using the following labels;
+
+-  ``ATS Approval Needed`` – Even if the PR has already been reviewed
+   and approved, it must be discussed at ATS before it can be merged.
+   Once reviewed in the meeting, the label will be updated to ``ATS
+   Approved``.
+
+-  ``ATS Approval Not Needed`` – The PR can be merged if it has been
+   reviewed and approved by a developer other than the contributor who
+   opened it.
+
+-  ``ATS Approved`` – Indicates that the PR has been reviewed and
+   approved during the ATS meeting and is ready to be merged.
+
+It is the responsibility of both the reviewer and the contributor to
+ensure that a PR is correctly labeled. If you're unsure which label to
+use, default to ``ATS Approval Needed`` or tag ``@anemoisecurity`` for
+clarification.
+
+.. note::
+
+   Code must not be merged into any Anemoi packages without the
+   appropriate label.
+
+Labelling Issues
+================
+
+Per the contributing guidelines: *“Open an issue before starting a
+feature or bug fix to discuss the approach with maintainers and other
+users.”*
+
+ATS should review newly opened issues that propose new features in order
+to:
+
+-  Ensure visibility across teams
+-  Identify opportunities for collaboration
+-  Discuss motivation and technical direction
+-  Propose follow-ups (e.g., GitHub Discussion threads, working groups)
+-  Surface potential concerns early on
+
+Labelling PRs
+=============
+
+Flagging PRs for ATS helps to:
+
+-  Confirm alignment across institutions
+-  Notify users of incoming breaking changes
+-  Invite feedback or raise concerns before merging
+-  Identify if any organisation can contribute additional review
+
+Examples of PRs that should be labeled ``ATS Approval Needed``:
+---------------------------------------------------------------
+
+-  Breaking changes
+
+      -  API changes (e.g., modifying the `open_dataset` interface in
+         `anemoi-datasets`)
+      -  Configuration format changes that are not backward compatible
+         (e.g., new required fields in Pydantic-based configs)
+
+-  Dependency changes:
+
+   -  Introducing new dependencies (especially for inference)
+   -  Bumping major versions (e.g., upgrading `torch` from 2.4 to 2.5,
+      or `zarr` from 2.x to 3.x)
+
+-  Feature deprecation
+
+-  Refactors or features that significantly expand project scope (these
+   should be discussed via an issue first to avoid unmergeable PRs)
+
+Examples of PRs that can be labeled ``ATS Approval Not Needed``:
+----------------------------------------------------------------
+
+-  Hotfixes and general bug fixes [*]_
+
+-  A minor new feature such as:
+
+   -  New callbacks
+   -  Loss functions
+   -  Extensions to metadata lineage in `anemoi-utils`
+   -  New filter in `anemoi-transform`
+   -  New grid types in `anemoi-graphs`
+
+-  Extensions to testing or CI infrastructure [*]_
+
+-  PRs addressing technical debt [*]_
+
+.. [*]
+
+   Assuming those do not imply any breaking changes or dependency changes
+   as explained above
 
 .. _branching-guidelines:
 
@@ -58,7 +163,12 @@ The PR title will become the squash commit message when merged to
    -  ``test``: Adding or modifying tests.
    -  ``chore``: Maintenance tasks.
 
-   Add ``!`` after the type/scope to indicate a breaking change.
+   Add ``!`` after the type/scope to indicate a breaking change. In
+   Anemoi, Breaking changes are considered changes in the API or at
+   config level that are not backward compatible. Note, backward
+   compatibility at checkpoint level is not ensured in Anemoi and we
+   don’t have a flag to specifically raise the PRs affecting
+   checkpoints.
 
 #. Reference relevant issue numbers in commit messages when applicable
    (e.g., "fix: resolve data loading issue #123").
@@ -95,10 +205,32 @@ When submitting Pull Requests (PRs), please follow these guidelines:
 #. Fill the PR template completely, including:
 
    -  Clear description of the changes.
+
    -  Link to related issues using GitHub keywords (e.g., "Fixes #123").
+
    -  List of notable changes.
+
    -  Any breaking changes or deprecations.
+
    -  Testing instructions if applicable.
+
+   -  For ``refactors``, contributors are encouraged to include proof of
+      regression tests or evidence demonstrating that existing
+      functionality remains unaffected when completing the PR template.
+
+   -  For ``new features``, such as loss functions or model blocks,
+      contributors should provide benchmarking results that showcase the
+      added performance or benefits in training ML models, building
+      datasets, or other package-specific tasks.
+
+   -  New features must also include relevant documentation and
+      appropriate test coverage. This may range from unit tests to
+      integration tests when new use cases are introduced. For detailed
+      testing guidelines, refer to the :ref:`testing` section.
+
+   -  It is the **reviewer's responsibility** to ensure that these
+      criteria are met and to request additional information or tests if
+      any of the above elements are missing.
 
 #. Ensure the PR title follows the :ref:`pr-title-guidelines`, as this
    will become the squash commit message when merged to ``main``.
@@ -126,7 +258,33 @@ When submitting Pull Requests (PRs), please follow these guidelines:
 #. After approval:
 
    -  PRs are merged using squash merge to maintain a clean history.
-   -  The squash commit message will use the PR title.
+   -  The squash commit message will use the PR title and the
+      description.
+   -  It is the merger's responsibility to ensure that the commit
+      message is clear and readable, following the PR template.
+
+.. _merging-guidelines:
+
+*********************************
+ Pull Request Merging Guidelines
+*********************************
+
+Once a PR has been reviewed and the appropriate label is in place, the
+following merging rules apply:
+
+-  For PRs labeled ``ATS Approval Not Needed``: The PR can be merged by
+   the reviewer once it has been approved, provided the reviewer is not
+   the original contributor.
+
+-  For PRs labeled ``ATS Approved``: These PRs will be merged by the
+   ``@anemoisecurity`` group after they have been reviewed in the ATS
+   meeting and marked with the ``ATS Approved`` label.
+
+.. note::
+
+   PRs that do not have either label **must not be merged**. When in
+   doubt, apply the ``ATS Approval Needed`` label or consult
+   ``@anemoisecurity`` for guidance.
 
 ***************
  Documentation
@@ -135,6 +293,8 @@ When submitting Pull Requests (PRs), please follow these guidelines:
 Ensure that changes are appropriately documented, both with respect to
 docstrings and more extensive documentation, following the guidelines on
 :ref:`documentation-guidelines`.
+
+.. _testing:
 
 *********
  Testing
