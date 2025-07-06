@@ -39,6 +39,30 @@ Possible uses of *Anemoi* are for developing:
 
 .. __: http://www.apache.org/licenses/LICENSE-2.0.html
 
+####################
+ How to Cite Anemoi
+####################
+
+If you use Anemoi in your work, we recommend you cite the following
+paper as the recommended reference: `Lang, Simon, et al. "AIFS --
+ECMWF's Data-Driven Forecasting System." arXiv, 2024`__.
+
+.. __: https://arxiv.org/pdf/2406.01465
+
+BibTeX:
+
+.. code::
+
+   @article{lang2024aifsecmwfsdatadriven,
+   title={AIFS -- ECMWF's data-driven forecasting system},
+   author={Simon Lang and Mihai Alexe and Matthew Chantry and Jesper Dramsch and Florian Pinault and Baudouin Raoult and Mariana C. A. Clare and Christian Lessig and Michael Maier-Gerber and Linus Magnusson and Zied Ben Bouallègue and Ana Prieto Nemesio and Peter D. Dueben and Andrew Brown and Florian Pappenberger and Florence Rabier},
+   year={2024},
+   eprint={2406.01465},
+   archivePrefix={arXiv},
+   primaryClass={physics.ao-ph},
+   url={https://arxiv.org/abs/2406.01465}
+   }
+
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
@@ -53,6 +77,7 @@ Possible uses of *Anemoi* are for developing:
    :caption: Contributing
 
    contributing/contributing.rst
+   contributing/governance.rst
    contributing/roadmap.rst
    contributing/environment.rst
    contributing/guidelines.rst

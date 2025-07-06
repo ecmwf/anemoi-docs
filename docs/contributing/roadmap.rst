@@ -1,5 +1,3 @@
-.. _roadmap:
-
 #####################
  Development Roadmap
 #####################
@@ -147,3 +145,4 @@ network and discuss shared challenges or feature needs.
 **Join:** `Click here to join the Anemoi Community Meeting on Microsoft
 Teams
 <https://teams.microsoft.com/l/meetup-ajoin/19%3ameeting_OTNjNDNmYWQtYTU0Ny00NDViLThmZjctZmQ1MTg1YjEyZGM0%40thread.v2/0?context=%7b%22Tid%22%3a%2221b711c6-aab7-4d36-9ffb-ac0357bc20ba%22%2c%22Oid%22%3a%225033de80-99cd-43c4-b9e4-f90840044fd6%22%7d>`_
+=======
