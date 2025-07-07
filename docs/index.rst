@@ -78,6 +78,7 @@ BibTeX:
 
    contributing/contributing.rst
    contributing/governance.rst
+   contributing/roadmap.rst
    contributing/environment.rst
    contributing/guidelines.rst
    contributing/code_style.rst
