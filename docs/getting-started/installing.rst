@@ -17,7 +17,7 @@ https://devguide.python.org/versions/
 
    Python 3.9 will be deprecated from the Anemoi Ecosystem before it's
    official End-of-Life (EOL) in October. At the moment Python 3.13 is
-   not support accross the packages, since we have NumPy<2.0 pinned.
+   not supported yet across the packages due to dependency restrictions.
 
 ************
  Installing
