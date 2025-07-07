@@ -1,5 +1,17 @@
 .. _installing:
 
+****************
+ Python Version
+****************
+
+-  Python (> 3.9, <3.13)
+
+Anemoi agrees to follow Python's official releases https://devguide.python.org/versions/
+
+.. note:: 
+   Python 3.9 will be deprecated from the Anemoi Ecosystem before it's official End-of-Life (EOL) in October
+   At the moment 3.13 is not support accross the packages, since we have NumPy<2.0 pinned.
+
 ############
  Installing
 ############
