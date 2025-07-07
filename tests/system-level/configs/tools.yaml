@@ -1,7 +1,11 @@
+# Put here configuration related to environment and tools
+# For a complete list of options, see:
+# https://pyflow-wellies.readthedocs.io/latest/config/tools_config/#tool-types
+ecflow_variables:
+  MODULES_VERSION: "new"
 
 tools:
-
-  # ---------- System modules ---------------------------------------------------
+# ---------- System modules ---------------------------------------------------
   modules:
     python:
       name: python3
@@ -9,7 +13,6 @@ tools:
     uv:
       name: uv
       version: 0.6.14
-
 
   packages:
     anemoi_datasets:
@@ -26,7 +29,6 @@ tools:
       post_script: "git fetch --unshallow && uv pip install --upgrade pip && uv pip install -e ./training[all,tests] -e ./graphs[all,tests] -e ./models[all,tests]"
 
   # --------Virtual envs --------------------------------------------------
-
   environments:
       datasets_env:
         type: venv

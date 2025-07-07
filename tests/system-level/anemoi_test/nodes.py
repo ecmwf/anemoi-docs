@@ -46,10 +46,10 @@ class InitFamily(pf.AnchorFamily):
                 config.tools,
             )
 
-            # setup static data (remote/local copy/link)
-            wl.DeployDataFamily(
-                config.static_data,
-            )
+            # # setup static data (remote/local copy/link)
+            # wl.DeployDataFamily(
+            #     config.static_data,
+            # )
 
 
 class MainFamily(pf.AnchorFamily):
@@ -102,7 +102,8 @@ class TrainingFamily(pf.AnchorFamily):
                 continue
             overrides, task_config = parse_training_directory(config_folder)
 
-            training_output_dir = path.join(config.output_root, "training_output", str(folder))
+            output_root = config.output_root
+            training_output_dir = path.join(output_root, "training_output", str(folder))
             overrides_string = get_overrides_string(overrides, training_output_dir, data_dir)
             training_template = task_config.get("training_template")
 
@@ -125,17 +126,7 @@ class TrainingFamily(pf.AnchorFamily):
 
 class MainSuite(pf.Suite):
     def __init__(self, config, **kwargs):
-
-        # add your execution limits here
-        limits = {
-            "work": 20,
-        }
-
-        labels = {"info": "this is the anemoi test suite"}
-
-        super().__init__(limits=limits, labels=labels, defstatus=pf.state.suspended, **kwargs)
-
-        limits = {k: getattr(self, k) for k in limits.keys()}
+        super().__init__(defstatus=pf.state.suspended, **kwargs)
 
         with self:
 
