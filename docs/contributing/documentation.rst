@@ -98,6 +98,10 @@ documentation has been built successfully:
 
 The generated documentation will be in `docs/_build/html/index.html`.
 
+.. note::
+
+   To build the docs locally, you will need Python 3.11 or greater.
+
 Viewing the Documentation
 =========================
 
