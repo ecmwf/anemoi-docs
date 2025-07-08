@@ -16,6 +16,11 @@ on:
         description: Number of ensemble members.
         required: false
         default: 1
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - develop
 
 jobs:
   integration_test:
@@ -26,6 +31,6 @@ jobs:
       build_options: ""
     secrets:
       gh_token: ${{ secrets.GH_REPO_READ_TOKEN }}
-      troika_user: ${{ secrets.HPC_CI_INTEGRATION_USER }}
-      ecflow_host: ${{ secrets.HPC_CI_ECFLOW_SERVER }}
-      ecflow_port: ${{ secrets.HPC_CI_ECFLOW_PORT }}
+      troika_user: ${{ secrets.HPC_SYSTEM_TEST_USER }}
+      ecflow_host: ${{ secrets.HPC_SYSTEM_TEST_HOST }}
+      ecflow_port: ${{ secrets.HPC_SYSTEM_TEST_PORT }}
