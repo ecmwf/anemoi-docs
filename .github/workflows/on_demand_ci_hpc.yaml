@@ -1,0 +1,31 @@
+name: on-demand-integration-test
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+    inputs:
+      config_name:
+        description: Configuration name to use for the suite.
+        required: true
+        default: user
+      limit_workers:
+        description: Number of maximum workers.
+        required: true
+        default: 2
+      ens_members:
+        description: Number of ensemble members.
+        required: false
+        default: 1
+
+jobs:
+  integration_test:
+    uses: ./.github/workflows/system_level_test.yaml
+    with:
+      suite_name: anemoi_test_${{ github.triggering_actor }}
+      config_name: ${{ inputs.config_name }}
+      build_options: ""
+    secrets:
+      gh_token: ${{ secrets.GH_REPO_READ_TOKEN }}
+      troika_user: ${{ secrets.HPC_CI_INTEGRATION_USER }}
+      ecflow_host: ${{ secrets.HPC_CI_ECFLOW_SERVER }}
+      ecflow_port: ${{ secrets.HPC_CI_ECFLOW_PORT }}

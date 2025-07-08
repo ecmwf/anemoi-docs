@@ -1,0 +1,101 @@
+name: integration-test
+description: |
+  A Github workflow to build, deploy, run and check that a suite
+  finished well on an ecflow server.
+
+on:
+  workflow_call:
+    inputs:
+      config_name:
+        required: true
+        type: string
+      build_options:
+        required: true
+        type: string
+      suite_name:
+        required: true
+        type: string
+    secrets:
+      gh_token:
+        required: true
+      troika_user:
+        required: true
+      ecflow_host:
+        required: true
+      ecflow_port:
+        required: true
+
+jobs:
+  build_and_deploy:
+    runs-on: hpc
+    name: Build and deploy
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and deploy the suite
+        uses: ./.github/actions/build_and_deploy
+        with:
+          sbatch_options: |
+            #SBATCH --job-name=anemoi_test_build_deploy
+            #SBATCH --time=00:10:00
+            #SBATCH --qos=nf
+          site: hpc-batch
+          troika_user: ${{ secrets.troika_user }}
+          github_token: ${{ secrets.gh_token }}
+          ecflow_host: ${{ secrets.ecflow_host }}
+          ecflow_port: ${{ secrets.ecflow_port }}
+          suite_name: ${{ inputs.suite_name }}
+          config_name: ${{ inputs.config_name }}
+          build_options: ${{ inputs.build_options }}
+  run:
+    runs-on: hpc
+    name: Run
+    needs: build_and_deploy
+    steps:
+      - name: Run the suite
+        uses: ecmwf-actions/reusable-workflows/hpc/ecflow/run-suite@v2
+        with:
+          sbatch_options: |
+            #SBATCH --job-name=anemoi_test_build
+            #SBATCH --time=00:10:00
+            #SBATCH --qos=nf
+          site: hpc-batch
+          troika_user: ${{ secrets.troika_user }}
+          suite_name: ${{ inputs.suite_name }}
+          ecflow_host: ${{ secrets.ecflow_host }}
+          ecflow_port: ${{ secrets.ecflow_port }}
+  monitor:
+    runs-on: hpc
+    name: Check completion
+    needs: run
+    steps:
+      - name: Check that the suite is complete
+        uses: ecmwf-actions/reusable-workflows/hpc/ecflow/wait-for-ecflow-suite-to-complete@v2
+        with:
+          sbatch_options: |
+            #SBATCH --job-name=anemoi_test_monitor
+            #SBATCH --time=01:00:00
+            #SBATCH --qos=nf
+          site: hpc-batch
+          troika_user: ${{ secrets.troika_user }}
+          suite_name: ${{ inputs.suite_name }}
+          ecflow_host: ${{ secrets.ecflow_host }}
+          ecflow_port: ${{ secrets.ecflow_port }}
+          delay: 60
+          timeout: 3600
+  clean:
+    runs-on: hpc
+    name: Clean
+    needs: monitor
+    steps:
+      - name: Clean the suite
+        uses: ecmwf-actions/reusable-workflows/hpc/ecflow/remove-suite@v2
+        with:
+          sbatch_options: |
+            #SBATCH --job-name=anemoi_test_clean
+            #SBATCH --time=00:10:00
+            #SBATCH --qos=nf
+          site: hpc-batch
+          troika_user: ${{ secrets.troika_user }}
+          suite_name: ${{ inputs.suite_name }}
+          ecflow_host: ${{ secrets.ecflow_host }}
+          ecflow_port: ${{ secrets.ecflow_port }}
