@@ -82,6 +82,28 @@ jobs:
           ecflow_port: ${{ secrets.ecflow_port }}
           delay: 60
           timeout: 3600
+  print_results:
+    runs-on: hpc
+    name: Print results
+    needs: monitor
+    steps:
+      - name: Print results
+        uses: ecmwf-actions/reusable-workflows/ci-hpc-generic@v2
+        with:
+          template: |
+            set -eux
+            echo "Job is running on ${{ runner.os }}"
+
+            # Load modules of interest
+            module load wellies
+
+            python3 /home/macw/git/tracksuite/tracksuite/print.py ${{ secrets.ecflow_host }} ${{ inputs.suite_name }} >> $GITHUB_STEP_SUMMARY
+          sbatch_options: |
+            #SBATCH --job-name=anemoi_test_print_results
+            #SBATCH --time=00:10:00
+            #SBATCH --qos=nf
+          site: hpc-batch
+          troika_user: ${{ secrets.troika_user }}
   clean:
     runs-on: hpc
     name: Clean
