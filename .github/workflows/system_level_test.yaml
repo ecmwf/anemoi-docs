@@ -1,4 +1,4 @@
-name: integration-test
+name: system-level-test
 description: |
   A Github workflow to build, deploy, run and check that a suite
   finished well on an ecflow server.

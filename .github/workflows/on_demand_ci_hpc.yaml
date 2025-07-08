@@ -1,4 +1,4 @@
-name: on-demand-integration-test
+name: on-demand-system-level-test
 
 # Controls when the workflow will run
 on:
@@ -23,7 +23,7 @@ on:
       - develop
 
 jobs:
-  integration_test:
+  system_level_test:
     uses: ./.github/workflows/system_level_test.yaml
     with:
       suite_name: anemoi_test_${{ github.triggering_actor }}
@@ -31,6 +31,6 @@ jobs:
       build_options: ""
     secrets:
       gh_token: ${{ secrets.GH_REPO_READ_TOKEN }}
-      troika_user: ${{ secrets.HPC_SYSTEM_TEST_USER }}
-      ecflow_host: ${{ secrets.HPC_SYSTEM_TEST_HOST }}
+      troika_user: ${{ secrets.HPC_CI_INTEGRATION_USER }}
+      ecflow_host: ${{ secrets.HPC_CI_INTEGRATION_HOST }}
       ecflow_port: ${{ secrets.HPC_SYSTEM_TEST_PORT }}
