@@ -98,7 +98,7 @@ jobs:
             # Load modules of interest
             module load wellies
 
-            python3 /home/macw/git/tracksuite/tracksuite/print.py --host ${{ secrets.ecflow_host }} ${{ inputs.suite_name }} >> $GITHUB_STEP_SUMMARY
+            python3 /home/dmos/print.py --host ${{ secrets.ecflow_host }} ${{ inputs.suite_name }} >> $GITHUB_STEP_SUMMARY
           sbatch_options: |
             #SBATCH --job-name=anemoi_test_print_results
             #SBATCH --time=00:10:00
