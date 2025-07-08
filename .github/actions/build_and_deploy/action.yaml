@@ -50,6 +50,7 @@ runs:
           PACKAGE_BRANCH=${{ github.head_ref || github.ref_name }}
           git clone -b $PACKAGE_BRANCH https://${{ inputs.github_token }}@github.com/ecmwf/${PACKAGE_NAME}.git
           cd $PACKAGE_NAME
+          cd tests/system-level
 
           # Set ecflow server variables
           export ECF_HOST=${{ inputs.ecflow_host }}
