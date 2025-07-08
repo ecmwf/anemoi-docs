@@ -107,7 +107,7 @@ jobs:
   clean:
     runs-on: hpc
     name: Clean
-    needs: monitor
+    needs: print_results
     steps:
       - name: Clean the suite
         uses: ecmwf-actions/reusable-workflows/hpc/ecflow/remove-suite@v2
