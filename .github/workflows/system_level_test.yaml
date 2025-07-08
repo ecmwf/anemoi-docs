@@ -103,6 +103,7 @@ jobs:
             #SBATCH --job-name=anemoi_test_print_results
             #SBATCH --time=00:10:00
             #SBATCH --qos=nf
+            #SBATCH --export=GITHUB_STEP_SUMMARY=$GITHUB_STEP_SUMMARY
           site: hpc-batch
           troika_user: ${{ secrets.troika_user }}
   # clean:
