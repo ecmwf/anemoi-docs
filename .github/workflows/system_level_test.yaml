@@ -105,21 +105,21 @@ jobs:
             #SBATCH --qos=nf
           site: hpc-batch
           troika_user: ${{ secrets.troika_user }}
-  clean:
-    runs-on: hpc
-    name: Clean
-    needs: print_results
-    if: always()
-    steps:
-      - name: Clean the suite
-        uses: ecmwf-actions/reusable-workflows/hpc/ecflow/remove-suite@v2
-        with:
-          sbatch_options: |
-            #SBATCH --job-name=anemoi_test_clean
-            #SBATCH --time=00:10:00
-            #SBATCH --qos=nf
-          site: hpc-batch
-          troika_user: ${{ secrets.troika_user }}
-          suite_name: ${{ inputs.suite_name }}
-          ecflow_host: ${{ secrets.ecflow_host }}
-          ecflow_port: ${{ secrets.ecflow_port }}
+  # clean:
+  #   runs-on: hpc
+  #   name: Clean
+  #   needs: print_results
+  #   if: always()
+  #   steps:
+  #     - name: Clean the suite
+  #       uses: ecmwf-actions/reusable-workflows/hpc/ecflow/remove-suite@v2
+  #       with:
+  #         sbatch_options: |
+  #           #SBATCH --job-name=anemoi_test_clean
+  #           #SBATCH --time=00:10:00
+  #           #SBATCH --qos=nf
+  #         site: hpc-batch
+  #         troika_user: ${{ secrets.troika_user }}
+  #         suite_name: ${{ inputs.suite_name }}
+  #         ecflow_host: ${{ secrets.ecflow_host }}
+  #         ecflow_port: ${{ secrets.ecflow_port }}
