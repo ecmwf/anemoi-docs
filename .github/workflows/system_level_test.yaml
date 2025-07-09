@@ -111,7 +111,7 @@ jobs:
             # Load modules of interest
             module load wellies
 
-            python3 /home/dmos/print.py /anemoi_tests/${{ inputs.suite_name }} --host ${{ secrets.ecflow_host }}
+            python3 /home/dmos/print.py /anemoi_tests/${{ inputs.suite_name }} --host ${{ secrets.ecflow_host }} >> /scratch/${{ secrets.troika_user }}/anemoi_tests/${{ inputs.suite_name }}/summary.txt
           sbatch_options: |
             #SBATCH --job-name=anemoi_test_print_results
             #SBATCH --time=00:10:00
@@ -119,6 +119,14 @@ jobs:
             #SBATCH --export=GITHUB_STEP_SUMMARY=$GITHUB_STEP_SUMMARY
           site: hpc-batch
           troika_user: ${{ secrets.troika_user }}
+  print:
+    runs-on: ubuntu-latest
+    name: Summary
+    needs: print
+    steps:
+      - name: Print summary
+        run: |
+          scp ${{ secrets.troika_user }}@hpc-login:/scratch/${{ secrets.troika_user }}/anemoi_tests/${{ inputs.suite_name }}/summary.txt $GITHUB_STEP_SUMMARY
   clean:
     runs-on: hpc
     name: Clean
