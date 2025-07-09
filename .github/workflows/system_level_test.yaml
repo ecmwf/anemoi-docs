@@ -85,7 +85,7 @@ jobs:
   print_results:
     runs-on: hpc
     name: Print results
-    needs: 
+    needs:
       - build_and_deploy
       - monitor
     if: needs.build_and_deploy.result == 'success'
