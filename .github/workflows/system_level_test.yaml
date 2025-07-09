@@ -99,7 +99,7 @@ jobs:
     needs:
       - deploy
       - monitor
-    if: needs.build_and_deploy.result == 'success'
+    if: needs.deploy.result == 'success'
     steps:
       - name: Print results
         uses: ecmwf/reusable-workflows/ci-hpc-generic@v2
