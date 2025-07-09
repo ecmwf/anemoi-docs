@@ -60,7 +60,7 @@ jobs:
             #SBATCH --qos=nf
           site: hpc-batch
           troika_user: ${{ secrets.troika_user }}
-          suite_name: ${{ inputs.suite_name }}
+          suite_name: anemoi_tests/${{ inputs.suite_name }}
           ecflow_host: ${{ secrets.ecflow_host }}
           ecflow_port: ${{ secrets.ecflow_port }}
   monitor:
@@ -77,7 +77,7 @@ jobs:
             #SBATCH --qos=nf
           site: hpc-batch
           troika_user: ${{ secrets.troika_user }}
-          suite_name: ${{ inputs.suite_name }}
+          suite_name: anemoi_tests/${{ inputs.suite_name }}
           ecflow_host: ${{ secrets.ecflow_host }}
           ecflow_port: ${{ secrets.ecflow_port }}
           delay: 60
@@ -85,8 +85,10 @@ jobs:
   print_results:
     runs-on: hpc
     name: Print results
-    needs: monitor
-    if: always()
+    needs: 
+      - build_and_deploy
+      - monitor
+    if: needs.build_and_deploy.result == 'success'
     steps:
       - name: Print results
         uses: ecmwf-actions/reusable-workflows/ci-hpc-generic@v2
@@ -106,21 +108,23 @@ jobs:
             #SBATCH --export=GITHUB_STEP_SUMMARY=$GITHUB_STEP_SUMMARY
           site: hpc-batch
           troika_user: ${{ secrets.troika_user }}
-  # clean:
-  #   runs-on: hpc
-  #   name: Clean
-  #   needs: print_results
-  #   if: always()
-  #   steps:
-  #     - name: Clean the suite
-  #       uses: ecmwf-actions/reusable-workflows/hpc/ecflow/remove-suite@v2
-  #       with:
-  #         sbatch_options: |
-  #           #SBATCH --job-name=anemoi_test_clean
-  #           #SBATCH --time=00:10:00
-  #           #SBATCH --qos=nf
-  #         site: hpc-batch
-  #         troika_user: ${{ secrets.troika_user }}
-  #         suite_name: ${{ inputs.suite_name }}
-  #         ecflow_host: ${{ secrets.ecflow_host }}
-  #         ecflow_port: ${{ secrets.ecflow_port }}
+  clean:
+    runs-on: hpc
+    name: Clean
+    needs:
+      - monitor
+      - print_results
+    if: needs.monitor.result == 'success'
+    steps:
+      - name: Clean the suite
+        uses: ecmwf-actions/reusable-workflows/hpc/ecflow/remove-suite@v2
+        with:
+          sbatch_options: |
+            #SBATCH --job-name=anemoi_test_clean
+            #SBATCH --time=00:10:00
+            #SBATCH --qos=nf
+          site: hpc-batch
+          troika_user: ${{ secrets.troika_user }}
+          suite_name: anemoi_tests/${{ inputs.suite_name }}
+          ecflow_host: ${{ secrets.ecflow_host }}
+          ecflow_port: ${{ secrets.ecflow_port }}
