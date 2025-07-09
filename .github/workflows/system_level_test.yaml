@@ -111,6 +111,7 @@ jobs:
             # Load modules of interest
             module load wellies
 
+            mkdir -p /scratch/${{ secrets.troika_user }}/anemoi_tests/${{ inputs.suite_name }}
             python3 /home/dmos/print.py /anemoi_tests/${{ inputs.suite_name }} --host ${{ secrets.ecflow_host }} >> /scratch/${{ secrets.troika_user }}/anemoi_tests/${{ inputs.suite_name }}/summary.txt
           sbatch_options: |
             #SBATCH --job-name=anemoi_test_print_results
