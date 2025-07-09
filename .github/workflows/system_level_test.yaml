@@ -124,6 +124,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Summary
     needs: print
+    if: needs.print.result == 'success'
     steps:
       - name: Print summary
         run: |
