@@ -119,7 +119,7 @@ jobs:
             #SBATCH --export=GITHUB_STEP_SUMMARY=$GITHUB_STEP_SUMMARY
           site: hpc-batch
           troika_user: ${{ secrets.troika_user }}
-  print:
+  summary:
     runs-on: ubuntu-latest
     name: Summary
     needs: print
