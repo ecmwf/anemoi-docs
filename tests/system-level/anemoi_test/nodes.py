@@ -74,7 +74,7 @@ class CreateDatasetFamily(pf.AnchorFamily):
             if not path.exists(config_file_path):
                 raise FileNotFoundError(f"Config file not found: {config_file_path}")
 
-            output_path = path.join(config.data_dir, folder + ".zarr")
+            output_path = path.join("$DATA_DIR", folder + ".zarr")
 
             create_command = f"anemoi-datasets create {config_file_path} {output_path} --overwrite"
             with self:
@@ -93,7 +93,7 @@ class TrainingFamily(pf.AnchorFamily):
     def __init__(self, config, dataset_completions={}, **kwargs):
         super().__init__(name="training", **kwargs)
         training_config_dir = path.join(SUITE_DIR, "configs/training")
-        data_dir = config.data_dir
+        data_dir = "$DATA_DIR"
         self.dataset_completions = dataset_completions
 
         for folder in os.listdir(training_config_dir):
@@ -102,7 +102,7 @@ class TrainingFamily(pf.AnchorFamily):
                 continue
             overrides, task_config = parse_training_directory(config_folder)
 
-            output_root = config.output_root
+            output_root = "$OUTPUT_ROOT"
             training_output_dir = path.join(output_root, "training_output", str(folder))
             overrides_string = get_overrides_string(overrides, training_output_dir, data_dir)
             training_template = task_config.get("training_template")
@@ -124,7 +124,7 @@ class TrainingFamily(pf.AnchorFamily):
                 training.triggers &= dataset_completion
 
 
-class MainSuite(pf.Suite):
+class MainSuite(pf.Family):
     def __init__(self, config, **kwargs):
         super().__init__(defstatus=pf.state.suspended, **kwargs)
 

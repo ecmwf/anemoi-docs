@@ -26,7 +26,7 @@ jobs:
   system_level_test:
     uses: ./.github/workflows/system_level_test.yaml
     with:
-      suite_name: anemoi_test_${{ github.triggering_actor }}
+      suite_name: ${{ github.triggering_actor }}
       config_name: ${{ inputs.config_name }}
       build_options: ""
     secrets:

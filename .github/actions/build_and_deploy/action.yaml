@@ -58,10 +58,10 @@ runs:
 
           # Build the suite definition file
           BUILD_DIR=${SCRATCHDIR}/pyflow/${{ inputs.suite_name }}/build
-          ./build.sh user --build_dir $BUILD_DIR -s name=${{ inputs.suite_name }} ${{ inputs.build_options }} -y
+          ./build.sh user -s name=${{ inputs.suite_name }} ${{ inputs.build_options }} -y
 
           # Deploy the suite. If a suite is already running it will fail. User should deal with its zombies
-          ecflow_client --replace=/${{ inputs.suite_name }} $BUILD_DIR/staging/${{ inputs.suite_name }}.def
+          ecflow_client --replace=/anemoi_tests/${{ inputs.suite_name }} $HOME/pyflow/anemoi_tests/${{ inputs.suite_name }}/${{ inputs.suite_name }}.def
         sbatch_options: ${{ inputs.sbatch_options }}
         troika_user: ${{ inputs.troika_user }}
         site: ${{ inputs.site }}

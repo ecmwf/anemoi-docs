@@ -16,6 +16,7 @@ import logging
 from anemoi_test.config import Config
 from anemoi_test.nodes import MainSuite
 
+import pyflow as pf
 import wellies as wl
 from wellies.show_versions import show_versions
 
@@ -38,15 +39,16 @@ if __name__ == "__main__":
     ecflow_server = config.ecflow_server
 
     logger.debug("Initialising Suite instance")
-    suite = MainSuite(
-        config,
-        name=config.name,
-        host=config.host,
-        files=ecflow_server.deploy_dir,
-        variables=config.suite_variables,
-        limits=config.limits,
-        labels=config.labels,
-    )
+    # Empty top level suite to allow group/user structure on ecflow server
+    with pf.Suite(config.group, files=ecflow_server.deploy_dir) as suite:
+        MainSuite(
+            config,
+            name=config.name,
+            host=config.host,
+            variables=config.suite_variables,
+            limits=config.limits,
+            labels=config.labels,
+        )
 
     # Deploy suite scripts and definition file
     logger.info(f"Deploying suite to {ecflow_server.hostname}:{ecflow_server.deploy_dir}")
