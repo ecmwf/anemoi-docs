@@ -128,7 +128,7 @@ jobs:
     steps:
       - name: Print summary
         run: |
-          scp ${{ secrets.troika_user }}@hpc-login:/scratch/${{ secrets.troika_user }}/anemoi_tests/${{ inputs.suite_name }}/summary.txt $GITHUB_STEP_SUMMARY
+          scp ${{ secrets.troika_user }}@hpc-batch:/scratch/${{ secrets.troika_user }}/anemoi_tests/${{ inputs.suite_name }}/summary.txt $GITHUB_STEP_SUMMARY
   clean:
     runs-on: hpc
     name: Clean
