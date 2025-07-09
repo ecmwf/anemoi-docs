@@ -112,7 +112,7 @@ jobs:
             module load wellies
 
             mkdir -p /scratch/${{ secrets.troika_user }}/anemoi_tests/${{ inputs.suite_name }}
-            python3 /home/dmos/print.py /anemoi_tests/${{ inputs.suite_name }} --host ${{ secrets.ecflow_host }} >> /scratch/${{ secrets.troika_user }}/anemoi_tests/${{ inputs.suite_name }}/summary.txt
+            python3 /home/dmos/print.py /anemoi_tests/${{ inputs.suite_name }} --host ${{ secrets.ecflow_host }} >> /scratch/${{ secrets.troika_user }}/anemoi_tests/${{ inputs.suite_name }}/summary.md
           sbatch_options: |
             #SBATCH --job-name=anemoi_test_print_results
             #SBATCH --time=00:10:00
@@ -121,14 +121,14 @@ jobs:
           site: hpc-batch
           troika_user: ${{ secrets.troika_user }}
   summary:
-    runs-on: ubuntu-latest
+    runs-on: hpc
     name: Summary
     needs: print
     if: always() && needs.print.result == 'success'
     steps:
       - name: Print summary
         run: |
-          scp ${{ secrets.troika_user }}@hpc-batch:/scratch/${{ secrets.troika_user }}/anemoi_tests/${{ inputs.suite_name }}/summary.txt $GITHUB_STEP_SUMMARY
+          scp ${{ secrets.troika_user }}@hpc-batch:/scratch/${{ secrets.troika_user }}/anemoi_tests/${{ inputs.suite_name }}/summary.md $GITHUB_STEP_SUMMARY
   clean:
     runs-on: hpc
     name: Clean
