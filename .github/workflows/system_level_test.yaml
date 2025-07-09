@@ -51,25 +51,38 @@ jobs:
     name: Run
     needs: deploy
     steps:
-      - name: Run the suite
-        uses: ecmwf-actions/reusable-workflows/hpc/ecflow/run-suite@v2
-        with:
-          sbatch_options: |
+    - name: Run suite from ecflow server
+      uses: ecmwf/reusable-workflows/ci-hpc-generic@v2
+      with:
+        template: |
+          set -eux
+          echo "Job is running on ${{ runner.os }}"
+
+          # Load modules of interest
+          module load ecflow
+
+          # Set ecflow server variables
+          export ECF_HOST=${{ inputs.ecflow_host }}
+          export ECF_PORT=${{ inputs.ecflow_port }}
+
+          # Run the suite
+          ecflow_client --begin=/anemoi_tests
+          ecflow_client --resume=/anemoi_tests/${{ inputs.suite_name }}
+        sbatch_options: |
             #SBATCH --job-name=anemoi_test_build
             #SBATCH --time=00:10:00
             #SBATCH --qos=nf
-          site: hpc-batch
-          troika_user: ${{ secrets.troika_user }}
-          suite_name: anemoi_tests/${{ inputs.suite_name }}
-          ecflow_host: ${{ secrets.ecflow_host }}
-          ecflow_port: ${{ secrets.ecflow_port }}
+        troika_user: ${{ inputs.troika_user }}
+        ecflow_host: ${{ secrets.ecflow_host }}
+        ecflow_port: ${{ secrets.ecflow_port }}
+        site: hpc-batch
   monitor:
     runs-on: hpc
     name: Monitor
     needs: run
     steps:
       - name: Check that the suite is complete
-        uses: ecmwf-actions/reusable-workflows/hpc/ecflow/wait-for-ecflow-suite-to-complete@v2
+        uses: ecmwf/reusable-workflows/hpc/ecflow/wait-for-ecflow-suite-to-complete@v2
         with:
           sbatch_options: |
             #SBATCH --job-name=anemoi_test_monitor
@@ -91,7 +104,7 @@ jobs:
     if: needs.build_and_deploy.result == 'success'
     steps:
       - name: Print results
-        uses: ecmwf-actions/reusable-workflows/ci-hpc-generic@v2
+        uses: ecmwf/reusable-workflows/ci-hpc-generic@v2
         with:
           template: |
             set -eux
@@ -117,7 +130,7 @@ jobs:
     if: needs.monitor.result == 'success'
     steps:
       - name: Clean the suite
-        uses: ecmwf-actions/reusable-workflows/hpc/ecflow/remove-suite@v2
+        uses: ecmwf/reusable-workflows/hpc/ecflow/remove-suite@v2
         with:
           sbatch_options: |
             #SBATCH --job-name=anemoi_test_clean
