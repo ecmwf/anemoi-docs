@@ -32,7 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build and deploy the suite
-        uses: ./.github/actions/build_and_deploy
+        uses: ./.github/actions/deploy
         with:
           sbatch_options: |
             #SBATCH --job-name=anemoi_test_build_deploy
