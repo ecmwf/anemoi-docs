@@ -51,8 +51,8 @@ jobs:
     name: Run
     needs: deploy
     steps:
-    - name: Run suite from ecflow server
-      uses: ecmwf/reusable-workflows/ci-hpc-generic@v2
+    - uses: ecmwf/reusable-workflows/ci-hpc-generic@v2
+      name: Run suite from ecflow server
       with:
         template: |
           set -eux
@@ -62,8 +62,8 @@ jobs:
           module load ecflow
 
           # Set ecflow server variables
-          export ECF_HOST=${{ inputs.ecflow_host }}
-          export ECF_PORT=${{ inputs.ecflow_port }}
+          export ECF_HOST=${{ secrets.ecflow_host }}
+          export ECF_PORT=${{ secrets.ecflow_port }}
 
           # Run the suite
           ecflow_client --begin=/anemoi_tests
@@ -72,9 +72,7 @@ jobs:
             #SBATCH --job-name=anemoi_test_build
             #SBATCH --time=00:10:00
             #SBATCH --qos=nf
-        troika_user: ${{ inputs.troika_user }}
-        ecflow_host: ${{ secrets.ecflow_host }}
-        ecflow_port: ${{ secrets.ecflow_port }}
+        troika_user: ${{ secrets.troika_user }}
         site: hpc-batch
   monitor:
     runs-on: hpc
