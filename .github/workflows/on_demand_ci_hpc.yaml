@@ -23,10 +23,22 @@ on:
       - develop
 
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      suite_name: ${{ steps.normalize.outputs.suite_name }}
+    steps:
+      - name: Normalize suite_name
+        id: normalize
+        run: echo "suite_name=${GITHUB_TRIGGERING_ACTOR//-/_}" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TRIGGERING_ACTOR: ${{ github.triggering_actor }}
+
   system_level_test:
+    needs: prepare
     uses: ./.github/workflows/system_level_test.yaml
     with:
-      suite_name: ${{ github.triggering_actor }}
+      suite_name: ${{ needs.prepare.outputs.suite_name }}
       config_name: ${{ inputs.config_name }}
       build_options: ""
     secrets:
