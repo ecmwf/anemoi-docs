@@ -1,4 +1,4 @@
-name: build-deploy-suite
+name: deploy-suite
 description: |
   A Github action to build and deploy a suite deployed on an ecflow server.
 inputs:

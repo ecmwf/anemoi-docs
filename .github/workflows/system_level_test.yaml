@@ -26,9 +26,9 @@ on:
         required: true
 
 jobs:
-  build_and_deploy:
+  deploy:
     runs-on: hpc
-    name: Build and deploy
+    name: Deploy
     steps:
       - uses: actions/checkout@v4
       - name: Build and deploy the suite
@@ -49,7 +49,7 @@ jobs:
   run:
     runs-on: hpc
     name: Run
-    needs: build_and_deploy
+    needs: deploy
     steps:
       - name: Run the suite
         uses: ecmwf-actions/reusable-workflows/hpc/ecflow/run-suite@v2
@@ -65,7 +65,7 @@ jobs:
           ecflow_port: ${{ secrets.ecflow_port }}
   monitor:
     runs-on: hpc
-    name: Check completion
+    name: Monitor
     needs: run
     steps:
       - name: Check that the suite is complete
@@ -82,11 +82,11 @@ jobs:
           ecflow_port: ${{ secrets.ecflow_port }}
           delay: 60
           timeout: 3600
-  print_results:
+  print:
     runs-on: hpc
-    name: Print results
+    name: Print
     needs: 
-      - build_and_deploy
+      - deploy
       - monitor
     if: needs.build_and_deploy.result == 'success'
     steps:
@@ -113,7 +113,7 @@ jobs:
     name: Clean
     needs:
       - monitor
-      - print_results
+      - print
     if: needs.monitor.result == 'success'
     steps:
       - name: Clean the suite
