@@ -25,3 +25,6 @@ ecflow_variables:
   OUTPUT_ROOT: "{SCRATCH}/{group}/{name}"
   LIB_DIR: "%OUTPUT_ROOT%/local"
   DATA_DIR: "%OUTPUT_ROOT%/data"
+
+anemoi_datasets_branch: "main"  # Branch for anemoi-datasets
+anemoi_training_branch: "main"  # Branch for anemoi-training
