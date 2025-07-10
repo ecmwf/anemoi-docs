@@ -31,6 +31,6 @@ jobs:
       build_options: ""
     secrets:
       gh_token: ${{ secrets.GH_REPO_READ_TOKEN }}
-      troika_user: ${{ secrets.HPC_CI_INTEGRATION_USER }}
-      ecflow_host: ${{ secrets.HPC_CI_INTEGRATION_HOST }}
+      troika_user: ${{ secrets.HPC_SYSTEM_TEST_USER }}
+      ecflow_host: ${{ secrets.HPC_SYSTEM_TEST_HOST }}
       ecflow_port: ${{ secrets.HPC_SYSTEM_TEST_PORT }}
