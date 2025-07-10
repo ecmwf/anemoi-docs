@@ -3,3 +3,4 @@ user:
   - configs/user.yaml
   - configs/host.yaml
   - configs/tools.yaml
+  - configs/data.yaml

@@ -1,0 +1,5 @@
+static_data:
+  anemoi_docs_repo:
+    type: git
+    source: "git@github.com:ecmwf/anemoi-docs.git"
+    branch: test/system-level-prototype-ecflow #TODO get relevant branch from main config -- should be the same as the one we use to build the suite

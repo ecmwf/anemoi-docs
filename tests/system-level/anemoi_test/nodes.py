@@ -46,10 +46,10 @@ class InitFamily(pf.AnchorFamily):
                 config.tools,
             )
 
-            # # setup static data (remote/local copy/link)
-            # wl.DeployDataFamily(
-            #     config.static_data,
-            # )
+            # setup static data (remote/local copy/link)
+            wl.DeployDataFamily(
+                config.static_data,
+            )
 
 
 class MainFamily(pf.AnchorFamily):
@@ -64,19 +64,20 @@ class CreateDatasetFamily(pf.AnchorFamily):
     def __init__(self, config, **kwargs):
         super().__init__(name="datasets", **kwargs)
         dataset_config_dir = path.join(SUITE_DIR, "configs/datasets")
+        static_data_dir = "$DATA_DIR/anemoi_docs_repo/tests/system-level/anemoi_test/configs/datasets"
         completions = {}
 
         for folder in os.listdir(dataset_config_dir):
-            config_folder = path.join(dataset_config_dir, folder)
-            if not path.isdir(config_folder):
+            local_config_folder = path.join(dataset_config_dir, folder)
+            if not path.isdir(local_config_folder):
                 continue
-            config_file_path = path.join(config_folder, "dataset_config.yaml")
-            if not path.exists(config_file_path):
-                raise FileNotFoundError(f"Config file not found: {config_file_path}")
+            if not path.exists(path.join(local_config_folder, "dataset_config.yaml")):
+                raise FileNotFoundError(f"Config file not found: {local_config_folder}/dataset_config.yaml")
 
+            config_file_path = path.join(static_data_dir, folder, "dataset_config.yaml")
             output_path = path.join("$DATA_DIR", folder + ".zarr")
-
             create_command = f"anemoi-datasets create {config_file_path} {output_path} --overwrite"
+
             with self:
                 create = pf.Task(
                     name=folder.replace("-", "_"),
@@ -118,6 +119,7 @@ class TrainingFamily(pf.AnchorFamily):
                 )
 
             required_datasets = task_config.get("datasets", [])
+            print(self.dataset_completions)
             required_datasets_completions = [self.dataset_completions[dataset] for dataset in required_datasets]
             training.triggers = required_datasets_completions[0]
             for dataset_completion in required_datasets_completions[1:]:
