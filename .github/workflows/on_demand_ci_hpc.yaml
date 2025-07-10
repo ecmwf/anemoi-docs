@@ -1,0 +1,48 @@
+name: on-demand-system-level-test
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+    inputs:
+      config_name:
+        description: Configuration name to use for the suite.
+        required: true
+        default: user
+      limit_workers:
+        description: Number of maximum workers.
+        required: true
+        default: 2
+      ens_members:
+        description: Number of ensemble members.
+        required: false
+        default: 1
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - develop
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      suite_name: ${{ steps.normalize.outputs.suite_name }}
+    steps:
+      - name: Normalize suite_name
+        id: normalize
+        run: echo "suite_name=${GITHUB_TRIGGERING_ACTOR//-/_}" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TRIGGERING_ACTOR: ${{ github.triggering_actor }}
+
+  system_level_test:
+    needs: prepare
+    uses: ./.github/workflows/system_level_test.yaml
+    with:
+      suite_name: ${{ needs.prepare.outputs.suite_name }}
+      config_name: ${{ inputs.config_name }}
+      build_options: ""
+    secrets:
+      gh_token: ${{ secrets.GH_REPO_READ_TOKEN }}
+      troika_user: ${{ secrets.HPC_SYSTEM_TEST_USER }}
+      ecflow_host: ${{ secrets.HPC_SYSTEM_TEST_HOST }}
+      ecflow_port: ${{ secrets.HPC_SYSTEM_TEST_PORT }}

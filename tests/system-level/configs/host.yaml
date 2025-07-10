@@ -1,0 +1,13 @@
+host:
+  hostname: "hpc"
+  user: "{USER}"
+  log_directory: "%ECF_HOME%"
+  workdir: "$TMPDIR"
+  submit_arguments:
+    defaults:
+      queue: nf
+      memory_per_cpu: 8Gb
+      job_name: "%FAMILY1:NOT_DEF%_%TASK%"
+      tmpdir_size: 20Gb
+    sequential:
+      total_tasks: 1
