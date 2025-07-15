@@ -100,8 +100,12 @@ The generated documentation will be in `docs/_build/html/index.html`.
 
 .. note::
 
+<<<<<<< HEAD
    When trying to build the docs locally with versions of Sphinx =>8.2,
    an environment with Python 3.11 or greater is required.
+=======
+   To build the docs locally, you will need Python 3.11 or greater.
+>>>>>>> main
 
 Viewing the Documentation
 =========================
