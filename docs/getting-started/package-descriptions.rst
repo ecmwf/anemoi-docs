@@ -72,7 +72,7 @@ amounts of boilerplate code.
 
 :ref:`anemoi-transform <anemoi-transform:index-page>` provides tools for
 consistent data transformations across training and inference
-workflows.** This package includes common functionality, such as
+workflows. This package includes common functionality, such as
 filters, that can be shared and reused acrossanemoi-datasets,
 anemoi-training, and anemoi-inference` to promote consistency and reduce
 duplication.
