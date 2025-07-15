@@ -66,6 +66,16 @@ initial conditions. Inference makes full use of the metadata stored in a
 checkpoint to facilitate simple execution without requiring large
 amounts of boilerplate code.
 
+******************
+ anemoi-transform
+******************
+
+:ref:`anemoi-transform <anemoi-transform:index-page>` provides the tools
+to perform data transformations across training and inference. This package
+aims to contain common functionality, such as filters, to be used consistently for anemoi-datasets,
+anemoi-training and anemoi-infrence. 
+
+
 ***********************
  Other anemoi packages
 ***********************
@@ -77,10 +87,6 @@ other anemoi subpackages:
    functionality to save a dataset, a model or an experiment to the
    `anemoi catalogue <https://anemoi.ecmwf.int/>`_ so that it can be
    easily shared with others.
-
--  :ref:`anemoi-transform <anemoi-transform:index-page>`: contains data
-   transformation functions which can be applied to datasets (via
-   filters).
 
 -  :ref:`anemoi-utils <anemoi-utils:index-page>`: contains miscellaneous
    utility functions which are used across the other packages.
