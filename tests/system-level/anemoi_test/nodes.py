@@ -64,7 +64,7 @@ class CreateDatasetFamily(pf.AnchorFamily):
     def __init__(self, config, **kwargs):
         super().__init__(name="datasets", **kwargs)
         dataset_config_dir = path.join(SUITE_DIR, "configs/datasets")
-        static_data_dir = "$DATA_DIR/anemoi_docs_repo/tests/system-level/anemoi_test/configs/datasets"
+        static_data_dir = "$DATA_DIR/anemoi_test_configs/datasets"
         completions = {}
 
         for folder in os.listdir(dataset_config_dir):
