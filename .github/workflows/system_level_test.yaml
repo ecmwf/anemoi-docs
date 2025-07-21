@@ -6,9 +6,6 @@ description: |
 on:
   workflow_call:
     inputs:
-      config_name:
-        required: true
-        type: string
       build_options:
         required: true
         type: string
@@ -44,7 +41,6 @@ jobs:
           ecflow_host: ${{ secrets.ecflow_host }}
           ecflow_port: ${{ secrets.ecflow_port }}
           suite_name: ${{ inputs.suite_name }}
-          config_name: ${{ inputs.config_name }}
           build_options: ${{ inputs.build_options }}
   run:
     runs-on: hpc
