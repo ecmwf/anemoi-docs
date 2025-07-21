@@ -1,7 +1,8 @@
 name: on-demand-system-level-test
 
-# Controls when the workflow will run
 on:
+  schedule:
+    - cron: '0 0 * * 0' # Every Sunday at midnight
   workflow_dispatch:
     inputs:
       anemoi_docs_branch:
@@ -15,6 +16,13 @@ on:
         description: Branch for anemoi-training to be used to build the training environment for testing.
         required: false
         default: "main"
+  #TODO remove this trigger before merging the PR
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - develop
+
 
 jobs:
   prepare:
@@ -31,7 +39,22 @@ jobs:
       - name: Set build options
         id: set_build_options
         run: |
-          echo "build_options=anemoi_docs_branch=${{ github.event.inputs.anemoi_docs_branch != '' && github.event.inputs.anemoi_docs_branch || github.ref_name }} anemoi_datasets_branch=${{ github.event.inputs.anemoi_datasets_branch}} anemoi_training_branch=${{ github.event.inputs.anemoi_training_branch }} " >> "$GITHUB_OUTPUT"
+          build_options=""
+
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            docs_branch="${{ github.event.inputs.anemoi_docs_branch }}"
+            datasets_branch="${{ github.event.inputs.anemoi_datasets_branch }}"
+            training_branch="${{ github.event.inputs.anemoi_training_branch }}"
+
+            # Default to ref name if docs branch not specified
+            if [[ -z "$docs_branch" ]]; then
+              docs_branch="${{ github.ref_name }}"
+            fi
+
+            build_options="anemoi_docs_branch=$docs_branch anemoi_datasets_branch=$datasets_branch anemoi_training_branch=$training_branch"
+          fi
+
+          echo "build_options=$build_options" >> "$GITHUB_OUTPUT"
 
   system_level_test:
     needs: prepare
