@@ -4,18 +4,17 @@ name: on-demand-system-level-test
 on:
   workflow_dispatch:
     inputs:
-      config_name:
-        description: Configuration name to use for the suite.
-        required: true
-        default: user
-      limit_workers:
-        description: Number of maximum workers.
-        required: true
-        default: 2
-      ens_members:
-        description: Number of ensemble members.
+      anemoi_docs_branch:
+        description: Branch for anemoi-docs to be used to deploy the anemoi_tests suite.
         required: false
-        default: 1
+      anemoi_datasets_branch:
+        description: Branch for anemoi-datasets to be used to build the datasets environment for testing.
+        required: false
+        default: "main"
+      anemoi_training_branch:
+        description: Branch for anemoi-training to be used to build the training environment for testing.
+        required: false
+        default: "main"
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
@@ -27,20 +26,24 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       suite_name: ${{ steps.normalize.outputs.suite_name }}
+      build_options: ${{ steps.set_build_options.outputs.build_options }}
     steps:
       - name: Normalize suite_name
         id: normalize
         run: echo "suite_name=${GITHUB_TRIGGERING_ACTOR//-/_}" >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TRIGGERING_ACTOR: ${{ github.triggering_actor }}
+      - name: Set build options
+        id: set_build_options
+        run: |
+          echo "build_options=anemoi_docs_branch=${{ github.event.inputs.anemoi_docs_branch != '' && github.event.inputs.anemoi_docs_branch || github.ref_name }} anemoi_datasets_branch=${{ github.event.inputs.anemoi_datasets_branch}} anemoi_training_branch=${{ github.event.inputs.anemoi_training_branch }} " >> "$GITHUB_OUTPUT"
 
   system_level_test:
     needs: prepare
     uses: ./.github/workflows/system_level_test.yaml
     with:
       suite_name: ${{ needs.prepare.outputs.suite_name }}
-      config_name: ${{ inputs.config_name }}
-      build_options: ""
+      build_options: ${{ needs.prepare.outputs.build_options }}
     secrets:
       gh_token: ${{ secrets.GH_REPO_READ_TOKEN }}
       troika_user: ${{ secrets.HPC_SYSTEM_TEST_USER }}

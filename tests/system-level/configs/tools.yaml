@@ -18,13 +18,13 @@ tools:
     anemoi_datasets:
       type: git
       source: https://github.com/ecmwf/anemoi-datasets.git
-      branch: {anemoi_datasets_branch}
+      branch: "{anemoi_datasets_branch}"
       depends: [uv]
       post_script: "uv pip install --upgrade pip && uv pip install -e ."
     anemoi_training:
       type: git
       source: https://github.com/ecmwf/anemoi-core.git
-      branch: {anemoi_training_branch}
+      branch: "{anemoi_training_branch}"
       depends: [uv]
       post_script: "git fetch --unshallow && uv pip install --upgrade pip && uv pip install -e ./training[all,tests] -e ./graphs[all,tests] -e ./models[all,tests]"
 

@@ -119,7 +119,6 @@ class TrainingFamily(pf.AnchorFamily):
                 )
 
             required_datasets = task_config.get("datasets", [])
-            print(self.dataset_completions)
             required_datasets_completions = [self.dataset_completions[dataset] for dataset in required_datasets]
             training.triggers = required_datasets_completions[0]
             for dataset_completion in required_datasets_completions[1:]:

@@ -24,9 +24,6 @@ inputs:
   suite_name:
     description: Name of the suite.
     required: true
-  config_name:
-    description: Configuration name.
-    required: true
   build_options:
     description: List of options to pass to the build script.
     required: false
