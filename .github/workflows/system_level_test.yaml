@@ -133,8 +133,8 @@ jobs:
     name: Clean
     needs:
       - monitor
-      - print
-    if: needs.monitor.result == 'success'
+      - summary
+    if: always() && needs.monitor.result == 'success'
     steps:
       - name: Clean the suite
         uses: ecmwf/reusable-workflows/hpc/ecflow/remove-suite@v2
