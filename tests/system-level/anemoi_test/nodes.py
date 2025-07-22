@@ -116,6 +116,7 @@ class TrainingFamily(pf.AnchorFamily):
                         config.tools.load("training_env"),
                         training_command,
                     ],
+                    submit_arguments="gpu_job",
                 )
 
             required_datasets = task_config.get("datasets", [])
