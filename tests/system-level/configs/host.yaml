@@ -4,15 +4,16 @@ host:
   log_directory: "%ECF_HOME%"
   workdir: "$TMPDIR"
   submit_arguments:
-    # defaults:
-      # memory_per_cpu: 8Gb
-      # job_name: "%FAMILY1:NOT_DEF%_%TASK%"
-      # tmpdir_size: 20Gb
+    defaults:
+      memory_per_cpu: 8Gb
+      job_name: "%FAMILY1:NOT_DEF%_%TASK%"
+      tmpdir_size: 20Gb
     cpu_job:
       queue: nf
       total_tasks: 1
     gpu_job:
+      queue: ng
+      time: "00:20:00"
       RAW_PRAGMA:
-        - "#SBATCH --qos=dg"
-        - "#SBATCH --time=00:20:00"
         - "#SBATCH --gpus=1"
+        - "#SBATCH --gres=gpu:1"
