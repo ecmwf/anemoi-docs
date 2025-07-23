@@ -16,4 +16,3 @@ host:
         - "#SBATCH --qos=dg"
         - "#SBATCH --time=00:20:00"
         - "#SBATCH --gpus=1"
-        - "#SBATCH --gres=gpu:1"
