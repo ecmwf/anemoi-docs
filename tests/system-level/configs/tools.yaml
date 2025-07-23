@@ -43,4 +43,4 @@ tools:
 
   env_variables:
     UV_CACHE_DIR:
-      value: "%PREPML_WORKDIR%/uv_cache"
+      value: "{PREPML_WORKDIR}/uv_cache"
