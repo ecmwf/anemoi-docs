@@ -12,8 +12,8 @@ host:
       queue: nf
       total_tasks: 1
     gpu_job:
-      queue: dg
-      time: "00:20:00"
       RAW_PRAGMA:
+        - "#SBATCH --qos=dg"
+        - "#SBATCH --time=00:20:00"
         - "#SBATCH --gpus=1"
         - "#SBATCH --gres=gpu:1"
