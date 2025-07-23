@@ -19,26 +19,28 @@ tools:
       type: git
       source: https://github.com/ecmwf/anemoi-datasets.git
       branch: "{anemoi_datasets_branch}"
-      depends: [uv]
+      depends: [uv, UV_CACHE_DIR]
       post_script: "uv pip install --upgrade pip && uv pip install -e ."
     anemoi_training:
       type: git
       source: https://github.com/ecmwf/anemoi-core.git
       branch: "{anemoi_training_branch}"
-      depends: [uv]
+      depends: [uv, UV_CACHE_DIR]
       post_script: "git fetch --unshallow && uv pip install --upgrade pip && uv pip install -e ./training[all,tests] -e ./graphs[all,tests] -e ./models[all,tests]"
 
   # --------Virtual envs --------------------------------------------------
   environments:
       datasets_env:
         type: venv
-        # modules: [python, uv]
         packages: [anemoi_datasets]
         depends: [python]
       training_env:
         type: venv
-        # modules: [python, uv]
         packages: [anemoi_training]
         depends: [python]
 
   # --------Environment variables -----------------------------------------
+
+  env_variables:
+    UV_CACHE_DIR:
+      value: "%PREPML_WORKDIR%/uv_cache"

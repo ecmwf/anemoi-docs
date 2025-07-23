@@ -22,7 +22,8 @@ ecflow_server:
 # the variables. Be careful with the order of the variables and the order of the configuration files,
 # as the variables will be overriden if they have the same name.
 ecflow_variables:
-  OUTPUT_ROOT: "{SCRATCH}/{group}/{name}"
+  PREPML_WORKDIR: "/lus/h1resw02/project/prepml/ecflow_server/workdirs/"
+  OUTPUT_ROOT: "%PREPML_WORKDIR%/testing/{group}/{name}"
   LIB_DIR: "%OUTPUT_ROOT%/local"
   DATA_DIR: "%OUTPUT_ROOT%/data"
 

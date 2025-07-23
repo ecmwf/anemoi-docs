@@ -17,11 +17,11 @@ on:
         required: false
         default: "main"
   #TODO remove this trigger before merging the PR
-  # pull_request:
-  #   types: [opened, synchronize, reopened]
-  #   branches:
-  #     - main
-  #     - develop
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - develop
 
 
 jobs:
