@@ -76,7 +76,7 @@ for more information
 
 .. raw:: html
 
-   <br><br>  
+   <br><br>
 
 ***************
  Writing Tests
