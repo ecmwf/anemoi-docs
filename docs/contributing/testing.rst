@@ -58,7 +58,7 @@ GPU available and run:
    pytest training/tests/integration/ --longtests
 
 Integration tests can also be triggered from the Github Actions
-interface. To do so, one need to navigate to the Github Actions tab
+interface. To do so, one needs to navigate to the Github Actions tab
 under the corresponding anemoi package and then select from the list on
 the left the workflow (for example
 ``nightly-integration-tests-hpc-gpu``). Next, one needs to select the
