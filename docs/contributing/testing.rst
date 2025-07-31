@@ -67,7 +67,6 @@ right and finally a green button showing ``Run workflow`` will appear
 and once clicked would trigger this worfklow. Please refer to `Github
 docs for more information.
 <https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow>`_
-for more information
 
 .. image:: ../_static/integration_test_ga_trigger.png
    :alt: Example image
