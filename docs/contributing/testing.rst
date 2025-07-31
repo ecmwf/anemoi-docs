@@ -73,6 +73,9 @@ docs for more information.
    :width: 800px
    :align: center
 
+.. note::
+   To trigger these workflows, users must be members of the 'ecmwf' GitHub organization and have 'write' permissions
+
 .. raw:: html
 
    <br><br>
