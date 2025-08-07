@@ -2,6 +2,6 @@ static_data:
   anemoi_test_configs:
     type: git
     source: "git@github.com:ecmwf/anemoi-docs.git"
-    branch: "{anemoi_docs_branch}" #TODO get relevant branch from main config -- should be the same as the one we use to build the suite
+    branch: "{anemoi_docs_branch}"
     files:
       - "tests/system-level/anemoi_test/configs/*"

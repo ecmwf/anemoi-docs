@@ -31,5 +31,4 @@ ecflow_variables:
 
 anemoi_datasets_branch: "main"  # Branch for anemoi-datasets
 anemoi_training_branch: "main"  # Branch for anemoi-training
-anemoi_docs_branch: "test/system-level-prototype-ecflow"  # Branch for anemoi-docs to be used to deploy the anemoi_tests suite
-#TODO set to "main" before merging to main
+anemoi_docs_branch: "main"  # Branch for anemoi-docs to be used to deploy the anemoi_tests suite
