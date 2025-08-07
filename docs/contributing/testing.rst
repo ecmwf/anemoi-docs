@@ -66,7 +66,6 @@ GPU available and run:
 
    pytest training/tests/integration/ --longtests
 
-
 Integration tests can also be triggered from the Github Actions
 interface. To do so, one needs to navigate to the Github Actions tab
 under the corresponding anemoi package and then select from the list on
@@ -91,7 +90,6 @@ docs for more information.
 .. raw:: html
 
    <br><br>
-
 
 To run **system-level tests**, navigate to the `anemoi-docs` repository
 on github and trigger the workflow `on-demand-system-level-test` via the
