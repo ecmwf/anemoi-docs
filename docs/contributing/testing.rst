@@ -32,11 +32,20 @@ Integration Tests
 -  Important for data processing pipelines and model training workflows.
 -  Integration tests reside in `tests/integration`.
 
+System-level Tests
+==================
+
+-  Test the anemoi packages as a whole, including end-to-end workflows,
+   from dataset creation to model training and inference.
+-  These tests ensure that the packages work together as expected.
+-  The system-level test suite is located in the `anemoi-docs`
+   repository in the `tests/system-level` directory.
+
 ***************
  Running Tests
 ***************
 
-To run all unit tests:
+To run all **unit tests**:
 
 .. code:: bash
 
@@ -48,7 +57,7 @@ To run tests in a specific file:
 
    pytest tests/unit/test_specific_feature.py
 
-To run all integration tests, including slow-running tests, use the
+To run all **integration tests**, including slow-running tests, use the
 `--longtests` flag. Follow the package-specific instructions. For
 integration tests in anemoi-training, for instance, ensure that you have
 GPU available and run:
@@ -56,6 +65,10 @@ GPU available and run:
 .. code:: bash
 
    pytest training/tests/integration/ --longtests
+
+To run **system-level tests**, navigate to the `anemoi-docs` repository
+on github and trigger the workflow `on-demand-system-level-test` via the
+GitHub Actions tab.
 
 ***************
  Writing Tests
@@ -152,6 +165,18 @@ or `pytest-mock <https://pytest-mock.readthedocs.io/en/latest/>`_.
        result = my_api_function()
        assert result == "mocked"
 
+Test Coverage
+=============
+
+We use pytest-cov to measure test coverage. To check coverage:
+
+.. code:: bash
+
+   pytest --cov=anemoi_training
+
+Aim for at least 80% coverage for new features, and strive to maintain
+or improve overall project coverage.
+
 ***************************
  Writing Integration Tests
 ***************************
@@ -199,15 +224,51 @@ approach includes:
 For more details and package-specific examples, please refer to the
 package-level documentation.
 
-***************
- Test Coverage
-***************
+***************************************************
+ Adding a Test Case in the System-level Test Suite
+***************************************************
 
-We use pytest-cov to measure test coverage. To check coverage:
+To add a test case in the system-level test suite, you need to add
+config files in the relevant directory in the `anemoi-docs` repository.
+The config files should be placed in the `tests/system-level/configs`
+directory as explained below. They will constitute tasks in the
+system-level test suite. No pyflow knowledge is required to add new test
+cases.
 
-.. code:: bash
+Dataset Creation Test cases
+===========================
 
-   pytest --cov=anemoi_training
+To add a new test case for dataset creation
 
-Aim for at least 80% coverage for new features, and strive to maintain
-or improve overall project coverage.
+-  create a new folder in the
+   `tests/system-level/anemoi_test/configs/datasets` directory.
+
+-  The name of the folder will be the name of the test case and of the
+   dataset created.
+
+-  In the folder add a `dataset_config.yaml` file with the configuration
+   for the dataset creation. Currently, the only source supported in the
+   test suite is `mars`.
+
+-  If you need additional flexibility in configuring your test case,
+   please open an issue in the `anemoi-docs` repository.
+
+Model Training Test cases
+=========================
+
+To add a new test case for model training, create a new folder in the
+`tests/system-level/anemoi_test/configs/training` directory. The name of
+the folder will be the name of the test case. In the folder add
+
+#. a `training_config.yaml` file with the configuration for the model
+   training. The configuration should be a full config file, i.e. not
+   require hydra to build a config based on defaults. The dataset names
+   should match the names of datasets created in the previous part of
+   the suite. (If you don't want to create a new dataset, consider
+   adding an integration test in the `anemoi-training` package instead.)
+
+#. a `task_config.yaml` that specifies additional information required
+   to configure the task in the suite. The `task_config.yaml` should
+   contain a list of dataset names that are required for the training
+   task. The names should match the names of the datasets specified in
+   the `training_config.yaml`.
