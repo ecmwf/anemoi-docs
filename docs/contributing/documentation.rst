@@ -20,29 +20,51 @@ your work.
 
 Steps for contributing documentation:
 
+-  Follow the workflow for :ref:`contributing` to Anemoi, including
+   creating an issue and submitting a Pull Request.
+
 -  Identify the most appropriate place for your addition (e.g., overall
    `Anemoi documentation <https://github.com/ecmwf/anemoi-docs>`_,
    package-level documentation), and the relevant section (e.g., user
    guide, getting started, or developer guide).
 
--  Consider maintainability — are interfaces still evolving?
+-  You find the documentation in the `docs` directory of the Anemoi
+   repository. The documentation is written in reStructuredText (reST)
+   format. Add your changes to the appropriate file in the `docs`
+   directory and pay attention to the following:
 
--  Write clear and concise documentation using simple, direct sentences.
-
--  Add references to related sections or external documentation where
-   applicable.
+   -  Consider maintainability — are interfaces still evolving?
+   -  Write clear and concise documentation using simple, direct
+      sentences.
+   -  Add references to related sections or external documentation where
+      applicable.
+   -  Include plots or diagrams where appropriate, and place them in the
+      `docs/_static` folder.
 
 -  Incorporate feedback from your reviewer regarding documentation
    clarity and completeness.
 
+If you are unsure where to add documentation or how to structure it,
+please feel free to ask for help on the issue you opened at any point.
+
 Building Documentation
 ======================
 
-For each Pull Request, documentation is automatically built and hosted
-on ReadTheDocs for review. It is automatically linked in the PR
-description.
+For each Pull Request that modifies the files in the `docs` folder,
+documentation is automatically built and hosted on ReadTheDocs for
+review. It is automatically linked in the PR description. Please check
+that the generated links point to the correct documentation and that
+your changes render as expected.
 
-You can build the documentation locally to preview changes before
+If the links do not work or the documentation fails to render, review
+the CI workflow “Read the Docs PR Preview” that builds the preview.
+Check the logs for errors. You can see an example of a successful build
+`here
+<https://app.readthedocs.org/projects/anemoi-training/builds/27886217/>`_.
+If you can’t identify the problem or are unsure, please ask for help in
+the issue you opened.
+
+You can also build the documentation locally to preview changes before
 submitting a Pull Request. We use Sphinx for documentation.
 
 You can install the dependencies for building the documentation with:
@@ -58,7 +80,56 @@ To build the documentation locally:
    cd docs
    make html
 
+The terminal output will show the progress of the build process. If
+everything goes well, you will see a message indicating that the
+documentation has been built successfully:
+
+.. code:: bash
+
+   Running Sphinx v8.1.3
+   loading translations [en]... done
+   [...]
+   writing additional pages... search done
+   dumping search index in English (code: en)... done
+   dumping object inventory... done
+   build succeeded, 1 warning.
+
+   The HTML pages are in _build/html.
+
 The generated documentation will be in `docs/_build/html/index.html`.
+
+.. note::
+
+   To build the docs locally, you will need Python 3.11 or greater.
+
+Viewing the Documentation
+=========================
+
+You can view the documentation built locally by opening the `index.html`
+file in `docs/_build/html/` in your web browser:
+
+.. code:: bash
+
+   open docs/_build/html/index.html # macOS
+   xdg-open docs/_build/html/index.html # Linux
+   start docs/_build/html/index.html # Windows
+
+Alternatively, you can serve the documentation using a local server:
+
+.. code:: bash
+
+   cd docs/_build/html
+   python -m http.server
+
+Then, open your web browser and navigate to `http://localhost:8000` to
+view the documentation.
+
+If you are working in an hpc environment and don't have a GUI or web
+browser, there are several options to view the docs:
+
+-  You can copy the docs to your local machine after building them, and
+   view them in a browser.
+-  You can serve the docs over an ssh tunnel.
 
 ************
  Docstrings

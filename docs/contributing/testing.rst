@@ -66,6 +66,33 @@ GPU available and run:
 
    pytest training/tests/integration/ --longtests
 
+
+Integration tests can also be triggered from the Github Actions
+interface. To do so, one needs to navigate to the Github Actions tab
+under the corresponding anemoi package and then select from the list on
+the left the workflow (for example
+``nightly-integration-tests-hpc-gpu``). Next, one needs to select the
+branch from which to trigger this workflow from the dropbox list on the
+right and finally a green button showing ``Run workflow`` will appear
+and once clicked would trigger this worfklow. Please refer to `Github
+docs for more information.
+<https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow>`_
+
+.. image:: ../_static/integration_test_ga_trigger.png
+   :alt: Example image
+   :width: 800px
+   :align: center
+
+.. note::
+
+   To trigger these workflows, users must be members of the 'ecmwf'
+   GitHub organization and have 'write' permissions
+
+.. raw:: html
+
+   <br><br>
+
+
 To run **system-level tests**, navigate to the `anemoi-docs` repository
 on github and trigger the workflow `on-demand-system-level-test` via the
 GitHub Actions tab.
