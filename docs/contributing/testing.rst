@@ -56,7 +56,6 @@ We use the ``pytest-skip-slow`` plugin to skip slow tests by default.
 
 To run all **unit tests**:
 
-
 .. code:: bash
 
    pytest
@@ -67,12 +66,10 @@ To run tests in a specific file:
 
    pytest tests/unit/test_specific_feature.py
 
-
 To run all **integration tests**, including slow-running tests, use the
 `--slow` flag. Follow the package-specific instructions. For integration
 tests in anemoi-training, for instance, ensure that you have GPU
 available and run:
-
 
 .. code:: bash
 
