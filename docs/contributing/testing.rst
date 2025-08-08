@@ -45,7 +45,17 @@ System-level Tests
  Running Tests
 ***************
 
+Ensure that you have the testing dependencies installed. You can do this
+by running:
+
+.. code:: bash
+
+   pip install -e .[test]
+
+We use the ``pytest-skip-slow`` plugin to skip slow tests by default.
+
 To run all **unit tests**:
+
 
 .. code:: bash
 
@@ -57,14 +67,16 @@ To run tests in a specific file:
 
    pytest tests/unit/test_specific_feature.py
 
+
 To run all **integration tests**, including slow-running tests, use the
-`--longtests` flag. Follow the package-specific instructions. For
-integration tests in anemoi-training, for instance, ensure that you have
-GPU available and run:
+`--slow` flag. Follow the package-specific instructions. For integration
+tests in anemoi-training, for instance, ensure that you have GPU
+available and run:
+
 
 .. code:: bash
 
-   pytest training/tests/integration/ --longtests
+   pytest training/tests/integration/ --slow
 
 Integration tests can also be triggered from the Github Actions
 interface. To do so, one needs to navigate to the Github Actions tab
@@ -209,13 +221,13 @@ or improve overall project coverage.
 Marking Long-Running Tests
 ==========================
 
-For long-running integration tests, we use the `--longtests` flag to
-ensure that they are run only when necessary. This means that you should
-add the correspondong marker to these tests:
+For slow-running integration tests, we use the `--slow` flag to ensure
+that they are run only when necessary. This means that you should add
+the correspondong marker to these tests:
 
 .. code:: python
 
-   @pytest.mark.longtests
+   @pytest.mark.slow
    def test_long():
          pass
 
