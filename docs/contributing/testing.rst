@@ -37,9 +37,13 @@ Integration Tests
 ***************
 
 Ensure that you have the testing dependencies installed. You can do this
-by running: .. code:: bash
+by running:
+
+.. code:: bash
 
    pip install -e .[test]
+
+We use the ``pytest-skip-slow`` plugin to skip slow tests by default.
 
 To run all unit tests:
 
