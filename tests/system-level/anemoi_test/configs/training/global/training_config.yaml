@@ -1,0 +1,505 @@
+config_validation: True
+
+data:
+  format: zarr
+  frequency: 6h
+  timestep: 6h
+
+  forcing:
+  - "cos_latitude"
+  - "cos_longitude"
+  - "sin_latitude"
+  - "sin_longitude"
+  - "cos_julian_day"
+  - "cos_local_time"
+  - "sin_julian_day"
+  - "sin_local_time"
+  - "insolation"
+  diagnostic:
+  - tp
+  - cp
+
+  normalizer:
+    default: "mean-std"
+
+    std:
+    - "tp"
+
+    min-max:
+    max:
+    none:
+    - "cos_latitude"
+    - "cos_longitude"
+    - "sin_latitude"
+    - "sin_longitude"
+    - "cos_julian_day"
+    - "cos_local_time"
+    - "sin_julian_day"
+    - "sin_local_time"
+    - "insolation"
+
+  imputer:
+    default: "none"
+
+  processors:
+    normalizer:
+      _target_: anemoi.models.preprocessing.normalizer.InputNormalizer
+      config: ${data.normalizer}
+
+  num_features: null # number of features in the forecast state
+
+dataloader:
+  prefetch_factor: 2
+  pin_memory: True
+
+  read_group_size: ${hardware.num_gpus_per_model}
+
+  num_workers:
+    training: 2
+    validation: 2
+    test: 2
+  batch_size:
+    training: 2
+    validation: 2
+    test: 2
+
+  limit_batches:
+    training: 2
+    validation: 2
+    test: 20
+
+  grid_indices:
+    _target_: anemoi.training.data.grid_indices.FullGrid
+    nodes_name: ${graph.data}
+
+  dataset: ${hardware.paths.data}/${hardware.files.dataset}
+
+  training:
+    dataset: ${dataloader.dataset}
+    start: null
+    end: 2017-01-07
+    frequency: ${data.frequency}
+    drop:  []
+
+  validation_rollout: 1 # number of rollouts to use for validation, must be equal or greater than rollout expected by callbacks
+
+  validation:
+    dataset: ${dataloader.dataset}
+    start: 2017-01-08
+    end: null
+    frequency: ${data.frequency}
+    drop:  []
+
+  test:
+    dataset: ${dataloader.dataset}
+    start: 2022
+    end: null
+    frequency: ${data.frequency}
+    drop:  []
+
+diagnostics:
+  plot:
+    callbacks: []
+    asynchronous: True # Whether to plot asynchronously
+    datashader: True # Choose which technique to use for plotting
+    frequency: # Frequency of the plotting
+      batch: 750
+      epoch: 10
+
+    parameters:
+    - z_500
+    - t_850
+    - u_850
+    - v_850
+    - 2t
+    - 10u
+    - 10v
+    - sp
+    - tp
+    - cp
+
+    sample_idx: 0
+
+    precip_and_related_fields: [tp, cp]
+
+    colormaps:
+      precip:
+        _target_: anemoi.training.utils.custom_colormaps.MatplotlibColormapClevels
+        clevels: ["#ffffff", "#04e9e7", "#019ff4", "#0300f4", "#02fd02", "#01c501", "#008e00", "#fdf802", "#e5bc00", "#fd9500", "#fd0000", "#d40000", "#bc0000", "#f800fd"]
+        variables: ${diagnostics.plot.precip_and_related_fields}
+
+  debug:
+    anomaly_detection: False
+
+  profiler: False
+
+  enable_checkpointing: True
+  checkpoint:
+    every_n_minutes:
+      save_frequency: 30 # Approximate, as this is checked at the end of training steps
+      num_models_saved: 3 # If set to k, saves the 'last' k model weights in the training.
+
+    every_n_epochs:
+      save_frequency: 1
+      num_models_saved: -1 # If set to -1, all checkpoints are kept ensuring runs can be continued/forked at any point in the training process
+
+    every_n_train_steps:
+      save_frequency: null # Does not scale with rollout
+      num_models_saved: 0
+
+  log:
+    wandb:
+      enabled: False
+      offline: False
+      log_model: False
+      project: 'Anemoi'
+      entity: null
+      # logger options (these probably come with some overhead)
+      gradients: False
+      parameters: False
+    tensorboard:
+      enabled: False
+    mlflow:
+      enabled: False
+      offline: False
+      authentication: False
+      log_model: False
+      tracking_uri: null
+      experiment_name: 'anemoi-debug'
+      project_name: 'Anemoi'
+      system: False
+      terminal: True
+      run_name: null # If set to null, the run name will be the a random UUID
+      on_resume_create_child: True
+      expand_hyperparams: # Which keys in hyperparams to expand
+        - config
+      http_max_retries: 35
+    interval: 100 # passed to trainer.log_every_n_steps
+
+  enable_progress_bar: True
+  print_memory_summary: False
+
+  benchmark_profiler:
+    memory:
+      enabled: False
+      steps: 5 # wait warmup steps and then do steps (too many steps would lead to a big file)
+      warmup: 2
+      extra_plots: False
+      trace_rank0_only: False #set to true and it will profile rank 0 only. Reads SLURM_PROC_ID so won't work when not running via Slurm
+    time:
+      enabled: True
+      verbose: False #If true, output every action the profiler caputres, otherwise output a subset defined in PROFILER_ACTIONS at the top of aifs/diagnostics/profiler.py
+    speed:
+      enabled: True
+    system:
+      enabled: False
+    model_summary:
+      enabled: False
+    snapshot:
+      enabled: False
+      steps: 4 # wait warmup steps and then do steps
+      warmup: 0
+
+
+datamodule:
+  _target_: anemoi.training.data.datamodule.AnemoiDatasetsDataModule
+
+hardware:
+
+  # number of GPUs per node and number of nodes (for DDP)
+  accelerator: auto
+  num_gpus_per_node: 1
+  num_nodes: 1
+  num_gpus_per_model: 1
+  paths:
+    data: dummy_path/ # will be replaced in the suite
+    output: ${oc.env:PWD}/tmp_output/
+    truncation: null
+    logs:
+      base: ${hardware.paths.output}logs/
+      wandb: ${hardware.paths.logs.base}
+      mlflow: ${hardware.paths.logs.base}mlflow/
+      tensorboard: ${hardware.paths.logs.base}tensorboard/
+    checkpoints: ${hardware.paths.output}checkpoint/
+    plots: ${hardware.paths.output}plots/
+    profiler: ${hardware.paths.output}profiler/
+    graph: ${hardware.paths.output}graphs/
+
+  files:
+    dataset: aifs-ea-an-oper-0001-mars-o96-2017-2017-6h-v8-testing.zarr
+    graph: dummy.pt
+    truncation: null
+    truncation_inv: null
+    checkpoint:
+      every_n_epochs: anemoi-by_epoch-epoch_{epoch:03d}-step_{step:06d}
+      every_n_train_steps: anemoi-by_step-epoch_{epoch:03d}-step_{step:06d}
+      every_n_minutes: anemoi-by_time-epoch_{epoch:03d}-step_{step:06d}
+    warm_start: null
+
+
+graph:
+  overwrite: True
+
+  data: "data"
+  hidden: "hidden"
+
+  nodes:
+    # Data nodes
+    data:
+      node_builder:
+        _target_: anemoi.graphs.nodes.AnemoiDatasetNodes # options: AnemoiDatasetNodes, NPZFileNodes
+        dataset: ${dataloader.dataset}
+      attributes: ${graph.attributes.nodes}
+    # Hidden nodes
+    hidden:
+      node_builder:
+        _target_: anemoi.graphs.nodes.TriNodes # options: AnemoiDatasetNodes, NPZFileNodes, TriNodes
+        resolution: 5 # grid resolution for npz (o32, o48, ...)
+      attributes: ${graph.attributes.nodes}
+
+  edges:
+  # Encoder configuration
+  - source_name: ${graph.data}
+    target_name: ${graph.hidden}
+    edge_builders:
+    - _target_: anemoi.graphs.edges.CutOffEdges # options: KNNEdges, CutOffEdges
+      cutoff_factor: 0.6 # only for cutoff method
+      source_mask_attr_name: null
+      target_mask_attr_name: null
+    attributes: ${graph.attributes.edges}
+    # Processor configuration
+  - source_name: ${graph.hidden}
+    target_name: ${graph.hidden}
+    edge_builders:
+    - _target_: anemoi.graphs.edges.MultiScaleEdges
+      x_hops: 1
+      scale_resolutions: ${graph.nodes.hidden.node_builder.resolution}
+      source_mask_attr_name: null
+      target_mask_attr_name: null
+    attributes: ${graph.attributes.edges}
+    # Decoder configuration
+  - source_name: ${graph.hidden}
+    target_name: ${graph.data}
+    edge_builders:
+    - _target_: anemoi.graphs.edges.KNNEdges # options: KNNEdges, CutOffEdges
+      num_nearest_neighbours: 3 # only for knn method
+      source_mask_attr_name: null
+      target_mask_attr_name: null
+    attributes: ${graph.attributes.edges}
+
+
+  attributes:
+    nodes:
+      area_weight:
+        _target_: anemoi.graphs.nodes.attributes.SphericalAreaWeights # options: Area, Uniform
+        norm: unit-max # options: l1, l2, unit-max, unit-sum, unit-std
+        fill_value: 0
+    edges:
+      edge_length:
+        _target_: anemoi.graphs.edges.attributes.EdgeLength
+        norm: unit-std
+      edge_dirs:
+        _target_: anemoi.graphs.edges.attributes.EdgeDirection
+        norm: unit-std
+
+  post_processors: []
+
+model:
+  num_channels: 16
+  cpu_offload: False
+
+  keep_batch_sharded: True
+
+  model:
+    _target_: anemoi.models.models.AnemoiModelEncProcDec
+
+  layer_kernels:
+    LayerNorm:
+      _target_: anemoi.models.layers.normalization.AutocastLayerNorm
+    Linear:
+      _target_: torch.nn.Linear
+    Activation:
+      _target_: torch.nn.GELU
+
+  processor:
+    _target_: anemoi.models.layers.processor.GNNProcessor
+    trainable_size: ${model.trainable_parameters.hidden2hidden}
+    sub_graph_edge_attributes: ${model.attributes.edges}
+    num_layers: 16
+    num_chunks: 2
+    mlp_extra_layers: 0
+    cpu_offload: ${model.cpu_offload}
+    layer_kernels: ${model.layer_kernels}
+
+  encoder:
+    _target_: anemoi.models.layers.mapper.GNNForwardMapper
+    trainable_size: ${model.trainable_parameters.data2hidden}
+    sub_graph_edge_attributes: ${model.attributes.edges}
+    num_chunks: 1
+    mlp_extra_layers: 0
+    cpu_offload: ${model.cpu_offload}
+    layer_kernels: ${model.layer_kernels}
+
+  decoder:
+    _target_: anemoi.models.layers.mapper.GNNBackwardMapper
+    trainable_size: ${model.trainable_parameters.hidden2data}
+    sub_graph_edge_attributes: ${model.attributes.edges}
+    num_chunks: 1
+    mlp_extra_layers: 0
+    cpu_offload: ${model.cpu_offload}
+    layer_kernels: ${model.layer_kernels}
+
+  output_mask:
+    _target_: anemoi.training.utils.masks.NoOutputMask
+
+
+  trainable_parameters:
+    data: 8
+    hidden: 8
+    data2hidden: 8
+    hidden2data: 8
+    hidden2hidden: 8
+
+  attributes:
+    edges:
+    - edge_length
+    - edge_dirs
+    nodes: []
+
+  # Bounding configuration
+  bounding: #These are applied in order
+    - _target_: anemoi.models.layers.bounding.ReluBounding #[0, infinity)
+      variables:
+      - tp
+
+training:
+
+  run_id: null
+  fork_run_id: null
+  transfer_learning: False # activate to perform transfer learning
+  load_weights_only: False # only load model weights, do not restore optimiser states etc.
+
+  deterministic: False
+
+  precision: 16-mixed
+
+  multistep_input: 2
+
+  accum_grad_batches: 1
+
+  num_sanity_val_steps: 6
+
+  gradient_clip:
+    val: 32.
+    algorithm: value
+
+  swa:
+    enabled: False
+    lr: 1.e-4
+
+  # Optimizer settings
+  optimizer:
+    zero: False # use ZeroRedundancyOptimizer ; saves memory for larger models
+    kwargs:
+      betas: [0.9, 0.95]
+
+  # select model
+  model_task: anemoi.training.train.tasks.GraphForecaster
+
+  # select strategy
+  strategy:
+    _target_: anemoi.training.distributed.strategy.DDPGroupStrategy
+    num_gpus_per_model: ${hardware.num_gpus_per_model}
+    read_group_size: ${dataloader.read_group_size}
+
+  # loss functions
+  loss_gradient_scaling: False
+
+  # loss function for the model
+  training_loss:
+    # loss class to initialise
+    _target_: anemoi.training.losses.MSELoss
+    # Scalers to include in loss calculation
+    scalers: ['pressure_level', 'general_variable', 'nan_mask_weights', 'node_weights']
+    ignore_nans: False
+
+  validation_metrics:
+    # loss class to initialise
+    mse:
+      _target_: anemoi.training.losses.MSELoss
+      scalers: []
+      # other kwargs
+      ignore_nans: True
+
+  variable_groups:
+    default: sfc
+    pl:
+      param: [q, t, u, v, w]
+
+  metrics:
+  - z_500
+  - t_850
+  - u_850
+  - v_850
+
+  # length of the "rollout" window (see Keisler's paper)
+  rollout:
+    start: 1
+    # increase rollout every n epochs
+    epoch_increment: 0
+    # maximum rollout to use
+    max: 1
+
+  # Set max_epochs or max_steps. Training stops at the first limit reached.
+  max_epochs: 2
+  max_steps: 150000
+
+  lr:
+    warmup: 1000 # number of warmup iterations
+    rate: 0.625e-4 #local_lr
+    iterations: ${training.max_steps} # NOTE: When max_epochs < max_steps, scheduler will run for max_steps
+    min: 3e-7 #Not scaled by #GPU
+
+
+  submodules_to_freeze: []
+
+  scalers:
+    general_variable:
+      _target_: anemoi.training.losses.scalers.GeneralVariableLossScaler
+      weights:
+        default: 1
+        q: 0.6 #1
+        t: 6   #1
+        u: 0.8 #0.5
+        v: 0.5 #0.33
+        w: 0.001
+        z: 12  #1
+        sp: 10
+        10u: 0.1
+        10v: 0.1
+        2d: 0.5
+        tp: 0.025
+        cp: 0.0025
+
+    pressure_level:
+      _target_: anemoi.training.losses.scalers.ReluVariableLevelScaler
+      group: pl
+      y_intercept: 0.2
+      slope: 0.001
+
+    # mask NaNs with zeros in the loss function
+    nan_mask_weights:
+      _target_: anemoi.training.losses.scalers.NaNMaskScaler
+
+    stdev_tendency:
+      _target_: anemoi.training.losses.scalers.StdevTendencyScaler
+
+    var_tendency:
+      _target_: anemoi.training.losses.scalers.VarTendencyScaler
+
+    # Scalers from node attributes
+    node_weights:
+      _target_: anemoi.training.losses.scalers.GraphNodeAttributeScaler
+      nodes_name: ${graph.data}
+      nodes_attribute_name: area_weight
+      norm: unit-sum
