@@ -104,6 +104,15 @@ To run **system-level tests**, navigate to the `anemoi-docs` repository
 on github and trigger the workflow `on-demand-system-level-test` via the
 GitHub Actions tab.
 
+.. note::
+
+   Do not trigger system-level tests if another system-level test
+   workflow is already running under your user account. This is to avoid
+   ecflow zombies when replacing a suite that is already running.
+
+   If you need to replace a running suite, please wait for it to finish
+   or cancel it first.
+
 ***************
  Writing Tests
 ***************
