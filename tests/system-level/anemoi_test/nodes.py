@@ -1,20 +1,20 @@
 import os
-from os import path
+from pathlib import Path
 
 import pyflow as pf
 import wellies as wl
 import yaml
 
-SUITE_DIR = path.join(path.dirname(path.realpath(__file__)))
+SUITE_DIR = Path(__file__).resolve().parent
 
-STATIC_DATA_DIR = "$DATA_DIR/anemoi_test_configs"
-RESULTS_DIR_TRAINING = "$RESULTS_DIR/training"
-RESULTS_DIR_DATASETS = "$RESULTS_DIR/datasets"
+STATIC_DATA_DIR = Path("$DATA_DIR/anemoi_test_configs")
+RESULTS_DIR_TRAINING = Path("$RESULTS_DIR/training")
+RESULTS_DIR_DATASETS = Path("$RESULTS_DIR/datasets")
 
 
-def get_task_config(directory: str) -> tuple[dict]:
-    task_file = path.join(directory, "task_config.yaml")
-    if not path.exists(task_file):
+def get_task_config(directory: Path) -> tuple[dict]:
+    task_file = directory / "task_config.yaml"
+    if not task_file.exists():
         raise FileNotFoundError(f"Test requires a task config file: {task_file}")
     with open(task_file, "r") as file:
         task_config = yaml.load(file, Loader=yaml.FullLoader)
@@ -51,18 +51,16 @@ class MainFamily(pf.AnchorFamily):
 class CreateDatasetFamily(pf.AnchorFamily):
     def __init__(self, config, **kwargs):
         super().__init__(name="datasets", **kwargs)
-        dataset_config_dir = path.join(SUITE_DIR, "configs/datasets")
+        dataset_config_dir = SUITE_DIR / "configs/datasets"
         completions = {}
 
         with self:
             for folder in os.listdir(dataset_config_dir):
-                local_config_folder = path.join(dataset_config_dir, folder)
-                if not path.isdir(local_config_folder):
+                local_config_folder = dataset_config_dir / folder
+                if not local_config_folder.is_dir():
                     continue
-                if not path.exists(path.join(local_config_folder, "dataset_config.yaml")):
-                    raise FileNotFoundError(
-                        f"Dataset test requires a config file: {local_config_folder}/dataset_config.yaml"
-                    )
+                if not (local_config_folder / "dataset_config.yaml").exists():
+                    raise FileNotFoundError(f"Dataset test requires a config file: {folder}/dataset_config.yaml")
 
                 create = DatasetTask(folder, config)
                 completions[folder] = create.complete
@@ -70,15 +68,15 @@ class CreateDatasetFamily(pf.AnchorFamily):
 
 
 class DatasetTask(pf.Task):
-    def __init__(self, folder: str, suite_config: dict):
+    def __init__(self, name: str, suite_config: dict):
         # static_data_dir = "$DATA_DIR/anemoi_test_configs/datasets"
-        config_file_path = path.join(STATIC_DATA_DIR, "datasets", folder, "dataset_config.yaml")
-        self.output_path = path.join("$DATA_DIR", folder + ".zarr")
+        config_file_path = STATIC_DATA_DIR / "datasets" / name / "dataset_config.yaml"
+        self.output_path = RESULTS_DIR_DATASETS / (name + ".zarr")
 
         create_command = f"anemoi-datasets create {config_file_path} {self.output_path} --overwrite"
 
         super().__init__(
-            name=folder.replace("-", "_"),
+            name=name.replace("-", "_"),
             script=[suite_config.tools.load("datasets_env"), create_command],
         )
 
@@ -86,13 +84,13 @@ class DatasetTask(pf.Task):
 class TrainingFamily(pf.AnchorFamily):
     def __init__(self, config, dataset_completions={}, **kwargs):
         super().__init__(name="training", **kwargs)
-        training_config_dir = path.join(SUITE_DIR, "configs/training")
+        training_config_dir = SUITE_DIR / "configs/training"
         self.dataset_completions = dataset_completions
 
         with self:
             for folder in os.listdir(training_config_dir):
-                config_folder = path.join(training_config_dir, folder)
-                if not path.isdir(config_folder):
+                config_folder = training_config_dir / folder
+                if not config_folder.is_dir():
                     continue
 
                 training = TrainingTask(folder, config)
@@ -107,18 +105,13 @@ class TrainingFamily(pf.AnchorFamily):
 
 class TrainingTask(pf.Task):
     def __init__(self, folder: str, suite_config: dict):
-        # data_dir = "$DATA_DIR"
-        # static_data_dir = "$DATA_DIR/anemoi_test_configs/training/"
-        # output_root = "$OUTPUT_ROOT"
-        # training_output_dir = path.join(RESULTS_DIR, "training_output", str(folder))
 
         overrides = {}
-        overrides["--config-path"] = path.join(STATIC_DATA_DIR, "training", folder)
-        overrides["hardware.paths.output"] = path.join(RESULTS_DIR_TRAINING, folder)
+        overrides["--config-path"] = STATIC_DATA_DIR / "training" / folder
+        overrides["hardware.paths.output"] = RESULTS_DIR_TRAINING / folder
         overrides["hardware.paths.data"] = RESULTS_DIR_DATASETS
         overrides_string = dict_to_overrides_string(overrides)
 
-        # config_path = path.join(STATIC_DATA_DIR, "training", folder)
         training_command = (
             "anemoi-training train  --config-name=training_config " + overrides_string  # --config-path={config_path} "
         )
