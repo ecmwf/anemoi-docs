@@ -22,12 +22,15 @@ ecflow_server:
 # the variables. Be careful with the order of the variables and the order of the configuration files,
 # as the variables will be overriden if they have the same name.
 
-PREPML_WORKDIR: "/lus/h1resw02/project/prepml/ecflow_server/workdirs"
+OUTPUT_ROOT_SUITE: "/lus/h1resw02/project/prepml/ecflow_server/workdirs"
+# For the ci workflow, the output root is the prepml workdir so that it is in the same place as prepml suites
+# and can share the same uv cache.
 
 ecflow_variables:
-  OUTPUT_ROOT: "{PREPML_WORKDIR}/testing/{group}/{name}"
+  OUTPUT_ROOT: "{OUTPUT_ROOT_SUITE}/testing/{group}/{name}"
   LIB_DIR: "%OUTPUT_ROOT%/local"
   DATA_DIR: "%OUTPUT_ROOT%/data"
+  RESULTS_DIR: "%OUTPUT_ROOT%/results"
 
 anemoi_datasets_branch: "main"  # Branch for anemoi-datasets
 anemoi_training_branch: "main"  # Branch for anemoi-training

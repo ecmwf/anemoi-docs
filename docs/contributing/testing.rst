@@ -307,8 +307,9 @@ the folder will be the name of the test case. In the folder add
    training. The configuration should be a full config file, i.e. not
    require hydra to build a config based on defaults. The dataset names
    should match the names of datasets created in the previous part of
-   the suite. (If you don't want to create a new dataset, consider
-   adding an integration test in the `anemoi-training` package instead.)
+   the suite. (If you want to test training based on an existing
+   anemoi-dataset, consider adding an integration test in the
+   `anemoi-training` package instead.)
 
 #. a `task_config.yaml` that specifies additional information required
    to configure the task in the suite. The `task_config.yaml` should

@@ -7,6 +7,10 @@ import yaml
 
 SUITE_DIR = path.join(path.dirname(path.realpath(__file__)))
 
+STATIC_DATA_DIR = "$DATA_DIR/anemoi_test_configs"
+RESULTS_DIR_TRAINING = "$RESULTS_DIR/training"
+RESULTS_DIR_DATASETS = "$RESULTS_DIR/datasets"
+
 
 def get_task_config(directory: str) -> tuple[dict]:
     task_file = path.join(directory, "task_config.yaml")
@@ -60,26 +64,23 @@ class CreateDatasetFamily(pf.AnchorFamily):
                         f"Dataset test requires a config file: {local_config_folder}/dataset_config.yaml"
                     )
 
-                create = get_dataset_task(folder, config)
+                create = DatasetTask(folder, config)
                 completions[folder] = create.complete
         self.completions = completions
 
 
-def get_dataset_task(folder: str, config: dict) -> pf.Task:
-    static_data_dir = "$DATA_DIR/anemoi_test_configs/datasets"
-    config_file_path = path.join(static_data_dir, folder, "dataset_config.yaml")
-    output_path = path.join("$DATA_DIR", folder + ".zarr")
+class DatasetTask(pf.Task):
+    def __init__(self, folder: str, suite_config: dict):
+        # static_data_dir = "$DATA_DIR/anemoi_test_configs/datasets"
+        config_file_path = path.join(STATIC_DATA_DIR, "datasets", folder, "dataset_config.yaml")
+        self.output_path = path.join("$DATA_DIR", folder + ".zarr")
 
-    create_command = f"anemoi-datasets create {config_file_path} {output_path} --overwrite"
+        create_command = f"anemoi-datasets create {config_file_path} {self.output_path} --overwrite"
 
-    create = pf.Task(
-        name=folder.replace("-", "_"),
-        script=[
-            config.tools.load("datasets_env"),
-            create_command,
-        ],
-    )
-    return create
+        super().__init__(
+            name=folder.replace("-", "_"),
+            script=[suite_config.tools.load("datasets_env"), create_command],
+        )
 
 
 class TrainingFamily(pf.AnchorFamily):
@@ -94,7 +95,7 @@ class TrainingFamily(pf.AnchorFamily):
                 if not path.isdir(config_folder):
                     continue
 
-                training = get_training_task(folder, config)
+                training = TrainingTask(folder, config)
 
                 task_config = get_task_config(config_folder)
                 required_datasets = task_config.get("datasets", [])
@@ -104,30 +105,27 @@ class TrainingFamily(pf.AnchorFamily):
                     training.triggers &= dataset_completion
 
 
-def get_training_task(folder: str, config: dict) -> pf.Task:
-    data_dir = "$DATA_DIR"
-    static_data_dir = "$DATA_DIR/anemoi_test_configs/training/"
-    output_root = "$OUTPUT_ROOT"
-    training_output_dir = path.join(output_root, "training_output", str(folder))
+class TrainingTask(pf.Task):
+    def __init__(self, folder: str, suite_config: dict):
+        # data_dir = "$DATA_DIR"
+        # static_data_dir = "$DATA_DIR/anemoi_test_configs/training/"
+        # output_root = "$OUTPUT_ROOT"
+        # training_output_dir = path.join(RESULTS_DIR, "training_output", str(folder))
 
-    overrides = {}
-    overrides["hardware.paths.output"] = training_output_dir
-    overrides["hardware.paths.data"] = data_dir
-    overrides_string = dict_to_overrides_string(overrides)
+        overrides = {}
+        overrides["--config-path"] = path.join(STATIC_DATA_DIR, "training", folder)
+        overrides["hardware.paths.output"] = path.join(RESULTS_DIR_TRAINING, folder)
+        overrides["hardware.paths.data"] = RESULTS_DIR_DATASETS
+        overrides_string = dict_to_overrides_string(overrides)
 
-    training_command = (
-        f"anemoi-training train  --config-name=training_config --config-path={static_data_dir}{folder} "
-        + overrides_string
-    )
-    training = pf.Task(
-        name=folder,
-        script=[
-            config.tools.load("training_env"),
-            training_command,
-        ],
-        submit_arguments="gpu_job",
-    )
-    return training
+        # config_path = path.join(STATIC_DATA_DIR, "training", folder)
+        training_command = (
+            "anemoi-training train  --config-name=training_config " + overrides_string  # --config-path={config_path} "
+        )
+
+        super().__init__(
+            name=folder, script=[suite_config.tools.load("training_env"), training_command], submit_arguments="gpu_job"
+        )
 
 
 class MainSuite(pf.Family):
