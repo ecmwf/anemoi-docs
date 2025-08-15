@@ -1,0 +1,91 @@
+name: cerra-rr-an-oper-0001-mars-5p5km-2017-2017-6h-v3-testing
+
+description: 'Subset of cerra-rr-an-oper-0001-mars-5p5km-1984-2020-6h-v2-hmsi,
+
+  comprising only 10 days and a reduced set of parameters for the purpose of
+
+  integration tests,
+
+  HARMONIE-ALADIN reanalysis by SMHI on EURO-CORDEX domain (CERRA project)
+
+  Note that the data includes relative humidity (r), not specific humidity (q).
+
+  '
+
+attribution: ECMWF
+
+licence: CC-BY-4.0
+
+dates:
+  end: '2017-01-10T18:00:00'
+  frequency: 6h
+  group_by: monthly
+  start: '2017-01-01T06:00:00'
+
+input:
+  join:
+  - mars:
+      class: rr
+      level:
+      - 50
+      - 100
+      levtype: pl
+      origin: se-al-ec
+      param:
+      - r
+      - t
+      stream: oper
+      type: an
+  - mars:
+      class: rr
+      levtype: sfc
+      origin: se-al-ec
+      param:
+      - sp
+      - msl
+      stream: oper
+      type: an
+  - accumulations:
+      class: rr
+      levtype: sfc
+      origin: se-al-ec
+      param:
+      - tp
+      - sf
+      stream: oper
+  - constants:
+      param:
+      - cos_latitude
+      - cos_longitude
+      - sin_latitude
+      - sin_longitude
+      - cos_julian_day
+      - cos_local_time
+      - sin_julian_day
+      - sin_local_time
+      - cos_solar_zenith_angle
+      template: ${input.join.0.mars}
+
+output:
+  chunking:
+    dates: 1
+    ensembles: 1
+  dtype: float32
+  ensemble_dimension: 2
+  flatten_grid: true
+  order_by:
+  - valid_datetime: ascending
+  - param_level: ascending
+  - number: ascending
+  remapping:
+    param_level: '{param}_{levelist}'
+  statistics: param_level
+
+statistics:
+  allow_nans: []
+
+build:
+  additions: true
+  group_by: monthly
+  use_grib_paramid: false
+  variable_naming: default

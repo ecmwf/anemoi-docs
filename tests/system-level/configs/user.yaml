@@ -1,0 +1,37 @@
+# Configuration file for pyflow suite.
+
+# This file only contains a selection of most common options.
+# For more information: https://pyflow-wellies.readthedocs.io/latest/configurations/
+
+# -------- Main Suite configuration -------------------------------------------
+group: "anemoi_tests"
+name: "{USER}"
+labels:
+  info: Anemoi system-level tests suite, deployed by {USER} for {name}
+limits:
+  work: 20
+
+# -------- Ecflow server ------------------------------------------------------
+ecflow_server:
+  hostname: "localhost"
+  user: "{USER}"
+  deploy_dir: "{HOME}/pyflow/{group}/{name}"
+
+# -------- Global variables ------------------------------------
+# this group can be redefined in other config files. The resulting option will be the concatenation of all
+# the variables. Be careful with the order of the variables and the order of the configuration files,
+# as the variables will be overriden if they have the same name.
+
+OUTPUT_ROOT_SUITE: "/lus/h1resw02/project/prepml/ecflow_server/workdirs"
+# For the ci workflow, the output root is the prepml workdir so that it is in the same place as prepml suites
+# and can share the same uv cache.
+
+ecflow_variables:
+  OUTPUT_ROOT: "{OUTPUT_ROOT_SUITE}/testing/{group}/{name}"
+  LIB_DIR: "%OUTPUT_ROOT%/local"
+  DATA_DIR: "%OUTPUT_ROOT%/data"
+  RESULTS_DIR: "%OUTPUT_ROOT%/results"
+
+anemoi_datasets_branch: "main"  # Branch for anemoi-datasets
+anemoi_training_branch: "main"  # Branch for anemoi-training
+anemoi_docs_branch: "main"  # Branch for anemoi-docs to be used to deploy the anemoi_tests suite
