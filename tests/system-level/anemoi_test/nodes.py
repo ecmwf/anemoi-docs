@@ -91,19 +91,22 @@ class TrainingTask(pf.Task):
         )
 
 
+class CleanupTask(pf.Task):
+    def __init__(self, **kwargs):
+        script = ["rm -rf $OUTPUT_ROOT"]
+        super().__init__(name="cleanup", script=script, **kwargs)
+
+
 class InitFamily(pf.AnchorFamily):
     def __init__(self, config, **kwargs):
         super().__init__(name="init", **kwargs)
         with self:
-            # install environments and packages
-            wl.DeployToolsFamily(
-                config.tools,
-            )
+            deploy_tools = wl.DeployToolsFamily(config.tools)
+            deploy_data = wl.DeployDataFamily(config.static_data)
 
-            # setup static data (remote/local copy/link)
-            wl.DeployDataFamily(
-                config.static_data,
-            )
+            clean_up = CleanupTask()
+            clean_up >> deploy_tools
+            clean_up >> deploy_data
 
 
 class MainFamily(pf.AnchorFamily):
@@ -126,13 +129,16 @@ class MainFamily(pf.AnchorFamily):
                         )
                     create_fam.find_node(dataset_task) >> training_task
 
+            clean_up = CleanupTask()
+            create_fam >> clean_up
+            training_fam >> clean_up  # only run cleanup if all tests pass
+
 
 class MainSuite(pf.Family):
     def __init__(self, config, **kwargs):
         super().__init__(defstatus=pf.state.suspended, **kwargs)
 
         with self:
-
             f_init = InitFamily(config=config, inlimits=self.work)
             f_main = MainFamily(config=config, inlimits=self.work)
             f_init >> f_main
