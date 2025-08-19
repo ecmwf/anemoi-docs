@@ -1,7 +1,12 @@
 Anemoi Framework
 ================
 
+[**Overview**](#overview) | [**Features**](#features) | [**Installation**](#installation) | [**Contributing**](#contributing) | [**Roadmap**](#roadmap) | [**Community**](#community) | [**License**](#license)
+
+
 Anemoi is an open-source, Python-based framework developed collaboratively by ECMWF and several European national meteorological services.  It is designed to facilitate the development, training, and deployment of machine learning (ML) models for weather forecasting. As an 'end to end' framework, it provides a comprehensive toolkit that spans data preparation, model training, and inference, enabling meteorological organizations to leverage their own data for ML-based weather prediction.  
+
+![Anemoi Logo](anemoi-docs/docs/_static/logo.png)
 
 - `ECMWF News <https://www.ecmwf.int/en/about/media-centre/news/2024/anemoi-new-framework-weather-forecasting-based-machine-learning>`_
 
@@ -11,11 +16,10 @@ Table of Contents
 1. `Overview`_
 2. `Features`_
 3. `Installation`_
-4. `Usage`_
-5. `Contributing`_
-6. `Roadmap`_
-7. `Community`_
-8. `License`_
+4. `Contributing`_
+5. `Roadmap`_
+6. `Community`_
+7. `License`_
 
 Overview
 --------
@@ -60,16 +64,6 @@ Or one can also install each of the packages directly from PyPI
 
 
 For detailed installation instructions and environment setup, refer to the `Installation Guide <https://anemoi.readthedocs.io/en/latest/installation/>`_.
-
-Usage
------
-
-Anemoi provides a command-line interface (CLI) for training and evaluating models::
-
-    python -m anemoi.train --config config.yaml
-
-Replace ``config.yaml`` with your desired configuration file.  
-For more information on configuring and using the CLI, refer to the `User Guide <https://anemoi.readthedocs.io/en/latest/user-guide/>`_.
 
 Contributing
 ------------
