@@ -4,30 +4,30 @@ Anemoi Framework
 [**Overview**](#overview) | [**Features**](#features) | [**Installation**](#installation) | [**Contributing**](#contributing) | [**Roadmap**](#roadmap) | [**Community**](#community) | [**License**](#license) |  [**Other resources & References**](#other-resources--references)
 
 
-Anemoi is an open-source, Python-based framework developed collaboratively by ECMWF and several European national meteorological services.  It is designed to facilitate the development, training, and deployment of machine learning (ML) models for weather forecasting. As an 'end to end' framework, it provides a comprehensive toolkit that spans data preparation, model training, and inference, enabling meteorological organizations to leverage their own data for ML-based weather prediction.  
+Anemoi is an open-source, Python-based framework developed collaboratively by ECMWF and several European national meteorological services.  It is designed to facilitate the development, training, and deployment of machine learning (ML) models for weather forecasting. As an 'end to end' framework, it provides a comprehensive toolkit that spans data preparation, model training, and inference, enabling meteorological organizations to leverage their own data for ML-based weather prediction.
 
 ![Anemoi Logo](docs/_static/logo.png)
 
-- [ECMWF News](https://www.ecmwf.int/en/about/media-centre/news/2024/anemoi-new-framework-weather-forecasting-based-machine-learning)  
+- [ECMWF News](https://www.ecmwf.int/en/about/media-centre/news/2024/anemoi-new-framework-weather-forecasting-based-machine-learning)
 
 
 Overview
 --------
-The `anemoi` repository aims, for now, to provide a centralized overview of the entire framework.  
-Additionally, it contains the [Anemoi Documentation](https://anemoi.readthedocs.io/en/latest/) and system-level tests that assess the interfaces and ensure all components work well with each other.  
+The `anemoi` repository aims, for now, to provide a centralized overview of the entire framework.
+Additionally, it contains the [Anemoi Documentation](https://anemoi.readthedocs.io/en/latest/) and system-level tests that assess the interfaces and ensure all components work well with each other.
 
 Anemoi offers a modular architecture composed of several packages, each targeting different components necessary for constructing data-driven weather models:
 
-- **anemoi-datasets**: Tools for handling and preprocessing meteorological datasets.  
-- **anemoi-graphs**: Utilities for constructing graph representations of meteorological data.  
-- **anemoi-models**: Core components for defining and training ML models, including graph neural networks (GNNs) and graph transformers.  
-- **anemoi-training**: Framework for training ML models, including support for distributed training.  
-- **anemoi-inference**: Tools for deploying trained models and performing inference.  
-- **anemoi-transform**: Utilities for data transformation and augmentation.  
-- **anemoi-utils**: Miscellaneous utility functions.  
-- **anemoi-registry**: Centralized registry for storing and accessing model configurations and metadata.  
+- **anemoi-datasets**: Tools for handling and preprocessing meteorological datasets.
+- **anemoi-graphs**: Utilities for constructing graph representations of meteorological data.
+- **anemoi-models**: Core components for defining and training ML models, including graph neural networks (GNNs) and graph transformers.
+- **anemoi-training**: Framework for training ML models, including support for distributed training.
+- **anemoi-inference**: Tools for deploying trained models and performing inference.
+- **anemoi-transform**: Utilities for data transformation and augmentation.
+- **anemoi-utils**: Miscellaneous utility functions.
+- **anemoi-registry**: Centralized registry for storing and accessing model configurations and metadata.
 
-Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment.  
+Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment.
 
 The diagram below shows the relationship of these packages in terms of dependencies.
 ![Anemoi Dependencies](docs/_static/dependencies.png)
@@ -49,17 +49,17 @@ Summary of workflow:
 
 This structure separates concerns clearly, promotes reusability, and makes development modular while keeping core components organized under anemoi-core.
 
-Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment. 
+Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment.
 
 
 Features
 --------
 
-- **Modular Design**: Easily extendable components for various stages of the ML pipeline.  
-- **Customizable Configurations**: Flexible configuration system using Hydra for model and training parameters.  
-- **Distributed Training Support**: Leverage PyTorch Lightning for scalable and efficient training.  
-- **Interoperability**: Built on top of established Python tools including PyTorch, Lightning, Hydra, Zarr, Xarray, and Earthkit.  
-- **Open-Source Collaboration**: Developed in collaboration with multiple European meteorological services.  
+- **Modular Design**: Easily extendable components for various stages of the ML pipeline.
+- **Customizable Configurations**: Flexible configuration system using Hydra for model and training parameters.
+- **Distributed Training Support**: Leverage PyTorch Lightning for scalable and efficient training.
+- **Interoperability**: Built on top of established Python tools including PyTorch, Lightning, Hydra, Zarr, Xarray, and Earthkit.
+- **Open-Source Collaboration**: Developed in collaboration with multiple European meteorological services.
 
 Installation
 ------------
@@ -131,7 +131,7 @@ See the [LICENSE](https://github.com/ecmwf/anemoi-core/blob/main/LICENSE) file f
 
 For more information, visit the [Anemoi Documentation](https://anemoi.readthedocs.io/en/latest/).
 
-## Other resources & References 
+## Other resources & References
 
 Additional resources for using and understanding Anemoi:
 
