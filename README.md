@@ -6,7 +6,7 @@ Anemoi Framework
 
 Anemoi is an open-source, Python-based framework developed collaboratively by ECMWF and several European national meteorological services.  It is designed to facilitate the development, training, and deployment of machine learning (ML) models for weather forecasting. As an 'end to end' framework, it provides a comprehensive toolkit that spans data preparation, model training, and inference, enabling meteorological organizations to leverage their own data for ML-based weather prediction.  
 
-![Anemoi Logo](anemoi-docs/docs/_static/logo.png)
+![Anemoi Logo](docs/_static/logo.png)
 
 - `ECMWF News <https://www.ecmwf.int/en/about/media-centre/news/2024/anemoi-new-framework-weather-forecasting-based-machine-learning>`_
 
