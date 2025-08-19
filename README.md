@@ -1,7 +1,7 @@
 Anemoi Framework
 ================
 
-[**Overview**](#overview) | [**Features**](#features) | [**Installation**](#installation) | [**Contributing**](#contributing) | [**Roadmap**](#roadmap) | [**Community**](#community) | [**License**](#license)
+[**Overview**](#overview) | [**Features**](#features) | [**Installation**](#installation) | [**Contributing**](#contributing) | [**Roadmap**](#roadmap) | [**Community**](#community) | [**License**](#license) |  [**Other resources & References**](#other-resources--references)
 
 
 Anemoi is an open-source, Python-based framework developed collaboratively by ECMWF and several European national meteorological services.  It is designed to facilitate the development, training, and deployment of machine learning (ML) models for weather forecasting. As an 'end to end' framework, it provides a comprehensive toolkit that spans data preparation, model training, and inference, enabling meteorological organizations to leverage their own data for ML-based weather prediction.  
@@ -21,6 +21,7 @@ Table of Contents
 5. `Roadmap`_
 6. `Community`_
 7. `License`_
+8. `Other Resources & References`_
 
 Overview
 --------
@@ -123,3 +124,12 @@ Anemoi is licensed under the Apache License 2.0.
 See the [LICENSE](https://github.com/ecmwf/anemoi-core/blob/main/LICENSE) file for more details.
 
 For more information, visit the [Anemoi Documentation](https://anemoi.readthedocs.io/en/latest/).
+
+## Other resources & References 
+
+Additional resources for using and understanding Anemoi:
+
+- Documentation for each package within the framework: [Anemoi Packages Docs](https://anemoi.readthedocs.io/en/latest/)
+- Anemoi webinars: [Anemoi Webinars](https://events.ecmwf.int/event/446/)
+- `anemoi-configs` package for example configurations: [Anemoi Configs](https://github.com/ecmwf/anemoi-configs)
+- Citation information: [How to Cite Anemoi](https://anemoi.readthedocs.io/en/latest/index.html#how-to-cite-anemoi)
