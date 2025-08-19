@@ -8,7 +8,8 @@ Anemoi is an open-source, Python-based framework developed collaboratively by EC
 
 ![Anemoi Logo](docs/_static/logo.png)
 
-- `ECMWF News <https://www.ecmwf.int/en/about/media-centre/news/2024/anemoi-new-framework-weather-forecasting-based-machine-learning>`_
+- [ECMWF News](https://www.ecmwf.int/en/about/media-centre/news/2024/anemoi-new-framework-weather-forecasting-based-machine-learning)  
+
 
 Table of Contents
 -----------------
@@ -24,9 +25,9 @@ Table of Contents
 Overview
 --------
 The `anemoi` repository aims, for now, to provide a centralized overview of the entire framework.  
-Additionally, it contains the `Anemoi Documentation <https://anemoi.readthedocs.io/en/latest/>`_ and system-level tests that assess the interfaces and ensure all components work well with each other. 
+Additionally, it contains the [Anemoi Documentation](https://anemoi.readthedocs.io/en/latest/) and system-level tests that assess the interfaces and ensure all components work well with each other.  
 
-Anemoi offers a modular architecture composed of several packages, each targeting different components necessary for constructing data-driven weather models.  
+Anemoi offers a modular architecture composed of several packages, each targeting different components necessary for constructing data-driven weather models:
 
 - **anemoi-datasets**: Tools for handling and preprocessing meteorological datasets.  
 - **anemoi-graphs**: Utilities for constructing graph representations of meteorological data.  
@@ -37,7 +38,9 @@ Anemoi offers a modular architecture composed of several packages, each targetin
 - **anemoi-utils**: Miscellaneous utility functions.  
 - **anemoi-registry**: Centralized registry for storing and accessing model configurations and metadata.  
 
-![Anemoi Dependencies](docs/_static/depencies.png)
+Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment.  
+
+![Anemoi Dependencies](docs/_static/dependencies.png)
 
 Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment. 
 
@@ -65,7 +68,7 @@ Or one can also install each of the packages directly from PyPI
     $ pip install anemoi-transform
 
 
-For detailed installation instructions and environment setup, refer to the `Installation Guide <https://anemoi.readthedocs.io/en/latest/installation/>`_.
+For detailed installation instructions and environment setup, refer to the [Installation Guide](https://anemoi.readthedocs.io/en/latest/installation/).
 
 Contributing
 ------------
@@ -98,24 +101,25 @@ We welcome contributions to the Anemoi framework. To get started:
 8. Request a review from maintainers or other contributors, which will
    follow the :ref:`code-review-process`.
 
-For detailed contributing guidelines, refer to the `Contributing Guide <https://anemoi.readthedocs.io/en/latest/contributing/>`_.
+For detailed contributing guidelines, refer to the [Contributing Guide](https://anemoi.readthedocs.io/en/latest/contributing/).
 
-Roadmap
--------
 
-The development of the Anemoi framework follows a structured roadmap to ensure continuous improvement and feature development.  
-For a detailed view of planned milestones, priorities, and upcoming features, see the `Development Roadmap <https://anemoi.readthedocs.io/en/latest/contributing/roadmap.html#development-roadmap>`_.
+## Roadmap
 
-Community
--------
-The Anemoi framework fosters an open and collaborative community. We are starting to define our Governance structure, guided by clear principles to ensure transparency and inclusiveness, described in the `Governance Documentation <https://anemoi.readthedocs.io/en/latest/contributing/governance.html>`_.
+The development of the Anemoi framework follows a structured roadmap to ensure continuous improvement and feature development.
+For a detailed view of planned milestones, priorities, and upcoming features, see the [Development Roadmap](https://anemoi.readthedocs.io/en/latest/contributing/roadmap.html#development-roadmap).
 
-Community members are encouraged to participate in regular interactions such as the `Anemoi Community Meetings <https://anemoi.readthedocs.io/en/latest/contributing/roadmap.html#anemoi-community-meeting>`_, where updates and discussions take place.
 
-License
--------
+## Community
 
-Anemoi is licensed under the Apache License 2.0.  
-See the `LICENSE <https://github.com/ecmwf/anemoi-core/blob/main/LICENSE>`_ file for more details.
+The Anemoi framework fosters an open and collaborative community. Governance is guided by clear principles to ensure transparency and inclusiveness, described in the [Governance Documentation](https://anemoi.readthedocs.io/en/latest/contributing/governance.html).
 
-For more information, visit the `Anemoi Documentation <https://anemoi.readthedocs.io/en/latest/>`_.
+
+Community members are encouraged to participate in regular interactions such as the [Anemoi Community Meetings](https://anemoi.readthedocs.io/en/latest/contributing/roadmap.html#anemoi-community-meeting), where updates, discussions take place.
+
+## License
+
+Anemoi is licensed under the Apache License 2.0.
+See the [LICENSE](https://github.com/ecmwf/anemoi-core/blob/main/LICENSE) file for more details.
+
+For more information, visit the [Anemoi Documentation](https://anemoi.readthedocs.io/en/latest/).
