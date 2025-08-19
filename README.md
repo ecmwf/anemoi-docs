@@ -37,6 +37,8 @@ Anemoi offers a modular architecture composed of several packages, each targetin
 - **anemoi-utils**: Miscellaneous utility functions.  
 - **anemoi-registry**: Centralized registry for storing and accessing model configurations and metadata.  
 
+![Anemoi Dependencies](docs/_static/depencies.png)
+
 Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment. 
 
 
