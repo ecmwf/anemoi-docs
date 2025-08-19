@@ -11,18 +11,6 @@ Anemoi is an open-source, Python-based framework developed collaboratively by EC
 - [ECMWF News](https://www.ecmwf.int/en/about/media-centre/news/2024/anemoi-new-framework-weather-forecasting-based-machine-learning)  
 
 
-Table of Contents
------------------
-
-1. `Overview`_
-2. `Features`_
-3. `Installation`_
-4. `Contributing`_
-5. `Roadmap`_
-6. `Community`_
-7. `License`_
-8. `Other Resources & References`_
-
 Overview
 --------
 The `anemoi` repository aims, for now, to provide a centralized overview of the entire framework.  
@@ -41,7 +29,25 @@ Anemoi offers a modular architecture composed of several packages, each targetin
 
 Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment.  
 
+The diagram below shows the relationship of these packages in terms of dependencies.
 ![Anemoi Dependencies](docs/_static/dependencies.png)
+
+The diagram below represents the main packages in the Anemoi framework and the general workflow for using them:
+
+![Anemoi Workflow](docs/_static/anemoi_packages_workflow.png)
+
+Summary of workflow:
+- Start by building a dataset with `anemoi-datasets`.
+- Train a model using `anemoi-core` (central yellow boxes inside a black rectangle): This repository groups three distinct but related packages to support model development:
+    - `anemoi-modes`: Contains definitions for different machine learning models.
+    - `anemoi-training`: Provides the training framework and utilities for fitting models on prepared datasets.
+    - `anemoi-graphs`: Supports graph-based representations for modeling meteorological data.
+  These three packages are separated to make development easier, but they all live under the anemoi-core GitHub repository.
+- Perform predictions with `anemoi-inference`.
+- Any domain-specific transformations and code that can be shared across datasets, training, and inference is handled by `anemoi-transform`
+- Helper functions and domain-agnostic general purpose utilities are included in `anemoi-utils`.
+
+This structure separates concerns clearly, promotes reusability, and makes development modular while keeping core components organized under anemoi-core.
 
 Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment. 
 
