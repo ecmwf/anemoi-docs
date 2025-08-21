@@ -8,7 +8,7 @@ Anemoi is an open-source, Python-based framework developed collaboratively by EC
 
 ![Anemoi Logo](docs/_static/logo.png)
 
-- [ECMWF News](https://www.ecmwf.int/en/about/media-centre/news/2024/anemoi-new-framework-weather-forecasting-based-machine-learning)
+- [Anemoi New Framework for Weather Forecasting based on Machine Learning](https://www.ecmwf.int/en/about/media-centre/news/2024/anemoi-new-framework-weather-forecasting-based-machine-learning)
 
 
 Overview
