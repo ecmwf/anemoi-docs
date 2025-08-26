@@ -36,7 +36,9 @@ class CreateDatasetFamily(pf.AnchorFamily):
                 if not (local_config_folder / "dataset_config.yaml").exists():
                     raise FileNotFoundError(f"Dataset test requires a config file: {folder}/dataset_config.yaml")
 
-                DatasetTask(folder, config)
+                create_dataset = DatasetTask(folder, config)
+                check_dataset = DatasetCheck(folder, create_dataset.output_path)
+                create_dataset >> check_dataset
 
 
 class DatasetTask(pf.Task):
@@ -50,6 +52,12 @@ class DatasetTask(pf.Task):
             name=name.replace("-", "_"),
             script=[suite_config.tools.load("datasets_env"), create_command],
         )
+
+
+class DatasetCheck(pf.Task):
+    def __init__(self, name: str, dataset_path: Path):
+        check_if_dataset_exists = [f"test -d {dataset_path}", f"test -f {dataset_path}/.zattrs"]
+        super().__init__(name="check_" + name.replace("-", "_"), script=check_if_dataset_exists)
 
 
 class TrainingFamily(pf.AnchorFamily):
