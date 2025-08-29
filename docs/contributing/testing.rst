@@ -281,20 +281,23 @@ cases.
 Dataset Creation Test cases
 ===========================
 
-To add a new test case for dataset creation
+To add a new test case for dataset creation create a new folder in the
+`tests/system-level/anemoi_test/configs/datasets` directory. The name of
+the folder will be the name of the test case and of the dataset created.
+In the folder add
 
--  create a new folder in the
-   `tests/system-level/anemoi_test/configs/datasets` directory.
+#. a `dataset_config.yaml` file with the configuration for the dataset
+   creation. Currently, the only source supported in the test suite is
+   `mars`.
 
--  The name of the folder will be the name of the test case and of the
-   dataset created.
+#. a `task_config.yaml` file that specifies additional information
+   required to configure the task in the suite. The task config should
+   specify the `dataset_command` to be used to create the dataset --
+   typically, "anemoi-datasets create". Hardware overrides (e.g. path to
+   the `dataset_config.yaml` file) will be set in the suite.
 
--  In the folder add a `dataset_config.yaml` file with the configuration
-   for the dataset creation. Currently, the only source supported in the
-   test suite is `mars`.
-
--  If you need additional flexibility in configuring your test case,
-   please open an issue in the `anemoi-docs` repository.
+If you need additional flexibility in configuring your test case, please
+open an issue in the `anemoi-docs` repository.
 
 Model Training Test cases
 =========================
@@ -315,4 +318,7 @@ the folder will be the name of the test case. In the folder add
    to configure the task in the suite. The `task_config.yaml` should
    contain a list of dataset names that are required for the training
    task. The names should match the names of the datasets specified in
-   the `training_config.yaml`.
+   the `training_config.yaml`. The `task_config.yaml` should also
+   specify the `training_command` to be used to run the training --
+   typically, "anemoi-training train". Hardware overrides (e.g. path to
+   the `training_config.yaml` file) will be set in the suite.
