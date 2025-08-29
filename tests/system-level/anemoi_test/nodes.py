@@ -80,6 +80,9 @@ class TrainingFamily(pf.AnchorFamily):
                 task_config = load_yaml(config_folder / "task_config.yaml")
                 training.required_datasets = task_config.get("datasets", [])
 
+                check_training = TrainingCheck("check_" + folder, RESULTS_DIR_TRAINING / folder / "checkpoint")
+                training >> check_training
+
 
 class TrainingTask(pf.Task):
     def __init__(self, folder: str, suite_config: dict):
@@ -87,7 +90,8 @@ class TrainingTask(pf.Task):
 
         overrides = {
             "--config-path": STATIC_DATA_DIR / "training" / folder,
-            "hardware.paths.output": RESULTS_DIR_TRAINING / folder,
+            "hardware.paths.output": str(RESULTS_DIR_TRAINING / folder)
+            + "/",  # add trailing slash to ensure checkpoints are in ".../global/checkpoint"
             "hardware.paths.data": RESULTS_DIR_DATASETS,
         }
         overrides_string = dict_to_overrides_string(overrides)
@@ -97,6 +101,13 @@ class TrainingTask(pf.Task):
         super().__init__(
             name=folder, script=[suite_config.tools.load("training_env"), training_command], submit_arguments="gpu_job"
         )
+
+
+class TrainingCheck(pf.Task):
+    def __init__(self, name: str, checkpoint_path: Path):
+        checkpoint_checks = pf.FileScript(SUITE_DIR / "configs/training/basic_check.sh")
+        checkpoint_checks.environment_variable("CHECKPOINT_DIR", str(checkpoint_path))
+        super().__init__(name=name, script=checkpoint_checks)
 
 
 class CleanupTask(pf.Task):
@@ -124,7 +135,7 @@ class MainFamily(pf.AnchorFamily):
             create_fam = CreateDatasetFamily(config)
             training_fam = TrainingFamily(config)
 
-            for training_task in training_fam.all_tasks:
+            for training_task in [task for task in training_fam.all_tasks if isinstance(task, TrainingTask)]:
                 if not training_task.required_datasets:
                     raise ValueError(
                         f"Training task '{training_task.name}' requires datasets, but none are specified in task_config.yaml."
