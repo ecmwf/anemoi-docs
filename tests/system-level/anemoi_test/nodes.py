@@ -35,18 +35,25 @@ class CreateDatasetFamily(pf.AnchorFamily):
                     continue
                 if not (local_config_folder / "dataset_config.yaml").exists():
                     raise FileNotFoundError(f"Dataset test requires a config file: {folder}/dataset_config.yaml")
+                try:
+                    task_config = load_yaml(local_config_folder / "task_config.yaml")
+                except FileNotFoundError as e:
+                    raise FileNotFoundError(
+                        f"Dataset test requires a task config file: {folder}/task_config.yaml"
+                    ) from e
 
-                create_dataset = DatasetTask(folder, config)
+                dataset_cmd = task_config.get("dataset_command", "anemoi-datasets create")
+                create_dataset = DatasetTask(folder, config, dataset_cmd=dataset_cmd)
                 check_dataset = DatasetCheck(folder, create_dataset.output_path)
                 create_dataset >> check_dataset
 
 
 class DatasetTask(pf.Task):
-    def __init__(self, name: str, suite_config: dict):
+    def __init__(self, name: str, suite_config: dict, dataset_cmd: str = "anemoi-datasets create"):
         config_file_path = STATIC_DATA_DIR / "datasets" / name / "dataset_config.yaml"
         self.output_path = RESULTS_DIR_DATASETS / (name + ".zarr")
 
-        create_command = f"anemoi-datasets create {config_file_path} {self.output_path} --overwrite"
+        create_command = dataset_cmd + f" {config_file_path} {self.output_path} --overwrite"
 
         super().__init__(
             name=name.replace("-", "_"),
@@ -72,20 +79,24 @@ class TrainingFamily(pf.AnchorFamily):
                     continue
                 if not (config_folder / "training_config.yaml").exists():
                     raise FileNotFoundError(f"Training test requires a config file: {folder}/training_config.yaml")
-                if not (config_folder / "task_config.yaml").exists():
-                    raise FileNotFoundError(f"Training test requires a task config file: {folder}/task_config.yaml")
+                try:
+                    task_config = load_yaml(config_folder / "task_config.yaml")
+                except FileNotFoundError as e:
+                    raise FileNotFoundError(
+                        f"Training test requires a task config file: {folder}/task_config.yaml"
+                    ) from e
 
-                training = TrainingTask(folder, config)
-
-                task_config = load_yaml(config_folder / "task_config.yaml")
-                training.required_datasets = task_config.get("datasets", [])
-
+                training_cmd = task_config.get("training_command", "anemoi-training train")
+                training = TrainingTask(folder, config, training_cmd=training_cmd)
                 check_training = TrainingCheck("check_" + folder, RESULTS_DIR_TRAINING / folder / "checkpoint")
                 training >> check_training
 
+                # Attach required datasets to the training task to set triggers in main family
+                training.required_datasets = task_config.get("datasets", [])
+
 
 class TrainingTask(pf.Task):
-    def __init__(self, folder: str, suite_config: dict):
+    def __init__(self, folder: str, suite_config: dict, training_cmd: str = "anemoi-training train"):
         self.required_datasets: Optional[str] = None
 
         overrides = {
@@ -93,10 +104,10 @@ class TrainingTask(pf.Task):
             "hardware.paths.output": str(RESULTS_DIR_TRAINING / folder)
             + "/",  # add trailing slash to ensure checkpoints are in ".../global/checkpoint"
             "hardware.paths.data": RESULTS_DIR_DATASETS,
+            "training.max_epochs": 2,
         }
-        overrides_string = dict_to_overrides_string(overrides)
 
-        training_command = "anemoi-training train  --config-name=training_config " + overrides_string
+        training_command = training_cmd + " --config-name=training_config " + dict_to_overrides_string(overrides)
 
         super().__init__(
             name=folder, script=[suite_config.tools.load("training_env"), training_command], submit_arguments="gpu_job"
