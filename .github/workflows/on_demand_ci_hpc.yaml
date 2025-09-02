@@ -21,6 +21,7 @@ on:
     branches:
       - main
       - develop
+      - test/system-level-prototype-ecflow
 
 
 jobs:
