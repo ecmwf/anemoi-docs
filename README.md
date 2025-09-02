@@ -106,7 +106,7 @@ We welcome contributions to the Anemoi framework. To get started:
    to do so in a comment on your pull request.
 
 8. Request a review from maintainers or other contributors, which will
-   follow the :ref:`code-review-process`.
+[Code Review Process](https://anemoi.readthedocs.io/en/latest/contributing/contributing.html#code-review-process).
 
 For detailed contributing guidelines, refer to the [Contributing Guide](https://anemoi.readthedocs.io/en/latest/contributing/).
 
