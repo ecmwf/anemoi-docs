@@ -42,7 +42,7 @@ Summary of workflow:
     - `anemoi-modes`: Contains definitions for different machine learning models.
     - `anemoi-training`: Provides the training framework and utilities for fitting models on prepared datasets.
     - `anemoi-graphs`: Supports graph-based representations for modeling meteorological data.
-  These three packages are separated to make development easier, but they all live under the anemoi-core GitHub repository.
+These three packages are separated to make development easier, but they all live under the [anemoi-core GitHub repository](https://github.com/ecmwf/anemoi-core).
 - Perform predictions with `anemoi-inference`.
 - Any domain-specific transformations and code that can be shared across datasets, training, and inference is handled by `anemoi-transform`
 - Helper functions and domain-agnostic general purpose utilities are included in `anemoi-utils`.
