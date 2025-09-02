@@ -47,7 +47,7 @@ Summary of workflow:
 - Any domain-specific transformations and code that can be shared across datasets, training, and inference is handled by `anemoi-transform`
 - Helper functions and domain-agnostic general purpose utilities are included in `anemoi-utils`.
 
-This structure separates concerns clearly, promotes reusability, and makes development modular while keeping core components organized under anemoi-core.
+This structure separates concerns clearly, promotes reusability, and makes development modular while keeping core components organized under `anemoi-core`.
 
 Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment.
 
