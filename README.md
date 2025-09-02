@@ -90,7 +90,7 @@ We welcome contributions to the Anemoi framework. To get started:
    :ref:`setting-up-the-development-environment` section.
 
 3. Create a new branch for your developments, following the
-   :ref:`branching-guidelines`.
+[Branching Guidelines](https://anemoi.readthedocs.io/en/latest/contributing/guidelines.html#branching-guidelines).
 
 4. Make your changes and ensure that your changes adhere to the
 [Development Guidelines](https://anemoi.readthedocs.io/en/latest/contributing/guidelines.html#development-guidelines).
