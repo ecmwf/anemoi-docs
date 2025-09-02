@@ -87,7 +87,7 @@ We welcome contributions to the Anemoi framework. To get started:
 [GitHub tutorial])https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 
 2. Set up the development environment following the instructions in the
-   :ref:`setting-up-the-development-environment` section.
+[Development set-up section](https://anemoi.readthedocs.io/en/latest/contributing/environment.html#setting-up-the-development-environment).
 
 3. Create a new branch for your developments, following the
 [Branching Guidelines](https://anemoi.readthedocs.io/en/latest/contributing/guidelines.html#branching-guidelines).
