@@ -29,7 +29,7 @@ Anemoi offers a modular architecture composed of several packages, each targetin
 
 Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment.
 
-The diagram below shows the relationship of these packages in terms of dependencies.
+The diagram below shows the relationship of these packages in terms of dependencies.\
 ![Anemoi Dependencies](docs/_static/dependencies.png)
 
 The diagram below represents the main packages in the Anemoi framework and the general workflow for using them:
