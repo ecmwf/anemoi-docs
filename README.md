@@ -67,7 +67,7 @@ Installation
 To install the Anemoi framework, clone the repository and install the required dependencies::
 
     $ git clone https://github.com/ecmwf/anemoi-transform.git
-    $ cd anemoi-trasnform
+$ cd anemoi-transform
     $ pip install -e
 
 Or one can also install each of the packages directly from PyPI
