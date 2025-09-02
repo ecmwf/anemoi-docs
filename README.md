@@ -99,7 +99,7 @@ We welcome contributions to the Anemoi framework. To get started:
 
 6. Open a Pull Request against the `main` branch of the original
    repository, set a PR title according to the
-   :ref:`pr-title-guidelines` and fill in the Pull Request template.
+[PR Title Guidelines](https://anemoi.readthedocs.io/en/latest/contributing/guidelines.html#pr-title-guidelines)
 
 7. Sign the Contributor License Agreement (CLA) on GitHub. If you
    haven't yet signed the CLA for the repository, you will be prompted
