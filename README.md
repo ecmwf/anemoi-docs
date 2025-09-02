@@ -93,7 +93,7 @@ We welcome contributions to the Anemoi framework. To get started:
    :ref:`branching-guidelines`.
 
 4. Make your changes and ensure that your changes adhere to the
-   :ref:`development-guidelines`.
+[Development Guidelines](https://anemoi.readthedocs.io/en/latest/contributing/guidelines.html#development-guidelines).
 
 5. Commit your changes and push your branch to your fork on GitHub.
 
