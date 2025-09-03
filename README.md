@@ -83,8 +83,8 @@ Contributing
 We welcome contributions to the Anemoi framework. To get started:
 
 1. Fork the anemoi repository on GitHub to your personal/organisation
-   account. See the `GitHub tutorial
-[GitHub tutorial])https://docs.github.com/en/get-started/quickstart/fork-a-repo).
+   account. See the 
+[GitHub tutorial](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 
 2. Set up the development environment following the instructions in the
 [Development set-up section](https://anemoi.readthedocs.io/en/latest/contributing/environment.html#setting-up-the-development-environment).
