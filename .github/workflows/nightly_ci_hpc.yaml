@@ -3,11 +3,11 @@ name: nightly-system-level-test
 on:
   schedule:
     - cron: '0 23 * * 0' # Nightly at 23pm on all main branches
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - main
-      - develop
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
+  #   branches:
+  #     - main
+  #     - develop
 
 
 jobs:
