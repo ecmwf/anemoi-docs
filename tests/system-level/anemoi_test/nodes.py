@@ -42,7 +42,7 @@ class CreateDatasetFamily(pf.AnchorFamily):
                         f"Dataset test requires a task config file: {folder}/task_config.yaml"
                     ) from e
 
-                dataset_cmd = task_config.get("dataset_command", "anemoi-datasets create")
+                dataset_cmd = task_config.get("anemoi_command", "anemoi-datasets create")
                 create_dataset = DatasetTask(folder, config, dataset_cmd=dataset_cmd)
                 check_dataset = DatasetCheck(folder, create_dataset.output_path)
                 create_dataset >> check_dataset
@@ -86,7 +86,7 @@ class TrainingFamily(pf.AnchorFamily):
                         f"Training test requires a task config file: {folder}/task_config.yaml"
                     ) from e
 
-                training_cmd = task_config.get("training_command", "anemoi-training train")
+                training_cmd = task_config.get("anemoi_command", "anemoi-training train")
                 training = TrainingTask(folder, config, training_cmd=training_cmd)
                 check_training = TrainingCheck("check_" + folder, RESULTS_DIR_TRAINING / folder / "checkpoint")
                 training >> check_training

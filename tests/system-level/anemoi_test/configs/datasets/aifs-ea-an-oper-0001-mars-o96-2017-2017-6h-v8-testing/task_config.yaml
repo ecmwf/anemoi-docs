@@ -1,1 +1,1 @@
-dataset_command: "anemoi-datasets create"
+anemoi_command: "anemoi-datasets create"

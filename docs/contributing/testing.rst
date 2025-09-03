@@ -292,7 +292,7 @@ In the folder add
 
 #. a `task_config.yaml` file that specifies additional information
    required to configure the task in the suite. The task config should
-   specify the `dataset_command` to be used to create the dataset --
+   specify the `anemoi_command` to be used to create the dataset --
    typically, "anemoi-datasets create". Hardware overrides (e.g. path to
    the `dataset_config.yaml` file) will be set in the suite.
 
@@ -319,6 +319,6 @@ the folder will be the name of the test case. In the folder add
    contain a list of dataset names that are required for the training
    task. The names should match the names of the datasets specified in
    the `training_config.yaml`. The `task_config.yaml` should also
-   specify the `training_command` to be used to run the training --
+   specify the `anemoi_command` to be used to run the training --
    typically, "anemoi-training train". Hardware overrides (e.g. path to
    the `training_config.yaml` file) will be set in the suite.

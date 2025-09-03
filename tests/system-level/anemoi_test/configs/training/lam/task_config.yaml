@@ -1,4 +1,4 @@
 datasets:
   - aifs-ea-an-oper-0001-mars-o96-2017-2017-6h-v8-testing
   - cerra-rr-an-oper-0001-mars-5p5km-2017-2017-6h-v3-testing
-training_command: "anemoi-training train"
+anemoi_command: "anemoi-training train"
