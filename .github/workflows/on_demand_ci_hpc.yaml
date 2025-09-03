@@ -1,8 +1,6 @@
 name: on-demand-system-level-test
 
 on:
-  schedule:
-    - cron: '0 0 * * 0' # Every Sunday at midnight
   workflow_dispatch:
     inputs:
       anemoi_docs_branch:
@@ -16,11 +14,6 @@ on:
         description: Branch for anemoi-training to be used to build the training environment for testing.
         required: false
         default: "main"
-  # pull_request:
-  #   types: [opened, synchronize, reopened]
-  #   branches:
-  #     - main
-  #     - develop
 
 
 jobs:

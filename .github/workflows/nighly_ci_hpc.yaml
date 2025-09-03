@@ -1,0 +1,51 @@
+name: nightly-system-level-test
+
+on:
+  schedule:
+    - cron: '0 23 * * 0' # Nightly at 23pm on all main branches
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - develop
+
+
+jobs:
+  check-commits:
+    runs-on: ubuntu-latest
+    name: Check latest commits
+    outputs:
+        should_run: ${{ steps.check-commits.outputs.should_run }}
+    steps:
+      - name: Check for recent commits on main in anemoi repos
+        id: check-commits
+        run: |
+          REPOS=("anemoi-core" "anemoi-datasets" "anemoi-docs")
+          SHOULD_RUN=false
+
+          for REPO in "${REPOS[@]}"; do
+            echo "Checking repository: $REPO"
+
+            # Fetch the latest commit date on the main branch from GitHub API
+            LATEST_COMMIT_DATE=$(curl -s "https://api.github.com/repos/ecmwf/$REPO/commits/main" | jq -r '.commit.committer.date')
+
+            if [ "$(date -d "$LATEST_COMMIT_DATE" +%s)" -gt "$(date -d "24 hours ago" +%s)" ]; then
+              echo "Recent commit found in $REPO: $LATEST_COMMIT_DATE"
+              SHOULD_RUN=true
+            fi
+          done
+
+          echo "should_run=$SHOULD_RUN" >> "$GITHUB_OUTPUT"
+
+  system_level_test:
+    needs: check-commits
+    if: needs.check-commits.outputs.should_run == 'true'
+    uses: ./.github/workflows/system_level_test.yaml
+    with:
+      suite_name: "nightly"
+      build_options: ""
+    secrets:
+      gh_token: ${{ secrets.GH_REPO_READ_TOKEN }}
+      troika_user: ${{ secrets.HPC_SYSTEM_TEST_USER }}
+      ecflow_host: ${{ secrets.HPC_SYSTEM_TEST_HOST }}
+      ecflow_port: ${{ secrets.HPC_SYSTEM_TEST_PORT }}
