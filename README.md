@@ -18,14 +18,14 @@ Additionally, it contains the [Anemoi Documentation](https://anemoi.readthedocs.
 
 Anemoi offers a modular architecture composed of several packages, each targeting different components necessary for constructing data-driven weather models:
 
-- **anemoi-datasets**: Tools for handling and preprocessing meteorological datasets.
-- **anemoi-graphs**: Utilities for constructing graph representations of meteorological data.
-- **anemoi-models**: Core components for defining and training ML models, including graph neural networks (GNNs) and graph transformers.
-- **anemoi-training**: Framework for training ML models, including support for distributed training.
-- **anemoi-inference**: Tools for deploying trained models and performing inference.
-- **anemoi-transform**: Utilities for data transformation and augmentation.
-- **anemoi-utils**: Miscellaneous utility functions.
-- **anemoi-registry**: Centralized registry for storing and accessing model configurations and metadata.
+- **[anemoi-datasets] (https://github.com/ecmwf/anemoi-datasets)**: Tools for handling and preprocessing meteorological datasets.
+- **[anemoi-graphs] (https://github.com/ecmwf/anemoi-core/tree/main/graphs)**: Utilities for constructing graph representations of meteorological data.
+- **[anemoi-models] (https://github.com/ecmwf/anemoi-core/tree/main/models)**: Core components for defining and training ML models, including graph neural networks (GNNs) and graph transformers.
+- **[anemoi-training] (https://github.com/ecmwf/anemoi-core/tree/main/training)**: Framework for training ML models, including support for distributed training.
+- **[anemoi-inference] (https://github.com/ecmwf/anemoi-inference)**: Tools for deploying trained models and performing inference.
+- **[anemoi-transform] (https://github.com/ecmwf/anemoi-transform)**: Utilities for data transformation and augmentation.
+- **[anemoi-utils] (https://github.com/ecmwf/anemoi-utils)**: Miscellaneous utility functions.
+- **[anemoi-registry] (https://github.com/ecmwf/anemoi-registry)**: Centralized registry for storing and accessing model configurations and metadata.
 
 Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment.
 
