@@ -29,7 +29,7 @@ Anemoi offers a modular architecture composed of several packages, each targetin
 
 Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment.
 
-The diagram below shows the relationship of these packages in terms of dependencies.
+The diagram below shows the relationship of these packages in terms of dependencies.\
 ![Anemoi Dependencies](docs/_static/dependencies.png)
 
 The diagram below represents the main packages in the Anemoi framework and the general workflow for using them:
@@ -42,12 +42,12 @@ Summary of workflow:
     - `anemoi-modes`: Contains definitions for different machine learning models.
     - `anemoi-training`: Provides the training framework and utilities for fitting models on prepared datasets.
     - `anemoi-graphs`: Supports graph-based representations for modeling meteorological data.
-  These three packages are separated to make development easier, but they all live under the anemoi-core GitHub repository.
+These three packages are separated to make development easier, but they all live under the [anemoi-core GitHub repository](https://github.com/ecmwf/anemoi-core).
 - Perform predictions with `anemoi-inference`.
 - Any domain-specific transformations and code that can be shared across datasets, training, and inference is handled by `anemoi-transform`
 - Helper functions and domain-agnostic general purpose utilities are included in `anemoi-utils`.
 
-This structure separates concerns clearly, promotes reusability, and makes development modular while keeping core components organized under anemoi-core.
+This structure separates concerns clearly, promotes reusability, and makes development modular while keeping core components organized under `anemoi-core`.
 
 Each package collects metadata that can be used by subsequent packages, facilitating a seamless workflow from data ingestion to operational model deployment.
 
@@ -67,7 +67,7 @@ Installation
 To install the Anemoi framework, clone the repository and install the required dependencies::
 
     $ git clone https://github.com/ecmwf/anemoi-transform.git
-    $ cd anemoi-trasnform
+$ cd anemoi-transform
     $ pip install -e
 
 Or one can also install each of the packages directly from PyPI
@@ -83,30 +83,30 @@ Contributing
 We welcome contributions to the Anemoi framework. To get started:
 
 1. Fork the anemoi repository on GitHub to your personal/organisation
-   account. See the `GitHub tutorial
-   <https://docs.github.com/en/get-started/quickstart/fork-a-repo>`_.
+   account. See the
+[GitHub tutorial](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 
 2. Set up the development environment following the instructions in the
-   :ref:`setting-up-the-development-environment` section.
+[Development set-up section](https://anemoi.readthedocs.io/en/latest/contributing/environment.html#setting-up-the-development-environment).
 
 3. Create a new branch for your developments, following the
-   :ref:`branching-guidelines`.
+[Branching Guidelines](https://anemoi.readthedocs.io/en/latest/contributing/guidelines.html#branching-guidelines).
 
 4. Make your changes and ensure that your changes adhere to the
-   :ref:`development-guidelines`.
+[Development Guidelines](https://anemoi.readthedocs.io/en/latest/contributing/guidelines.html#development-guidelines).
 
 5. Commit your changes and push your branch to your fork on GitHub.
 
 6. Open a Pull Request against the `main` branch of the original
    repository, set a PR title according to the
-   :ref:`pr-title-guidelines` and fill in the Pull Request template.
+[PR Title Guidelines](https://anemoi.readthedocs.io/en/latest/contributing/guidelines.html#pr-title-guidelines)
 
 7. Sign the Contributor License Agreement (CLA) on GitHub. If you
    haven't yet signed the CLA for the repository, you will be prompted
    to do so in a comment on your pull request.
 
 8. Request a review from maintainers or other contributors, which will
-   follow the :ref:`code-review-process`.
+[Code Review Process](https://anemoi.readthedocs.io/en/latest/contributing/contributing.html#code-review-process).
 
 For detailed contributing guidelines, refer to the [Contributing Guide](https://anemoi.readthedocs.io/en/latest/contributing/).
 
