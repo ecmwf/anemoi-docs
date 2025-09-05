@@ -1,0 +1,64 @@
+name: deploy-suite
+description: |
+  A Github action to build and deploy a suite deployed on an ecflow server.
+inputs:
+  troika_user:
+    description: User used to submit troika job.
+    required: true
+  sbatch_options:
+    description: List of SBATCH directives
+    required: false
+  site:
+    description: HPC site name.
+    required: false
+    default: hpc-batch
+  github_token:
+    description: Github token.
+    required: true
+  ecflow_host:
+    description: ecflow server hostname.
+    required: true
+  ecflow_port:
+    description: ecflow server port.
+    required: true
+  suite_name:
+    description: Name of the suite.
+    required: true
+  build_options:
+    description: List of options to pass to the build script.
+    required: false
+    default: "limit_workers=1 "
+runs:
+  using: composite
+  steps:
+    - name: Build and deploy suite to ecflow server
+      uses: ecmwf-actions/reusable-workflows/ci-hpc-generic@v2
+      with:
+        template: |
+          set -eux
+          echo "Job is running on ${{ runner.os }}"
+
+          # Load modules of interest
+          module load ecflow
+          module load wellies
+
+          # Clone the repository
+          PACKAGE_NAME=anemoi-docs
+          PACKAGE_BRANCH=${{ github.head_ref || github.ref_name }}
+          git clone -b $PACKAGE_BRANCH https://${{ inputs.github_token }}@github.com/ecmwf/${PACKAGE_NAME}.git
+          cd $PACKAGE_NAME
+          cd tests/system-level
+
+          # Set ecflow server variables
+          export ECF_HOST=${{ inputs.ecflow_host }}
+          export ECF_PORT=${{ inputs.ecflow_port }}
+
+          # Build the suite definition file
+          BUILD_DIR=${SCRATCHDIR}/pyflow/${{ inputs.suite_name }}/build
+          ./build.sh -s name=${{ inputs.suite_name }} ${{ inputs.build_options }} -y
+
+          # Deploy the suite. If a suite is already running it will fail. User should deal with its zombies
+          ecflow_client --replace=/anemoi_tests/${{ inputs.suite_name }} $HOME/pyflow/anemoi_tests/${{ inputs.suite_name }}/${{ inputs.suite_name }}.def
+        sbatch_options: ${{ inputs.sbatch_options }}
+        troika_user: ${{ inputs.troika_user }}
+        site: ${{ inputs.site }}

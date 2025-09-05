@@ -1,0 +1,61 @@
+name: on-demand-system-level-test
+
+on:
+  workflow_dispatch:
+    inputs:
+      anemoi_docs_branch:
+        description: Branch for anemoi-docs to be used to deploy the anemoi_tests suite.
+        required: false
+      anemoi_datasets_branch:
+        description: Branch for anemoi-datasets to be used to build the datasets environment for testing.
+        required: false
+        default: "main"
+      anemoi_training_branch:
+        description: Branch for anemoi-training to be used to build the training environment for testing.
+        required: false
+        default: "main"
+
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      suite_name: ${{ steps.normalize.outputs.suite_name }}
+      build_options: ${{ steps.set_build_options.outputs.build_options }}
+    steps:
+      - name: Normalize suite_name
+        id: normalize
+        run: echo "suite_name=${GITHUB_TRIGGERING_ACTOR//-/_}" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TRIGGERING_ACTOR: ${{ github.triggering_actor }}
+      - name: Set build options
+        id: set_build_options
+        run: |
+          build_options=""
+
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            docs_branch="${{ github.event.inputs.anemoi_docs_branch }}"
+            datasets_branch="${{ github.event.inputs.anemoi_datasets_branch }}"
+            training_branch="${{ github.event.inputs.anemoi_training_branch }}"
+
+            # Default to ref name if docs branch not specified
+            if [[ -z "$docs_branch" ]]; then
+              docs_branch="${{ github.ref_name }}"
+            fi
+
+            build_options="anemoi_docs_branch=$docs_branch anemoi_datasets_branch=$datasets_branch anemoi_training_branch=$training_branch"
+          fi
+
+          echo "build_options=$build_options" >> "$GITHUB_OUTPUT"
+
+  system_level_test:
+    needs: prepare
+    uses: ./.github/workflows/system_level_test.yaml
+    with:
+      suite_name: ${{ needs.prepare.outputs.suite_name }}
+      build_options: ${{ needs.prepare.outputs.build_options }}
+    secrets:
+      gh_token: ${{ secrets.GH_REPO_READ_TOKEN }}
+      troika_user: ${{ secrets.HPC_SYSTEM_TEST_USER }}
+      ecflow_host: ${{ secrets.HPC_SYSTEM_TEST_HOST }}
+      ecflow_port: ${{ secrets.HPC_SYSTEM_TEST_PORT }}
