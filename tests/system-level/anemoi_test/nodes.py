@@ -9,7 +9,6 @@
 
 import os
 from pathlib import Path
-from typing import Optional
 
 import pyflow as pf
 import wellies as wl
@@ -107,7 +106,7 @@ class CreateTrainingFamily(pf.AnchorFamily):
 
 class TrainingTask(pf.Task):
     def __init__(self, folder: str, suite_config: dict, training_cmd: str = "anemoi-training train"):
-        self.required_datasets: Optional[str] = None
+        self.required_datasets: str | None = None
 
         overrides = {
             "--config-path": STATIC_DATA_DIR / "training" / folder,
@@ -218,7 +217,7 @@ class InferenceConfigTask(pf.Task):
         config_template_path: Path,
         output_path: Path,
     ):
-        self.required_trainings: Optional[str] = None
+        self.required_trainings: str | None = None
         script = pf.FileScript(SUITE_DIR / "configs/inference" / folder / "generate_config.sh")
         script.environment_variable("CHECKPOINT_DIR", str(checkpoint_path))
         script.environment_variable("CHECKPOINT_FILE", checkpoint_file)
@@ -232,7 +231,7 @@ class InferenceRetrieveTask(pf.Task):
     def __init__(
         self, folder: str, suite_config: dict, config_path: Path, mars_cmd: str, retrieve_cmd: str, output_path: Path
     ):
-        self.required_trainings: Optional[str] = None
+        self.required_trainings: str | None = None
         script = pf.FileScript(SUITE_DIR / "configs/inference/" / folder / "retrieve.sh")
         script.environment_variable("CONFIG_PATH", str(config_path))
         script.environment_variable("MARS_CMD", mars_cmd)
@@ -243,7 +242,7 @@ class InferenceRetrieveTask(pf.Task):
 
 class InferenceTask(pf.Task):
     def __init__(self, folder: str, suite_config: dict, config_path: Path, inference_cmd: str, output_path: Path):
-        self.required_trainings: Optional[str] = None
+        self.required_trainings: str | None = None
         script = pf.FileScript(SUITE_DIR / "configs/inference/inference.sh")
         script.environment_variable("CONFIG_PATH", str(config_path))
         script.environment_variable("INFERENCE_CMD", inference_cmd)
