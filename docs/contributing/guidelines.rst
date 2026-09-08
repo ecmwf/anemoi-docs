@@ -44,6 +44,11 @@ ATS, contributors can flag them using the following labels;
 -  ``ATS Approved`` – Indicates that the PR has been reviewed and
    approved during the ATS meeting and is ready to be merged.
 
+-  ``Scientific Validation Required`` – Applies to new features (not
+   bug fixes) that do not require approval by ATS. The contributor must
+   provide evidence of the feature's scientific validity before the PR
+   can be merged. See :ref:`scientific-validation` below for details.
+
 It is the responsibility of both the reviewer and the contributor to
 ensure that a PR is correctly labeled. If you're unsure which label to
 use, default to ``ATS Approval Needed`` or tag ``@anemoisecurity`` for
@@ -128,6 +133,45 @@ Examples of PRs that can be labeled ``ATS Approval Not Needed``:
 
    Assuming those do not imply any breaking changes or dependency changes
    as explained above
+
+.. _scientific-validation:
+
+Scientific Validation
+=====================
+
+When a PR is labelled ``Scientific Validation Required``, the contributor
+must demonstrate that the proposed feature provides tangible value. This
+label applies only to **new features** (not bug fixes) that do not require
+approval by ATS. The goal is to provide evidence that the feature is useful
+and will actually be adopted in operational or research models.
+
+The form of evidence is intentionally flexible, but it should clearly
+show the benefit of the feature. Examples of acceptable evidence include:
+
+-  **Forecast skill improvement** – Show that the feature improves
+   forecast scores (e.g., RMSE, ACC, CRPS) on a representative
+   evaluation period compared to a baseline run without the feature.
+
+-  **Computational cost reduction** – Demonstrate that the feature
+   reduces training/inference time, faster convergence, memory usage, or
+   other resources.
+
+-  **Qualitative evaluation** – For features affecting specific
+   phenomena (e.g., forecast realism, small scale features, extreme events),
+   show case studies or visual comparisons that illustrate the improvement.
+
+-  **Adoption evidence** – Show that the feature is already being used
+   or tested in a model configuration at one or more institutions.
+
+Contributors should include this evidence directly in the PR description
+or link to supporting material (e.g., experiment reports, notebooks, or
+external documents). Reviewers are responsible for verifying that the
+provided evidence is sufficient before approving the PR.
+
+.. note::
+
+   If no scientific validation evidence is provided, the feature must be
+   escalated to ATS for discussion before the PR can be merged.
 
 .. _branching-guidelines:
 
