@@ -1,554 +1,104 @@
-# =========================================
-# AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-# =========================================
-# source_repo: anemoi-core
-# branch: main
-# commit: 4842e8bb8c04e2bc2499436325aef9b8794371de
-# uncommitted_changes: True
-# generated_at: 2026-09-04T12:56:59.053482+00:00
-# =========================================
-data:
-  format: zarr
-  frequency: 6h
-  datasets:
-    data:
-      forcing:
-      - cos_latitude
-      - cos_longitude
-      - sin_latitude
-      - sin_longitude
-      - cos_julian_day
-      - cos_local_time
-      - sin_julian_day
-      - sin_local_time
-      - insolation
-      - lsm
-      - sdor
-      - slor
-      - z
-      diagnostic:
-      - tp
-      - cp
-      processors:
-        normalizer:
-          _target_: anemoi.models.preprocessing.normalizer.InputNormalizer
-          config:
-            default: mean-std
-            std:
-            - tp
-            min-max: null
-            max:
-            - sdor
-            - slor
-            - z
-            none:
-            - cos_latitude
-            - cos_longitude
-            - sin_latitude
-            - sin_longitude
-            - cos_julian_day
-            - cos_local_time
-            - sin_julian_day
-            - sin_local_time
-            - insolation
-            - lsm
-        const_imputer:
-          _target_: anemoi.models.preprocessing.imputer.ConstantImputer
-          config:
-            default: none
-            0:
-            - 2t
-dataloader:
-  prefetch_factor: 2
-  pin_memory: true
-  persistent_workers: true
-  read_group_size: ${system.hardware.num_gpus_per_model}
-  num_workers:
-    training: 2
-    validation: 2
-    test: 8
-  batch_size:
-    training: 3
-    validation: 3
-    test: 4
-  limit_batches:
-    training: 3
-    validation: 3
-    test: 20
-  dataset: ${system.input.dataset}
-  training:
-    datasets:
-      data:
-        dataset_config:
-          dataset: ${dataloader.dataset}
-          frequency: ${data.frequency}
-        start: null
-        end: '2017-01-08 12:00:00'
-  validation:
-    datasets:
-      data:
-        dataset_config:
-          dataset: ${dataloader.dataset}
-          frequency: ${data.frequency}
-        start: '2017-01-08 18:00:00'
-        end: 2021
-  test:
-    datasets:
-      data:
-        dataset_config:
-          dataset: ${dataloader.dataset}
-          frequency: ${data.frequency}
-        start: 2022
-        end: null
-diagnostics:
-  plot:
-    settings:
-      asynchronous: false
-      projection_kind: equirectangular
-      datashader: true
-      precip_and_related_fields:
-      - tp
-      - cp
-      colormaps:
-        default:
-          _target_: anemoi.training.utils.custom_colormaps.MatplotlibColormap
-          name: viridis
-        error:
-          _target_: anemoi.training.utils.custom_colormaps.MatplotlibColormap
-          name: bwr
-        precip:
-          _target_: anemoi.training.utils.custom_colormaps.MatplotlibColormapClevels
-          clevels:
-          - '#ffffff'
-          - '#04e9e7'
-          - '#019ff4'
-          - '#0300f4'
-          - '#02fd02'
-          - '#01c501'
-          - '#008e00'
-          - '#fdf802'
-          - '#e5bc00'
-          - '#fd9500'
-          - '#fd0000'
-          - '#d40000'
-          - '#bc0000'
-          - '#f800fd'
-          variables: ${diagnostics.plot.settings.precip_and_related_fields}
-    frequency:
-      batch: 750
-      epoch: 5
-    sample_idx: 0
-    parameters:
-    - tp
-    - 2t
-    datasets_to_plot:
-    - data
-    focus_areas:
-      europe:
-        latlon_bbox:
-        - 30.0
-        - -20.0
-        - 60.0
-        - 40.0
-      china:
-        latlon_bbox:
-        - 18.0
-        - 73.0
-        - 54.0
-        - 135.0
-    callbacks: []
-  callbacks:
-  - _target_: anemoi.training.diagnostics.callbacks.evaluation.RolloutEval
-    rollout:
-    - 1
-    - 2
-    every_n_batches: 4
-  benchmark_profiler:
-    memory:
-      enabled: true
-      steps: 5
-      warmup: 2
-      extra_plots: false
-      trace_rank0_only: false
-    time:
-      enabled: true
-      verbose: false
-    speed:
-      enabled: true
-    system:
-      enabled: true
-    model_summary:
-      enabled: true
-    snapshot:
-      enabled: true
-      steps: 4
-      warmup: 0
-  log:
-    mlflow:
-      enabled: false
-      _target_: anemoi.training.diagnostics.mlflow.logger.AnemoiMLflowLogger
-      offline: false
-      authentication: true
-      tracking_uri: null
-      experiment_name: ci_hpc_mlflow
-      project_name: Anemoi
-      system: false
-      terminal: true
-      run_name: null
-      prefix: ''
-      log_hyperparams: true
-      on_resume_create_child: true
-      expand_hyperparams:
-      - config
-      http_max_retries: 35
-      max_params_length: 2000
-      save_dir: ${system.output.logs.mlflow}
-    interval: 100
-  debug:
-    anomaly_detection: false
-  enable_checkpointing: true
-  checkpoint:
-    every_n_minutes:
-      save_frequency: 30
-      num_models_saved: 3
-    every_n_epochs:
-      save_frequency: 1
-      num_models_saved: -1
-    every_n_train_steps:
-      save_frequency: null
-      num_models_saved: 0
-  enable_progress_bar: true
-  progress_bar:
-    _target_: pytorch_lightning.callbacks.TQDMProgressBar
-    refresh_rate: 1
-  check_val_every_n_epoch: 1
-  print_memory_summary: false
+defaults:
+- data: zarr
+- dataloader: native_grid
+- diagnostics: evaluation
+- system: example
+- graph: multi_scale
+- model: graphtransformer
+- task: forecaster
+- training: single
+- _self_
+
+config_validation: True
+
 system:
-  output:
-    root: ${oc.env:PWD}/tmp_output/
-    logs:
-      root: logs
-      wandb: wandb
-      mlflow: mlflow
-      tensorboard: tensorboard
-    checkpoints:
-      root: checkpoint
-      every_n_epochs: anemoi-by_epoch-epoch_{epoch:03d}-step_{step:06d}
-      every_n_train_steps: anemoi-by_step-epoch_{epoch:03d}-step_{step:06d}
-      every_n_minutes: anemoi-by_time-epoch_{epoch:03d}-step_{step:06d}
-    plots: plots
-    profiler: profiler
   input:
     dataset: ${system.input.root}/aifs-ea-an-oper-0001-mars-o96-2017-2017-6h-v8-testing.zarr
-    graph: null
-    loss_matrices_path: null
-    truncation: null
-    truncation_inv: null
-    warm_start: null
-    root: dummy_root
   hardware:
     accelerator: auto
     num_gpus_per_node: 1
     num_nodes: 1
     num_gpus_per_model: 1
-graph:
-  overwrite: true
-  nodes:
-    data:
-      node_builder:
-        _target_: anemoi.graphs.nodes.AnemoiDatasetNodes
-        dataset: ${dataloader.training.datasets.data.dataset_config}
-      attributes: ${graph.attributes.nodes}
-    hidden:
-      node_builder:
-        _target_: anemoi.graphs.nodes.TriNodes
-        resolution: 5
-  edges:
-  - source_name: data
-    target_name: hidden
-    edge_builders:
-    - _target_: anemoi.graphs.edges.CutOffEdges
-      cutoff_factor: 0.6
-      source_mask_attr_name: null
-      target_mask_attr_name: null
-    attributes: ${graph.attributes.edges}
-  - source_name: hidden
-    target_name: hidden
-    edge_builders:
-    - _target_: anemoi.graphs.edges.MultiScaleEdges
-      x_hops: 1
-      scale_resolutions: ${graph.nodes.hidden.node_builder.resolution}
-      source_mask_attr_name: null
-      target_mask_attr_name: null
-    attributes: ${graph.attributes.edges}
-  - source_name: hidden
-    target_name: data
-    edge_builders:
-    - _target_: anemoi.graphs.edges.KNNEdges
-      num_nearest_neighbours: 3
-      source_mask_attr_name: null
-      target_mask_attr_name: null
-    attributes: ${graph.attributes.edges}
-  attributes:
-    nodes:
-      area_weight:
-        _target_: anemoi.graphs.nodes.attributes.SphericalAreaWeights
-        norm: unit-max
-        fill_value: 0
-    edges:
-      edge_length:
-        _target_: anemoi.graphs.edges.attributes.EdgeLength
-        norm: unit-std
-      edge_dirs:
-        _target_: anemoi.graphs.edges.attributes.EdgeDirection
-        norm: unit-std
-  post_processors: []
-model:
-  num_channels: 16
-  cpu_offload: false
-  keep_batch_sharded: true
-  model:
-    _target_: anemoi.models.models.AnemoiModelEncProcDec
-    hidden_nodes_name: hidden
-    latent_skip: true
-  layer_kernels:
-    LayerNorm:
-      _target_: torch.nn.LayerNorm
-    Linear:
-      _target_: torch.nn.Linear
-    Activation:
-      _target_: torch.nn.GELU
-    QueryNorm:
-      _target_: anemoi.models.layers.normalization.AutocastLayerNorm
-      bias: false
-    KeyNorm:
-      _target_: anemoi.models.layers.normalization.AutocastLayerNorm
-      bias: false
-  processor:
-    _target_: anemoi.models.layers.processor.GraphTransformerProcessor
-    num_channels: ${model.num_channels}
-    trainable_size: ${model.edge_trainable_parameters.hidden2hidden}
-    sub_graph_edge_attributes: ${model.attributes.edges}
-    num_layers: 2
-    num_chunks: 2
-    mlp_hidden_ratio: 4
-    mlp_implementation: mlp
-    num_heads: 16
-    qk_norm: false
-    cpu_offload: ${model.cpu_offload}
-    gradient_checkpointing: true
-    layer_kernels: ${model.layer_kernels}
-    shard_strategy: edges
-    graph_attention_backend: triton
-    edge_pre_mlp: false
-  encoders:
-    '0':
-      source_datasets:
-      - data
-      dataset_fusing_strategy: not_supported
-      mapper:
-        _target_: anemoi.models.layers.mapper.GraphTransformerForwardMapper
-        num_channels: ${model.num_channels}
-        trainable_size: ${model.edge_trainable_parameters.data2hidden}
-        sub_graph_edge_attributes: ${model.attributes.edges}
-        num_chunks: 4
-        mlp_hidden_ratio: 4
-        mlp_implementation: mlp
-        num_heads: 16
-        qk_norm: false
-        cpu_offload: ${model.cpu_offload}
-        gradient_checkpointing: true
-        layer_kernels: ${model.layer_kernels}
-        shard_strategy: edges
-        graph_attention_backend: triton
-        edge_pre_mlp: false
-  latent_aggregator:
-    _target_: anemoi.models.layers.aggregator.SumAggregator
-  decoders:
-    '0':
-      target_datasets:
-      - data
-      target_node_features:
-      - encoded_data
-      mapper:
-        _target_: anemoi.models.layers.mapper.GraphTransformerBackwardMapper
-        num_channels: ${model.num_channels}
-        trainable_size: ${model.edge_trainable_parameters.hidden2data}
-        sub_graph_edge_attributes: ${model.attributes.edges}
-        num_chunks: 4
-        mlp_hidden_ratio: 4
-        mlp_implementation: mlp
-        num_heads: 16
-        initialise_data_extractor_zero: false
-        qk_norm: false
-        cpu_offload: ${model.cpu_offload}
-        gradient_checkpointing: true
-        layer_kernels: ${model.layer_kernels}
-        shard_strategy: edges
-        graph_attention_backend: triton
-        edge_pre_mlp: false
-  residual:
+  output:
+    root: "dummy_root" # will be replaced by the actual root in the system-level test suite
+  input:
+    graph: null
+    truncation: null
+    truncation_inv: null
+    root: "dummy_root" # will be replaced by the actual root in the system-level test suite
+
+dataloader:
+  training:
     datasets:
       data:
-        _target_: anemoi.models.layers.residual.SkipConnection
-        step: -1
-  output_mask:
+        end: 2017-01-08 12:00:00
+  validation:
     datasets:
       data:
-        _target_: anemoi.training.utils.masks.NoOutputMask
-  node_trainable_parameters:
-    data: 8
-    hidden: 8
-  edge_trainable_parameters:
-    data2hidden: 8
-    hidden2hidden: 8
-    hidden2data: 8
-  compile:
-  - module: anemoi.models.layers.conv.GraphTransformerConv
-  attributes:
-    edges:
-    - edge_length
-    - edge_dirs
-    nodes: []
-  bounding:
-    datasets:
-      data:
-      - _target_: anemoi.models.layers.bounding.ReluBounding
-        variables:
-        - tp
+        start: 2017-01-08 18:00:00
+  num_workers:
+    training: 2
+    validation: 2
+  batch_size:
+    training: 3
+    validation: 3
+  limit_batches:
+    training: 3
+    validation: 3
+
 task:
-  _target_: anemoi.training.tasks.Forecaster
+  validation_rollout: 2
   multistep_input: 3
   multistep_output: 2
-  timestep: 6H
-  rollout:
-    start: 1
-    epoch_increment: 0
-    maximum: 1
-  validation_rollout: 2
+
+diagnostics:
+  callbacks:
+    - _target_: anemoi.training.diagnostics.callbacks.evaluation.RolloutEval
+      rollout: [1, 2]
+      every_n_batches: 4
+  log:
+    mlflow:
+      _target_: anemoi.training.diagnostics.mlflow.logger.AnemoiMLflowLogger
+      enabled: False
+      tracking_uri: null # override '???'
+  plot:
+    callbacks: []
+
+
+graph:
+  overwrite: True
+
+model:
+  num_channels: 16
+  processor:
+    num_layers: 2
+    num_chunks: 2
+
 training:
+  max_epochs: 2
+  optimization:
+    lr: 10e-5
+    lr_scheduler:
+      warmup_t: 1
   scalers:
     datasets:
       data:
-        general_variable:
-          _target_: anemoi.training.losses.scalers.GeneralVariableLossScaler
-          weights:
-            default: 1
-            q: 0.6
-            t: 6
-            u: 0.8
-            v: 0.5
-            w: 0.001
-            z: 12
-            sp: 10
-            10u: 0.1
-            10v: 0.1
-            2d: 0.5
-            tp: 0.025
-            cp: 0.0025
-        pressure_level:
-          _target_: anemoi.training.losses.scalers.ReluVariableLevelScaler
-          group: pl
-          y_intercept: 0.2
-          slope: 0.001
-        nan_mask_weights:
-          _target_: anemoi.training.losses.scalers.NaNMaskScaler
-        stdev_tendency:
-          _target_: anemoi.training.losses.scalers.StdevTendencyScaler
-        var_tendency:
-          _target_: anemoi.training.losses.scalers.VarTendencyScaler
-        node_weights:
-          _target_: anemoi.training.losses.scalers.GraphNodeAttributeScaler
-          nodes_attribute_name: area_weight
-          norm: unit-sum
-        time_steps:
-          _target_: anemoi.training.losses.scalers.UniformTimeStepScaler
         output_steps:
           _target_: anemoi.training.losses.scalers.TimeStepScaler
-          norm: unit-sum
-          weights:
-          - 1.0
-          - 2.0
+          norm: "unit-sum"
+          weights: [1.0, 2.0]
   training_loss:
     datasets:
       data:
-        _target_: anemoi.training.losses.MSELoss
-        scalers:
-        - pressure_level
-        - general_variable
-        - node_weights
-        - output_steps
-        ignore_nans: false
-  optimization:
-    optimizer:
-      _target_: torch.optim.AdamW
-      betas:
-      - 0.9
-      - 0.95
-    lr_scheduler:
-      _target_: timm.scheduler.CosineLRScheduler
-      lr_min: 3.0e-07
-      t_initial: ${training.max_steps}
-      warmup_t: 1
-      t_in_epochs: false
-    lr: 0.0001
-    pl_lr_scheduler:
-      interval: step
-  run_id: null
-  fork_run_id: null
-  transfer_learning: false
-  load_weights_only: false
-  update_ds_stats_on_ckpt_load:
-    states: false
-    tendencies: true
-  check_variables_compatibility:
-    ignore_units: false
-    ignore_processing_period: false
-  deterministic: false
-  precision: 16-mixed
-  accum_grad_batches: 1
-  num_sanity_val_steps: 6
-  gradient_clip:
-    val: 32.0
-    algorithm: value
-  method:
-    _target_: anemoi.training.train.methods.SingleTraining
-  strategy:
-    _target_: anemoi.training.distributed.single.SingleDeviceStrategy
-    num_gpus_per_model: ${system.hardware.num_gpus_per_model}
-    read_group_size: ${dataloader.read_group_size}
-    use_local_synchronization: true
-    broadcast_buffers: false
-  loss_gradient_scaling: false
-  validation_metrics:
-    datasets:
-      data:
-        mse:
-          _target_: anemoi.training.losses.MSELoss
-          scalers:
-          - node_weights
-          - time_steps
-          ignore_nans: true
-  variable_groups:
-    datasets:
-      data:
-        default: sfc
-        pl:
-          param:
-          - q
-          - t
-          - u
-          - v
-          - w
-          - z
-  metrics:
-    datasets:
-      data:
-      - z_500
-      - t_850
-      - u_850
-      - v_850
-  max_epochs: 2
-  max_steps: 150000
-  submodules_to_freeze: []
-config_validation: true
+        scalers: ["pressure_level", "general_variable", "node_weights", "output_steps"]
+
+data:
+  datasets:
+    data:
+      processors:
+        const_imputer:
+          _target_: anemoi.models.preprocessing.imputer.ConstantImputer
+          config:
+            default: "none"
+            0:
+              - 2t
