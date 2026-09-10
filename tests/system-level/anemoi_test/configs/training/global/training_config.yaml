@@ -14,17 +14,16 @@ config_validation: True
 system:
   input:
     dataset: ${system.input.root}/aifs-ea-an-oper-0001-mars-o96-2017-2017-6h-v8-testing.zarr
+    graph: null
+    truncation: null
+    truncation_inv: null
+    root: "dummy_root" # will be replaced by the actual root in the system-level test suite
   hardware:
     accelerator: auto
     num_gpus_per_node: 1
     num_nodes: 1
     num_gpus_per_model: 1
   output:
-    root: "dummy_root" # will be replaced by the actual root in the system-level test suite
-  input:
-    graph: null
-    truncation: null
-    truncation_inv: null
     root: "dummy_root" # will be replaced by the actual root in the system-level test suite
 
 dataloader:
